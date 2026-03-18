@@ -1,0 +1,11 @@
+# Environment variables — never commit
+.env
+
+# Node
+node_modules/
+
+# Screenshots (temporary/generated)
+temporary screenshots/
+
+# OS
+.DS_Store

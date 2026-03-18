@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:old.reddit.com)",
+      "WebFetch(domain:www.youtube.com)",
+      "WebFetch(domain:www.boomtownroi.com)",
+      "WebFetch(domain:www.cincopro.com)",
+      "WebFetch(domain:sierrainteractive.com)",
+      "WebFetch(domain:www.ylopo.com)",
+      "WebFetch(domain:ylopo.com)"
+    ]
+  }
+}

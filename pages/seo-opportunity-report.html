@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ylopo.com SEO Opportunity Report — March 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800;900&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #7BC109;
+    --green-dark: #508200;
+    --green-light: #a5e040;
+    --green-xlight: #f0fadf;
+    --navy: #172F44;
+    --navy-mid: #1e3d57;
+    --navy-light: #2a5070;
+    --slate: #696F8B;
+    --white: #ffffff;
+    --gray-light: #E7E7E7;
+    --red: #e53e3e;
+    --amber: #d97706;
+    --body-text: #d0dce8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0d1a26;
+    font-family: 'Nunito', sans-serif;
+    color: var(--white);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .progress-bar {
+    position: fixed; top: 0; left: 0;
+    height: 3px; background: var(--green);
+    transition: width 0.3s; z-index: 1000;
+  }
+
+  .slide-deck {
+    width: 100vw; height: 100vh;
+    position: relative; overflow: hidden;
+  }
+
+  @media (min-width: 769px) {
+    .slide-deck {
+      max-width: calc(100vh * 16 / 9);
+      max-height: calc(100vw * 9 / 16);
+      margin: auto;
+      position: absolute; inset: 0;
+    }
+  }
+
+  .slide {
+    position: absolute; width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    padding: 52px 64px 80px;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.35s ease;
+    background: var(--navy);
+    overflow: hidden;
+  }
+  .slide.active { opacity: 1; visibility: visible; }
+
+  /* Slide backgrounds */
+  .slide-dark { background: #0d1a26; }
+  .slide-navy { background: var(--navy); }
+  .slide-green { background: var(--green-dark); }
+
+  /* Decorative elements */
+  .slide::before {
+    content: '';
+    position: absolute; bottom: -80px; right: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(123,193,9,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .accent-line {
+    width: 56px; height: 4px;
+    background: var(--green); border-radius: 2px;
+    margin-bottom: 16px;
+  }
+
+  /* Typography */
+  h1 { font-family: 'Raleway', sans-serif; font-weight: 800; }
+  h2 { font-family: 'Raleway', sans-serif; font-weight: 700; }
+  h3 { font-family: 'Raleway', sans-serif; font-weight: 600; }
+
+  .slide-label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--green); margin-bottom: 10px;
+  }
+
+  .slide-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(26px, 3.8vw, 52px);
+    font-weight: 800; line-height: 1.1;
+    color: var(--white); margin-bottom: 8px;
+  }
+
+  .slide-subtitle {
+    font-size: clamp(14px, 1.5vw, 20px);
+    color: var(--body-text); font-weight: 400;
+    line-height: 1.5;
+  }
+
+  /* Layout helpers */
+  .cols-2 {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 28px; width: 100%;
+  }
+  .cols-3 {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px; width: 100%;
+  }
+  .col-6040 {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 32px; width: 100%; align-items: start;
+  }
+
+  /* Cards */
+  .card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 20px 22px;
+  }
+  .card-green {
+    background: rgba(123,193,9,0.1);
+    border: 1px solid rgba(123,193,9,0.3);
+    border-radius: 10px; padding: 20px 22px;
+  }
+  .card-red {
+    background: rgba(229,62,62,0.1);
+    border: 1px solid rgba(229,62,62,0.3);
+    border-radius: 10px; padding: 20px 22px;
+  }
+  .card-amber {
+    background: rgba(217,119,6,0.1);
+    border: 1px solid rgba(217,119,6,0.3);
+    border-radius: 10px; padding: 20px 22px;
+  }
+
+  .card h3 {
+    font-size: clamp(13px, 1.4vw, 17px);
+    color: var(--white); margin-bottom: 8px;
+  }
+  .card p, .card li {
+    font-size: clamp(11px, 1.1vw, 14px);
+    color: var(--body-text); line-height: 1.55;
+  }
+  .card ul { padding-left: 16px; }
+  .card li { margin-bottom: 4px; }
+
+  /* Status badges */
+  .badge {
+    display: inline-block; padding: 3px 10px;
+    border-radius: 20px; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .badge-red { background: rgba(229,62,62,0.2); color: #fc8181; border: 1px solid rgba(229,62,62,0.4); }
+  .badge-amber { background: rgba(217,119,6,0.2); color: #fcd34d; border: 1px solid rgba(217,119,6,0.4); }
+  .badge-green { background: rgba(123,193,9,0.2); color: var(--green-light); border: 1px solid rgba(123,193,9,0.4); }
+  .badge-gray { background: rgba(255,255,255,0.1); color: #aaa; border: 1px solid rgba(255,255,255,0.15); }
+
+  /* Stat blocks */
+  .stat-block { text-align: center; }
+  .stat-number {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(28px, 4vw, 56px);
+    font-weight: 900; color: var(--green);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: clamp(10px, 1vw, 13px);
+    color: var(--body-text); margin-top: 6px;
+    text-transform: uppercase; letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  /* Issue rows */
+  .issue-row {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .issue-row:last-child { border-bottom: none; }
+  .issue-icon {
+    width: 28px; height: 28px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; flex-shrink: 0; margin-top: 1px;
+  }
+  .icon-red { background: rgba(229,62,62,0.2); color: #fc8181; }
+  .icon-amber { background: rgba(217,119,6,0.2); color: #fcd34d; }
+  .icon-green { background: rgba(123,193,9,0.2); color: var(--green-light); }
+  .issue-text h4 { font-size: clamp(12px, 1.2vw, 15px); color: var(--white); margin-bottom: 2px; }
+  .issue-text p { font-size: clamp(10px, 0.95vw, 13px); color: var(--body-text); line-height: 1.4; }
+
+  /* Table styles */
+  .data-table { width: 100%; border-collapse: collapse; font-size: clamp(10px, 0.95vw, 13px); }
+  .data-table th {
+    background: rgba(123,193,9,0.15); color: var(--green-light);
+    padding: 8px 12px; text-align: left; font-weight: 700;
+    font-family: 'Raleway', sans-serif; font-size: clamp(10px, 0.9vw, 12px);
+    letter-spacing: 0.5px; text-transform: uppercase;
+    border-bottom: 1px solid rgba(123,193,9,0.3);
+  }
+  .data-table td {
+    padding: 7px 12px; border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: var(--body-text); vertical-align: top;
+  }
+  .data-table tr:hover td { background: rgba(255,255,255,0.03); }
+  .data-table .url { color: rgba(123,193,9,0.8); font-weight: 600; font-size: 11px; }
+  .data-table .issue-cell { color: #fc8181; }
+
+  /* Priority items */
+  .priority-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px; margin-bottom: 8px;
+  }
+  .priority-num {
+    width: 28px; height: 28px; border-radius: 6px;
+    background: var(--green); color: var(--navy);
+    font-weight: 900; font-family: 'Raleway', sans-serif;
+    font-size: 14px; display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0;
+  }
+  .priority-text h4 { font-size: clamp(12px, 1.15vw, 15px); color: var(--white); margin-bottom: 2px; }
+  .priority-text p { font-size: clamp(10px, 0.95vw, 13px); color: var(--body-text); line-height: 1.4; }
+
+  /* Effort/Impact labels */
+  .tag {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    padding: 2px 8px; border-radius: 4px; margin-left: 6px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .tag-easy { background: rgba(123,193,9,0.2); color: var(--green-light); }
+  .tag-medium { background: rgba(217,119,6,0.2); color: #fcd34d; }
+  .tag-hard { background: rgba(229,62,62,0.2); color: #fc8181; }
+
+  /* Roadmap */
+  .roadmap-col h3 {
+    font-size: clamp(13px, 1.3vw, 17px); color: var(--green);
+    margin-bottom: 12px; padding-bottom: 8px;
+    border-bottom: 2px solid rgba(123,193,9,0.3);
+  }
+  .roadmap-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-bottom: 9px; font-size: clamp(10px, 1vw, 13px);
+    color: var(--body-text); line-height: 1.4;
+  }
+  .roadmap-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--green); flex-shrink: 0; margin-top: 5px;
+  }
+
+  /* Section header style */
+  .slide-header {
+    width: 100%; margin-bottom: 22px; text-align: left;
+  }
+
+  /* Chart container */
+  .chart-wrap {
+    width: 100%; height: clamp(160px, 28vh, 260px);
+    position: relative;
+  }
+
+  /* Nav */
+  .nav-controls {
+    position: fixed; bottom: 22px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; align-items: center; gap: 16px;
+    z-index: 1000; background: rgba(13,26,38,0.8);
+    backdrop-filter: blur(8px);
+    padding: 8px 20px; border-radius: 40px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .nav-btn {
+    background: rgba(123,193,9,0.15); border: 1px solid rgba(123,193,9,0.3);
+    color: var(--green-light); width: 36px; height: 36px;
+    border-radius: 50%; cursor: pointer; font-size: 16px;
+    transition: all 0.2s; display: flex; align-items: center; justify-content: center;
+  }
+  .nav-btn:hover { background: rgba(123,193,9,0.3); }
+  .slide-counter { color: rgba(255,255,255,0.5); font-size: 13px; font-family: 'Nunito', sans-serif; }
+
+  /* Logo */
+  .logo-wrap { margin-bottom: 20px; }
+  .logo-wrap img { height: 36px; filter: brightness(0) invert(1); }
+
+  /* Bullet list */
+  .bullet-list { list-style: none; padding: 0; width: 100%; }
+  .bullet-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: clamp(11px, 1.1vw, 14px); color: var(--body-text); line-height: 1.45;
+  }
+  .bullet-list li::before {
+    content: '▸'; color: var(--green); font-size: 12px;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .bullet-list li strong { color: var(--white); }
+
+  /* Q bank */
+  .q-item {
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid var(--green);
+    padding: 8px 12px; border-radius: 0 6px 6px 0;
+    margin-bottom: 7px;
+    font-size: clamp(10px, 1vw, 13px); color: var(--body-text);
+    line-height: 1.4;
+  }
+  .q-item strong { color: var(--white); }
+
+  /* Competitor table */
+  .comp-check { color: var(--green-light); font-weight: 700; }
+  .comp-cross { color: #fc8181; }
+  .comp-partial { color: #fcd34d; }
+
+  /* Full-bleed sections */
+  .full-left { text-align: left; width: 100%; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="slide-deck">
+
+<!-- SLIDE 1: TITLE -->
+<div class="slide slide-dark active">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 50%, rgba(123,193,9,0.12) 0%, transparent 60%), radial-gradient(ellipse at 80% 80%, rgba(23,47,68,0.8) 0%, transparent 50%);pointer-events:none;"></div>
+  <div style="position:relative;z-index:1;width:100%;display:flex;flex-direction:column;align-items:flex-start;">
+    <div class="logo-wrap"><img src="../ylopo-logo-2021.png" alt="Ylopo"></div>
+    <div style="width:64px;height:5px;background:var(--green);border-radius:3px;margin-bottom:28px;"></div>
+    <h1 style="font-family:'Raleway',sans-serif;font-weight:900;font-size:clamp(32px,5vw,68px);line-height:1.05;color:var(--white);margin-bottom:16px;">SEO Opportunity<br><span style="color:var(--green);">Report</span></h1>
+    <p style="font-size:clamp(14px,1.6vw,22px);color:var(--body-text);font-weight:400;margin-bottom:36px;">Ylopo.com — Technical Audit · Content Gaps · Prioritized Action Plan</p>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;">
+      <div style="padding:10px 20px;background:rgba(123,193,9,0.1);border:1px solid rgba(123,193,9,0.3);border-radius:8px;font-size:13px;color:var(--green-light);font-weight:700;">March 2026</div>
+      <div style="padding:10px 20px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:13px;color:var(--body-text);">Target: Real Estate Agents · Team Leaders · Brokers</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 2: EXECUTIVE SUMMARY -->
+<div class="slide slide-navy">
+  <div class="slide-header full-left">
+    <div class="slide-label">Overview</div>
+    <h2 class="slide-title">Executive Summary</h2>
+    <p class="slide-subtitle">5 critical findings that are costing Ylopo organic visibility and qualified traffic right now.</p>
+  </div>
+  <div class="cols-2" style="align-items:start;">
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="card-red">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><span style="font-size:18px;">🚨</span><h3 style="color:#fc8181;">Zero unique meta descriptions</h3></div>
+        <p>Every page on ylopo.com uses the identical boilerplate meta description. Google ignores it and writes its own. No page is optimized for click-through.</p>
+      </div>
+      <div class="card-red">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><span style="font-size:18px;">🤖</span><h3 style="color:#fc8181;">AI crawlers are blocked</h3></div>
+        <p>GPTBot, ClaudeBot, Google-Extended, and anthropic-ai are in robots.txt. Ylopo is invisible to ChatGPT, Perplexity, and Gemini — ironic for an AI-first brand.</p>
+      </div>
+      <div class="card-amber">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><span style="font-size:18px;">📋</span><h3 style="color:#fcd34d;">No schema markup on product pages</h3></div>
+        <p>FAQ, Product, Review, and Event schema are completely absent. No rich results, no accordion FAQs in SERPs, no star ratings.</p>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="card-amber">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><span style="font-size:18px;">❓</span><h3 style="color:#fcd34d;">Top prospect questions go unanswered</h3></div>
+        <p>40+ questions real estate agents ask online (comparison pages, pricing, AI texting, ROI timeline) have no dedicated Ylopo page to capture them.</p>
+      </div>
+      <div class="card-amber">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><span style="font-size:18px;">🏗️</span><h3 style="color:#fcd34d;">H1 structure broken across product pages</h3></div>
+        <p>Pages have 6–9 H1 tags each. Google cannot determine the primary topic. One page has 9 H1s and zero H2s. Signals are completely diluted.</p>
+      </div>
+      <div class="card-green" style="margin-top:4px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><span style="font-size:18px;">✅</span><h3 style="color:var(--green-light);">Opportunity is large and fixable</h3></div>
+        <p>Most high-impact fixes are content and configuration changes — no rebuilds required. ROI data and case studies are strong assets ready to leverage.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3: METHODOLOGY -->
+<div class="slide slide-dark">
+  <div class="slide-header full-left">
+    <div class="slide-label">How We Did This</div>
+    <h2 class="slide-title">Methodology</h2>
+  </div>
+  <div class="cols-3">
+    <div class="card">
+      <div style="font-size:28px;margin-bottom:10px;">🔍</div>
+      <h3 style="margin-bottom:8px;color:var(--green-light);">Site Crawl</h3>
+      <p>Firecrawl deep crawl of ylopo.com — 35+ pages audited. Extracted title tags, meta descriptions, H1–H3 structure, schema markup, canonical URLs, Open Graph tags, and internal link structure.</p>
+    </div>
+    <div class="card">
+      <div style="font-size:28px;margin-bottom:10px;">👥</div>
+      <h3 style="margin-bottom:8px;color:var(--green-light);">Prospect Research</h3>
+      <p>Analyzed questions from r/realtors, r/RealEstate, r/REAgents. Reviewed YouTube search demand for real estate lead gen, IDX, and AI follow-up topics. Synthesized 40+ distinct prospect questions.</p>
+    </div>
+    <div class="card">
+      <div style="font-size:28px;margin-bottom:10px;">⚔️</div>
+      <h3 style="margin-bottom:8px;color:var(--green-light);">Competitor Analysis</h3>
+      <p>Crawled BoomTown, Sierra Interactive, and CINC feature and pricing pages. Identified what questions competitors are answering that Ylopo is not currently addressing with dedicated content.</p>
+    </div>
+  </div>
+  <div style="display:flex;gap:20px;margin-top:20px;width:100%;">
+    <div style="flex:1;padding:12px 16px;background:rgba(255,255,255,0.04);border-radius:8px;border:1px solid rgba(255,255,255,0.08);">
+      <span style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--green);font-weight:700;">Infrastructure</span>
+      <p style="font-size:12px;color:var(--body-text);margin-top:4px;">robots.txt · sitemap.xml · llms.txt · AI crawl permissions</p>
+    </div>
+    <div style="flex:1;padding:12px 16px;background:rgba(255,255,255,0.04);border-radius:8px;border:1px solid rgba(255,255,255,0.08);">
+      <span style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--green);font-weight:700;">On-Page</span>
+      <p style="font-size:12px;color:var(--body-text);margin-top:4px;">Titles · Meta · H1/H2 hierarchy · Canonicals · OG tags</p>
+    </div>
+    <div style="flex:1;padding:12px 16px;background:rgba(255,255,255,0.04);border-radius:8px;border:1px solid rgba(255,255,255,0.08);">
+      <span style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--green);font-weight:700;">Structured Data</span>
+      <p style="font-size:12px;color:var(--body-text);margin-top:4px;">Schema types present · Missing schema · Rich result eligibility</p>
+    </div>
+    <div style="flex:1;padding:12px 16px;background:rgba(255,255,255,0.04);border-radius:8px;border:1px solid rgba(255,255,255,0.08);">
+      <span style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--green);font-weight:700;">Content Gaps</span>
+      <p style="font-size:12px;color:var(--body-text);margin-top:4px;">Question bank · Page coverage map · Priority scoring</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4: TECHNICAL SEO HEALTH DASHBOARD -->
+<div class="slide slide-navy">
+  <div class="slide-header full-left">
+    <div class="slide-label">Technical Audit</div>
+    <h2 class="slide-title">SEO Health Dashboard</h2>
+  </div>
+  <div class="cols-3" style="width:100%;margin-bottom:16px;">
+    <div class="stat-block card">
+      <div class="stat-number" style="color:#fc8181;">0</div>
+      <div class="stat-label">Pages with unique<br>meta descriptions</div>
+    </div>
+    <div class="stat-block card">
+      <div class="stat-number" style="color:#fc8181;">9</div>
+      <div class="stat-label">Max H1 tags on<br>a single page</div>
+    </div>
+    <div class="stat-block card">
+      <div class="stat-number" style="color:#fcd34d;">2</div>
+      <div class="stat-label">Schema types used<br>sitewide (need 8+)</div>
+    </div>
+  </div>
+  <div style="width:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+    <div style="padding:10px 12px;border-radius:8px;background:rgba(229,62,62,0.1);border:1px solid rgba(229,62,62,0.3);">
+      <div style="font-size:10px;color:#fc8181;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">FAIL</div>
+      <div style="font-size:12px;color:var(--body-text);">Unique meta descriptions</div>
+    </div>
+    <div style="padding:10px 12px;border-radius:8px;background:rgba(229,62,62,0.1);border:1px solid rgba(229,62,62,0.3);">
+      <div style="font-size:10px;color:#fc8181;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">FAIL</div>
+      <div style="font-size:12px;color:var(--body-text);">AI bot access (robots.txt)</div>
+    </div>
+    <div style="padding:10px 12px;border-radius:8px;background:rgba(229,62,62,0.1);border:1px solid rgba(229,62,62,0.3);">
+      <div style="font-size:10px;color:#fc8181;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">FAIL</div>
+      <div style="font-size:12px;color:var(--body-text);">H1 structure (one per page)</div>
+    </div>
+    <div style="padding:10px 12px;border-radius:8px;background:rgba(229,62,62,0.1);border:1px solid rgba(229,62,62,0.3);">
+      <div style="font-size:10px;color:#fc8181;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">FAIL</div>
+      <div style="font-size:12px;color:var(--body-text);">llms.txt exists</div>
+    </div>
+    <div style="padding:10px 12px;border-radius:8px;background:rgba(217,119,6,0.1);border:1px solid rgba(217,119,6,0.3);">
+      <div style="font-size:10px;color:#fcd34d;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">PARTIAL</div>
+      <div style="font-size:12px;color:var(--body-text);">Title tags optimized</div>
+    </div>
+    <div style="padding:10px 12px;border-radius:8px;background:rgba(229,62,62,0.1);border:1px solid rgba(229,62,62,0.3);">
+      <div style="font-size:10px;color:#fc8181;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">FAIL</div>
+      <div style="font-size:12px;color:var(--body-text);">Canonical tags (self-ref)</div>
+    </div>
+    <div style="padding:10px 12px;border-radius:8px;background:rgba(229,62,62,0.1);border:1px solid rgba(229,62,62,0.3);">
+      <div style="font-size:10px;color:#fc8181;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">FAIL</div>
+      <div style="font-size:12px;color:var(--body-text);">FAQPage schema</div>
+    </div>
+    <div style="padding:10px 12px;border-radius:8px;background:rgba(217,119,6,0.1);border:1px solid rgba(217,119,6,0.3);">
+      <div style="font-size:10px;color:#fcd34d;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">PARTIAL</div>
+      <div style="font-size:12px;color:var(--body-text);">Sitemap completeness</div>
+    </div>
+    <div style="padding:10px 12px;border-radius:8px;background:rgba(123,193,9,0.1);border:1px solid rgba(123,193,9,0.3);">
+      <div style="font-size:10px;color:var(--green-light);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">PASS</div>
+      <div style="font-size:12px;color:var(--body-text);">sitemap.xml exists</div>
+    </div>
+    <div style="padding:10px 12px;border-radius:8px;background:rgba(123,193,9,0.1);border:1px solid rgba(123,193,9,0.3);">
+      <div style="font-size:10px;color:var(--green-light);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">PASS</div>
+      <div style="font-size:12px;color:var(--body-text);">robots.txt exists</div>
+    </div>
+    <div style="padding:10px 12px;border-radius:8px;background:rgba(123,193,9,0.1);border:1px solid rgba(123,193,9,0.3);">
+      <div style="font-size:10px;color:var(--green-light);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">PASS</div>
+      <div style="font-size:12px;color:var(--body-text);">Article schema on blog posts</div>
+    </div>
+    <div style="padding:10px 12px;border-radius:8px;background:rgba(123,193,9,0.1);border:1px solid rgba(123,193,9,0.3);">
+      <div style="font-size:10px;color:var(--green-light);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">PASS</div>
+      <div style="font-size:12px;color:var(--body-text);">HTTPS · No redirect loops</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: P0 CRITICAL ISSUES -->
+<div class="slide slide-dark">
+  <div class="slide-header full-left">
+    <div class="slide-label">P0 — Fix Immediately</div>
+    <h2 class="slide-title">Critical Issues <span style="color:#fc8181;">Costing You Traffic Now</span></h2>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:0;">
+    <div class="issue-row">
+      <div class="issue-icon icon-red">🚨</div>
+      <div class="issue-text">
+        <h4>Every page uses the identical meta description</h4>
+        <p>Google ignores duplicate meta descriptions and auto-generates its own snippets. No page has click-through optimization. Fix: write unique 120–155 char meta descriptions for every core page. <span class="tag tag-easy">Easy</span></p>
+      </div>
+    </div>
+    <div class="issue-row">
+      <div class="issue-icon icon-red">🤖</div>
+      <div class="issue-text">
+        <h4>/demo page title tag reads "AI Behavioral Texting" — a paid traffic landing page</h4>
+        <p>The demo page (likely receiving significant ad spend) has a broken title that does not match the page purpose. H1 contains a typo ("AI Webiniar Special Offer"). Fix immediately. <span class="tag tag-easy">Easy</span></p>
+      </div>
+    </div>
+    <div class="issue-row">
+      <div class="issue-icon icon-red">🤖</div>
+      <div class="issue-text">
+        <h4>GPTBot, ClaudeBot, Google-Extended, anthropic-ai blocked in robots.txt</h4>
+        <p>Ylopo's robots.txt lists AI crawlers in a Disallow block. Result: invisible in ChatGPT, Perplexity, Gemini, and Claude answers. For an AI-branded company this is a strategic miss. <span class="tag tag-easy">Easy</span></p>
+      </div>
+    </div>
+    <div class="issue-row">
+      <div class="issue-icon icon-red">📝</div>
+      <div class="issue-text">
+        <h4>/contact-us page title is literally "Main Contact Us Page"</h4>
+        <p>An internal CMS label leaked into the public title tag. Visible in Google SERPs and browser tabs. Fix: rename to "Schedule a Demo | Ylopo" or similar. <span class="tag tag-easy">Easy</span></p>
+      </div>
+    </div>
+    <div class="issue-row">
+      <div class="issue-icon icon-red">🔗</div>
+      <div class="issue-text">
+        <h4>Most canonical tags point to the homepage, not the page itself</h4>
+        <p>Canonical URLs on pages like /listingrocket, /buyer-lead-generation, and others point to https://www.ylopo.com (root). Google may consolidate all page authority to the homepage. <span class="tag tag-easy">Easy</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: H1 AND HEADING STRUCTURE -->
+<div class="slide slide-navy">
+  <div class="slide-header full-left">
+    <div class="slide-label">On-Page Structure</div>
+    <h2 class="slide-title">H1 Misuse — <span style="color:#fcd34d;">Broken Across Product Pages</span></h2>
+    <p class="slide-subtitle">Google uses H1 to determine a page's primary topic. Multiple H1s send conflicting signals.</p>
+  </div>
+  <div class="col-6040">
+    <div>
+      <table class="data-table">
+        <thead>
+          <tr><th>Page</th><th>H1 Count</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="url">/real-estate-lead-nurture</td><td style="color:#fc8181;font-weight:700;">9 H1s</td><td><span class="badge badge-red">Critical</span></td></tr>
+          <tr><td class="url">/crm-integration</td><td style="color:#fc8181;font-weight:700;">8 H1s</td><td><span class="badge badge-red">Critical</span></td></tr>
+          <tr><td class="url">/mission-control</td><td style="color:#fc8181;font-weight:700;">6 H1s + 0 H2s</td><td><span class="badge badge-red">Critical</span></td></tr>
+          <tr><td class="url">/idx-home-search</td><td style="color:#fc8181;font-weight:700;">6 H1s</td><td><span class="badge badge-red">Critical</span></td></tr>
+          <tr><td class="url">/convert-buyers</td><td style="color:#fcd34d;font-weight:700;">Multiple</td><td><span class="badge badge-amber">High</span></td></tr>
+          <tr><td class="url">/ai-for-real-estate</td><td style="color:#fcd34d;font-weight:700;">3 H1s</td><td><span class="badge badge-amber">High</span></td></tr>
+          <tr><td class="url">/pricing</td><td style="color:#fcd34d;font-weight:700;">2 H1s</td><td><span class="badge badge-amber">High</span></td></tr>
+          <tr><td class="url">/blog</td><td style="color:#fcd34d;font-weight:700;">0 H1s</td><td><span class="badge badge-amber">High</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="card">
+        <h3 style="color:var(--green-light);margin-bottom:8px;">Why this matters</h3>
+        <ul class="bullet-list" style="margin:0;padding:0;">
+          <li>Google reads H1 as the primary topic signal for a page</li>
+          <li>Multiple H1s = Google can't determine which one to rank for</li>
+          <li>Feature names marked as H1 instead of H2 is the main culprit — likely a Squarespace component styling issue</li>
+          <li>/mission-control has 6 H1s and <strong>zero H2s</strong> — no hierarchy at all</li>
+        </ul>
+      </div>
+      <div class="card-green">
+        <h3 style="color:var(--green-light);margin-bottom:6px;">The Fix</h3>
+        <p>Each page needs exactly one H1 (the page headline). Feature section titles should be H2. Sub-points should be H3. This is a CSS/template fix in Squarespace — change heading component defaults from H1 to H2.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 7: LLM / AI SEARCH READINESS -->
+<div class="slide slide-dark">
+  <div class="slide-header full-left">
+    <div class="slide-label">AI Search Readiness</div>
+    <h2 class="slide-title">Invisible to AI — <span style="color:#fc8181;">A Strategic Blind Spot</span></h2>
+    <p class="slide-subtitle">Real estate agents increasingly ask ChatGPT and Perplexity "what's the best lead gen platform?" Ylopo doesn't appear.</p>
+  </div>
+  <div class="cols-2" style="align-items:start;">
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="card-red">
+        <h3 style="color:#fc8181;margin-bottom:6px;">🚫 robots.txt blocks AI crawlers</h3>
+        <p>Listed in Disallow block: <strong style="color:#fc8181;">GPTBot, ClaudeBot, anthropic-ai, Google-Extended (Gemini), cohere-ai</strong>. These bots power ChatGPT, Claude, Gemini, and Cohere — the four largest AI answer engines.</p>
+      </div>
+      <div class="card-red">
+        <h3 style="color:#fc8181;margin-bottom:6px;">🚫 No llms.txt file</h3>
+        <p>llms.txt is an emerging standard (2024–2025) that lets you tell AI crawlers exactly what to ingest and how to understand your company. Ylopo has none. Zero AI-curated guidance exists.</p>
+      </div>
+      <div class="card-amber">
+        <h3 style="color:#fcd34d;margin-bottom:6px;">⚠️ JS-rendered content</h3>
+        <p>Homepage and product pages are heavily JavaScript-rendered via Squarespace. AI crawlers that don't execute JS (many don't) see thin or empty content. Plain-text content is the exception, not the rule.</p>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="padding:16px;background:rgba(255,255,255,0.04);border-radius:10px;border:1px solid rgba(255,255,255,0.1);">
+        <div style="font-size:11px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">LLM Readiness Score</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:12px;color:var(--body-text);">AI bot access</span>
+            <span style="font-size:11px;font-weight:700;color:#fc8181;">BLOCKED</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:12px;color:var(--body-text);">llms.txt</span>
+            <span style="font-size:11px;font-weight:700;color:#fc8181;">MISSING</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:12px;color:var(--body-text);">Structured data for AI context</span>
+            <span style="font-size:11px;font-weight:700;color:#fc8181;">MINIMAL</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:12px;color:var(--body-text);">Organization schema + sameAs</span>
+            <span style="font-size:11px;font-weight:700;color:#fc8181;">MISSING</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:12px;color:var(--body-text);">Blog content (most AI-accessible)</span>
+            <span style="font-size:11px;font-weight:700;color:#fcd34d;">PARTIAL</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-green">
+        <h3 style="color:var(--green-light);margin-bottom:8px;">3-Step Fix (this week)</h3>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:5px;">
+          <li style="font-size:12px;color:var(--body-text);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">1.</span>Remove AI bots from robots.txt Disallow</li>
+          <li style="font-size:12px;color:var(--body-text);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">2.</span>Create /llms.txt with product summaries + key page list</li>
+          <li style="font-size:12px;color:var(--body-text);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">3.</span>Add Organization schema with sameAs links (LinkedIn, Crunchbase, G2)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8: SCHEMA MARKUP GAPS -->
+<div class="slide slide-navy">
+  <div class="slide-header full-left">
+    <div class="slide-label">Structured Data</div>
+    <h2 class="slide-title">Schema Markup — <span style="color:#fcd34d;">Almost Entirely Missing</span></h2>
+    <p class="slide-subtitle">Schema markup unlocks rich results in Google: FAQ accordions, star ratings, event cards. Ylopo uses 2 of the 9+ applicable schema types.</p>
+  </div>
+  <div class="cols-2" style="align-items:start;">
+    <div>
+      <table class="data-table">
+        <thead>
+          <tr><th>Schema Type</th><th>Status</th><th>SERP Benefit</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>WebSite</td><td><span class="badge badge-green">Present</span></td><td style="font-size:11px;color:var(--body-text);">Sitelinks searchbox</td></tr>
+          <tr><td>LocalBusiness</td><td><span class="badge badge-green">Present</span></td><td style="font-size:11px;color:var(--body-text);">Knowledge panel</td></tr>
+          <tr><td>Article (blog only)</td><td><span class="badge badge-amber">Partial</span></td><td style="font-size:11px;color:var(--body-text);">News carousel eligibility</td></tr>
+          <tr><td>FAQPage</td><td><span class="badge badge-red">Missing</span></td><td style="font-size:11px;color:var(--body-text);">Accordion FAQs in SERPs</td></tr>
+          <tr><td>Product / SoftwareApp</td><td><span class="badge badge-red">Missing</span></td><td style="font-size:11px;color:var(--body-text);">Product rich results</td></tr>
+          <tr><td>AggregateRating</td><td><span class="badge badge-red">Missing</span></td><td style="font-size:11px;color:var(--body-text);">⭐ Star ratings in SERPs</td></tr>
+          <tr><td>Event</td><td><span class="badge badge-red">Missing</span></td><td style="font-size:11px;color:var(--body-text);">Event cards for webinars</td></tr>
+          <tr><td>BreadcrumbList</td><td><span class="badge badge-red">Missing</span></td><td style="font-size:11px;color:var(--body-text);">Breadcrumb paths in SERPs</td></tr>
+          <tr><td>Organization (full)</td><td><span class="badge badge-red">Missing</span></td><td style="font-size:11px;color:var(--body-text);">Knowledge graph entity</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="card-green">
+        <h3 style="color:var(--green-light);margin-bottom:6px;">Highest Impact: FAQPage Schema</h3>
+        <p>The /faq page has content, and multiple product pages have FAQ sections. Adding FAQPage schema to these pages enables <strong style="color:var(--white);">accordion FAQ boxes directly in Google search results</strong> — doubling SERP real estate for those queries at no ad cost.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:6px;">AggregateRating on /reviews</h3>
+        <p>Ylopo has documented success stories with specific ROI numbers. Adding Review/AggregateRating schema to /reviews would enable <strong style="color:var(--white);">star ratings in branded search results</strong>. High-trust signal for agents evaluating the platform.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:6px;">Event schema on all webinar pages</h3>
+        <p>100+ webinar pages use Article schema. Switching to Event schema makes them eligible for <strong style="color:var(--white);">Google Event rich results</strong> with date, time, and registration links visible in SERPs.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 9: SITEMAP & CRAWLABILITY -->
+<div class="slide slide-dark">
+  <div class="slide-header full-left">
+    <div class="slide-label">Indexing</div>
+    <h2 class="slide-title">Sitemap & Crawlability Issues</h2>
+  </div>
+  <div class="col-6040">
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="card-red">
+        <h3 style="color:#fc8181;margin-bottom:6px;">Pages missing from sitemap</h3>
+        <p style="margin-bottom:8px;">Three meaningful pages exist and load but are invisible to crawlers because they're not in sitemap.xml:</p>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:4px;">
+          <li style="font-size:12px;color:var(--body-text);display:flex;gap:8px;"><span style="color:#fc8181;">✗</span><span><strong style="color:var(--white);">/faq</strong> — FAQ page with valuable Q&A content</span></li>
+          <li style="font-size:12px;color:var(--body-text);display:flex;gap:8px;"><span style="color:#fc8181;">✗</span><span><strong style="color:var(--white);">/reviews</strong> — Social proof page with ROI data</span></li>
+          <li style="font-size:12px;color:var(--body-text);display:flex;gap:8px;"><span style="color:#fc8181;">✗</span><span><strong style="color:var(--white);">/testimonials</strong> — Customer testimonials page</span></li>
+        </ul>
+      </div>
+      <div class="card-amber">
+        <h3 style="color:#fcd34d;margin-bottom:6px;">Sitemap bloat — tag/filter pages included</h3>
+        <p>URLs like <code style="font-size:10px;color:var(--green-light);">/webinars/category/Medium-Sized+Teams</code> and <code style="font-size:10px;color:var(--green-light);">/webinars/tag/Webinar</code> appear in the sitemap. These are thin taxonomy pages that dilute crawl budget. Should be noindexed or excluded.</p>
+      </div>
+      <div class="card-amber">
+        <h3 style="color:#fcd34d;margin-bottom:6px;">Culture blog dilutes topical authority</h3>
+        <p>40+ articles from 2020–2021 about remote work, COVID burnout, and virtual job applications are indexed. None relevant to real estate agents. May dilute topical authority signals for core lead gen topics.</p>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="card">
+        <h3 style="margin-bottom:8px;color:var(--green-light);">What's working</h3>
+        <ul class="bullet-list" style="margin:0;padding:0;">
+          <li>sitemap.xml exists and references 200+ URLs</li>
+          <li>robots.txt references the sitemap correctly</li>
+          <li>HTTPS sitewide, no redirect loops detected</li>
+          <li>/about → /about-us 301 redirect works correctly</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:8px;">Title tag issues by page</h3>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:5px;">
+          <li style="font-size:11px;color:var(--body-text);display:flex;gap:8px;align-items:flex-start;"><span style="color:#fc8181;flex-shrink:0;">TOO SHORT</span><span>"Pricing" (7 chars), "Google PPC" (10), "Ylopo AI" (8), "Reviews" (7)</span></li>
+          <li style="font-size:11px;color:var(--body-text);display:flex;gap:8px;align-items:flex-start;"><span style="color:#fc8181;flex-shrink:0;">TOO LONG</span><span>Homepage (76 chars), /real-estate-lead-generation (78), one blog post (87)</span></li>
+          <li style="font-size:11px;color:var(--body-text);display:flex;gap:8px;align-items:flex-start;"><span style="color:#fc8181;flex-shrink:0;">WRONG</span><span>/demo → "AI Behavioral Texting", /contact-us → "Main Contact Us Page"</span></li>
+          <li style="font-size:11px;color:var(--body-text);display:flex;gap:8px;align-items:flex-start;"><span style="color:#fc8181;flex-shrink:0;">MISSING</span><span>/dyva has no title tag at all</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 10: WHAT PROSPECTS ARE ASKING -->
+<div class="slide slide-navy">
+  <div class="slide-header full-left">
+    <div class="slide-label">Prospect Research</div>
+    <h2 class="slide-title">What Real Estate Agents Are Actually Asking</h2>
+    <p class="slide-subtitle">From r/realtors, r/RealEstate, YouTube search signals, and agent community forums — 40+ questions mapped.</p>
+  </div>
+  <div class="cols-2" style="align-items:start;">
+    <div>
+      <div style="font-size:11px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">ROI & Cost Questions</div>
+      <div class="q-item"><strong>Are online real estate leads actually worth the money?</strong> — Most upvoted question category on r/realtors</div>
+      <div class="q-item"><strong>How long before I see results from Ylopo?</strong> — Timeline anxiety is the #1 objection</div>
+      <div class="q-item"><strong>How much does Ylopo cost per month?</strong> — No public pricing = lost bottom-funnel traffic</div>
+      <div class="q-item"><strong>What ROI can I expect from Ylopo?</strong> — Unanswered despite strong case study data on-site</div>
+      <div style="font-size:11px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;margin-top:14px;">AI & Automation Questions</div>
+      <div class="q-item"><strong>Does AI texting feel spammy to leads?</strong> — Biggest skepticism signal; no Ylopo page addresses it</div>
+      <div class="q-item"><strong>What does a lead see when Ylopo AI texts them?</strong> — Compliance + experience concerns</div>
+      <div class="q-item"><strong>Can AI really set appointments for real estate agents?</strong> — Credibility question for AI Voice</div>
+      <div class="q-item"><strong>Should I use AI follow-up or hire an ISA?</strong> — Direct comparison Ylopo should own</div>
+    </div>
+    <div>
+      <div style="font-size:11px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Comparison Questions</div>
+      <div class="q-item"><strong>Ylopo vs CINC — which is better for teams?</strong> — Sierra has a dedicated "vs Ylopo" page</div>
+      <div class="q-item"><strong>Ylopo vs BoomTown — feature comparison</strong> — Zero Ylopo comparison pages exist</div>
+      <div class="q-item"><strong>Is Ylopo good for solo agents or only for teams?</strong> — High-frequency, no clear answer on site</div>
+      <div class="q-item"><strong>Best IDX website platform 2025/2026</strong> — Ylopo should rank for this</div>
+      <div style="font-size:11px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;margin-top:14px;">Feature Understanding Questions</div>
+      <div class="q-item"><strong>What is dynamic remarketing in real estate?</strong> — Ylopo's differentiator; no educational page exists</div>
+      <div class="q-item"><strong>How does Ylopo's IDX differ from Zillow?</strong> — Foundational question with no dedicated answer</div>
+      <div class="q-item"><strong>What is Database Ignite and who is it for?</strong> — Product confusion; thin page exists</div>
+      <div class="q-item"><strong>Does Ylopo work in small markets?</strong> — FAQ mentions "populated markets" — causes self-disqualification</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 11: CONTENT GAP MATRIX -->
+<div class="slide slide-dark">
+  <div class="slide-header full-left">
+    <div class="slide-label">Content Gaps</div>
+    <h2 class="slide-title">Content Gap Matrix</h2>
+    <p class="slide-subtitle">Top 12 questions by business impact — mapped to current Ylopo coverage.</p>
+  </div>
+  <table class="data-table" style="width:100%;">
+    <thead>
+      <tr><th>Question / Topic</th><th>Intent</th><th>Ylopo Coverage</th><th>Priority</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>"Ylopo vs [Competitor]" comparison pages</td><td style="font-size:11px;color:#a0b4c8;">Decision</td><td><span class="badge badge-red">None</span></td><td><span class="badge badge-red">P0</span></td></tr>
+      <tr><td>"How much does Ylopo cost?"</td><td style="font-size:11px;color:#a0b4c8;">Decision</td><td><span class="badge badge-amber">Partial — no $ amounts</span></td><td><span class="badge badge-red">P0</span></td></tr>
+      <tr><td>"Does AI texting feel spammy / what do leads see?"</td><td style="font-size:11px;color:#a0b4c8;">Consideration</td><td><span class="badge badge-red">None</span></td><td><span class="badge badge-red">P0</span></td></tr>
+      <tr><td>"Are online real estate leads worth it?"</td><td style="font-size:11px;color:#a0b4c8;">Awareness</td><td><span class="badge badge-red">None</span></td><td><span class="badge badge-amber">P1</span></td></tr>
+      <tr><td>"Is Ylopo good for solo agents?"</td><td style="font-size:11px;color:#a0b4c8;">Decision</td><td><span class="badge badge-amber">Buried in FAQ</span></td><td><span class="badge badge-amber">P1</span></td></tr>
+      <tr><td>"How long before I see results?"</td><td style="font-size:11px;color:#a0b4c8;">Decision</td><td><span class="badge badge-amber">Partial — scattered</span></td><td><span class="badge badge-amber">P1</span></td></tr>
+      <tr><td>What is dynamic remarketing in real estate?</td><td style="font-size:11px;color:#a0b4c8;">Awareness</td><td><span class="badge badge-red">None</span></td><td><span class="badge badge-amber">P1</span></td></tr>
+      <tr><td>Ylopo + Follow Up Boss / CRM integrations</td><td style="font-size:11px;color:#a0b4c8;">Feature</td><td><span class="badge badge-amber">Generic CRM page only</span></td><td><span class="badge badge-amber">P1</span></td></tr>
+      <tr><td>AI vs ISA — which is better?</td><td style="font-size:11px;color:#a0b4c8;">Consideration</td><td><span class="badge badge-red">None</span></td><td><span class="badge badge-amber">P2</span></td></tr>
+      <tr><td>"Ylopo review" — owned review page</td><td style="font-size:11px;color:#a0b4c8;">Consideration</td><td><span class="badge badge-amber">Success stories page only</span></td><td><span class="badge badge-amber">P2</span></td></tr>
+      <tr><td>What is AI Voice / RAIYA Voice?</td><td style="font-size:11px;color:#a0b4c8;">Feature</td><td><span class="badge badge-red">No dedicated page</span></td><td><span class="badge badge-amber">P2</span></td></tr>
+      <tr><td>Seller lead generation — AVM, cash offer tools</td><td style="font-size:11px;color:#a0b4c8;">Feature</td><td><span class="badge badge-amber">Partial — /seller exists</span></td><td><span class="badge badge-green">P3</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SLIDE 12: QUICK WINS -->
+<div class="slide slide-navy">
+  <div class="slide-header full-left">
+    <div class="slide-label">Action Plan</div>
+    <h2 class="slide-title">Quick Wins — <span style="color:var(--green);">Do This Week</span></h2>
+    <p class="slide-subtitle">7 fixes that require no new pages, no dev work, and deliver immediate SEO impact.</p>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:7px;">
+    <div class="priority-item">
+      <div class="priority-num">1</div>
+      <div class="priority-text">
+        <h4>Write unique meta descriptions for every core page <span class="tag tag-easy">1–2 days</span></h4>
+        <p>120–155 characters each, action-oriented, keyword-relevant. This is the single highest-ROI SEO task on the site. Every page currently uses the same boilerplate.</p>
+      </div>
+    </div>
+    <div class="priority-item">
+      <div class="priority-num">2</div>
+      <div class="priority-text">
+        <h4>Fix /demo page title + H1 <span class="tag tag-easy">30 min</span></h4>
+        <p>Paid traffic is landing on a page titled "AI Behavioral Texting." Change to "Schedule Your Ylopo Demo" and fix the H1 typo ("Webiniar" → "Webinar").</p>
+      </div>
+    </div>
+    <div class="priority-item">
+      <div class="priority-num">3</div>
+      <div class="priority-text">
+        <h4>Remove AI bots from robots.txt Disallow + create llms.txt <span class="tag tag-easy">1 hour</span></h4>
+        <p>Allow GPTBot, ClaudeBot, Google-Extended, anthropic-ai. Create /llms.txt with product summaries and key page list. Start appearing in AI-generated answers.</p>
+      </div>
+    </div>
+    <div class="priority-item">
+      <div class="priority-num">4</div>
+      <div class="priority-text">
+        <h4>Add /faq, /reviews, /testimonials to sitemap.xml <span class="tag tag-easy">15 min</span></h4>
+        <p>Three conversion-path pages exist and load but are missing from the sitemap. Add them now so Google crawls and indexes them properly.</p>
+      </div>
+    </div>
+    <div class="priority-item">
+      <div class="priority-num">5</div>
+      <div class="priority-text">
+        <h4>Fix /contact-us page title from "Main Contact Us Page" <span class="tag tag-easy">5 min</span></h4>
+        <p>This internal label is publicly visible in SERPs. Change to "Schedule a Demo | Ylopo" or "Contact Ylopo — Real Estate Lead Generation."</p>
+      </div>
+    </div>
+    <div class="priority-item">
+      <div class="priority-num">6</div>
+      <div class="priority-text">
+        <h4>Fix canonical tags to be self-referencing on all product pages <span class="tag tag-easy">2–4 hours</span></h4>
+        <p>Multiple pages have canonical pointing to the homepage. This tells Google the homepage is the canonical for those pages, consolidating ranking signals away from product pages.</p>
+      </div>
+    </div>
+    <div class="priority-item">
+      <div class="priority-num">7</div>
+      <div class="priority-text">
+        <h4>Add FAQPage schema to /faq page <span class="tag tag-easy">2 hours</span></h4>
+        <p>The FAQ page has content ready. JSON-LD FAQPage schema enables Google accordion FAQ rich results directly in SERPs — free SERP real estate for branded + feature queries.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 13: PRIORITY — FAQ SCHEMA -->
+<div class="slide slide-dark">
+  <div class="slide-header full-left">
+    <div class="slide-label">Priority 1</div>
+    <h2 class="slide-title">FAQ Schema — <span style="color:var(--green);">Double Your SERP Real Estate</span></h2>
+    <p class="slide-subtitle">FAQPage schema enables accordion Q&A blocks directly in Google results — without paying for ads.</p>
+  </div>
+  <div class="col-6040">
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="card-green">
+        <h3 style="color:var(--green-light);margin-bottom:8px;">Pages to add FAQPage schema</h3>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:5px;">
+          <li style="font-size:12px;color:var(--body-text);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">/faq</span> — FAQ content exists, just needs JSON-LD</li>
+          <li style="font-size:12px;color:var(--body-text);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">/pricing</span> — FAQ section with common pricing questions</li>
+          <li style="font-size:12px;color:var(--body-text);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">/ylopo-ai</span> — "How does AI texting work?" section</li>
+          <li style="font-size:12px;color:var(--body-text);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">/idx-home-search</span> — IDX questions section</li>
+          <li style="font-size:12px;color:var(--body-text);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">/seller</span> — Seller lead FAQ</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:8px;">Suggested FAQ questions for /faq</h3>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:4px;">
+          <li style="font-size:11px;color:var(--body-text);">▸ "Does Ylopo work for solo agents?"</li>
+          <li style="font-size:11px;color:var(--body-text);">▸ "How long until I see my first lead?"</li>
+          <li style="font-size:11px;color:var(--body-text);">▸ "What CRMs does Ylopo integrate with?"</li>
+          <li style="font-size:11px;color:var(--body-text);">▸ "Does Ylopo work in smaller markets?"</li>
+          <li style="font-size:11px;color:var(--body-text);">▸ "What's included in the base Ylopo plan?"</li>
+          <li style="font-size:11px;color:var(--body-text);">▸ "How does AI texting work — do leads know it's a bot?"</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px;font-family:monospace;">
+        <div style="font-size:10px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">JSON-LD Template</div>
+        <pre style="font-size:10px;color:var(--body-text);line-height:1.6;overflow:visible;white-space:pre-wrap;">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Ylopo work for solo agents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Ylopo's Suite plan
+is designed for individual agents..."
+      }
+    }
+  ]
+}
+&lt;/script&gt;</pre>
+      </div>
+      <div class="card-green" style="margin-top:12px;">
+        <h3 style="color:var(--green-light);margin-bottom:4px;">Expected outcome</h3>
+        <p>FAQ rich results appear for branded searches like "Ylopo review," "how does Ylopo work," and "Ylopo pricing" — expanding SERP presence without new ad spend.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 14: COMPARISON PAGES -->
+<div class="slide slide-navy">
+  <div class="slide-header full-left">
+    <div class="slide-label">Priority 2</div>
+    <h2 class="slide-title">Comparison Pages — <span style="color:var(--green);">Bottom-Funnel Traffic You're Missing</span></h2>
+    <p class="slide-subtitle">Sierra Interactive has 7 competitor comparison pages — including one targeting Ylopo specifically. Ylopo has zero.</p>
+  </div>
+  <div class="col-6040">
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="card-red">
+        <h3 style="color:#fc8181;margin-bottom:6px;">Sierra's strategy vs Ylopo today</h3>
+        <p style="margin-bottom:8px;">Sierra publishes dedicated pages for: vs CINC, vs Real Geeks, vs Lofty, vs Follow Up Boss, vs Luxury Presence, <strong style="color:#fc8181;">vs Ylopo</strong>, vs Brivity. Agents searching these terms land on Sierra, not Ylopo.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:8px;">Recommended comparison pages</h3>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:5px;">
+          <li style="font-size:12px;color:var(--body-text);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">1.</span>/ylopo-vs-cinc — CINC is named most often in comparisons</li>
+          <li style="font-size:12px;color:var(--body-text);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">2.</span>/ylopo-vs-boomtown — BoomTown = large team overlap</li>
+          <li style="font-size:12px;color:var(--body-text);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">3.</span>/ylopo-vs-sierra-interactive — Sierra is running this play on you</li>
+          <li style="font-size:12px;color:var(--body-text);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">4.</span>/ylopo-vs-real-geeks — Solo agent audience overlap</li>
+          <li style="font-size:12px;color:var(--body-text);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">5.</span>/ylopo-vs-kvcore — kvCore is dominant in broker market</li>
+        </ul>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="card-green">
+        <h3 style="color:var(--green-light);margin-bottom:8px;">Ylopo's competitive advantages to lead with</h3>
+        <ul class="bullet-list" style="margin:0;padding:0;">
+          <li><strong>AI texting + AI voice</strong> — most competitors don't have both</li>
+          <li><strong>Dynamic remarketing</strong> — shows leads exact properties they viewed; unique in the category</li>
+          <li><strong>AI² (AI Squared)</strong> — behavioral scoring + automated engagement; not replicated elsewhere</li>
+          <li><strong>Direct Connect</strong> — live transfer of qualified leads; BoomTown calls theirs "Success Assurance"</li>
+          <li><strong>Proven ROI data</strong> — 304%, 461%, 700%, 900% ROI case studies with named customers</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:6px;">Page format that converts</h3>
+        <p style="font-size:12px;color:var(--body-text);">Head-to-head table + "Where Ylopo wins" section + "Who Ylopo is best for" section + CTA to demo. Keep balanced — agents trust honest comparisons more than pure sales pages.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 15: AI TEXTING PAGE -->
+<div class="slide slide-dark">
+  <div class="slide-header full-left">
+    <div class="slide-label">Priority 3</div>
+    <h2 class="slide-title">Dedicated AI Texting Page — <span style="color:var(--green);">Own Your Differentiator</span></h2>
+    <p class="slide-subtitle">"Does AI texting feel spammy?" is one of the highest-frequency questions agents ask. Ylopo has no page that answers it.</p>
+  </div>
+  <div class="cols-2" style="align-items:start;">
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="card-red">
+        <h3 style="color:#fc8181;margin-bottom:6px;">Current state</h3>
+        <p>AI texting info is buried inside /ylopo-ai. There is no dedicated page for "How Ylopo AI Text Works," no example conversation transcripts, no compliance information, and no explanation of how RAIYA introduces itself to leads.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:8px;">Page: /ai-texting-for-real-estate</h3>
+        <ul class="bullet-list" style="margin:0;padding:0;">
+          <li><strong>Real conversation transcript</strong> — show a full AI ↔ lead exchange</li>
+          <li><strong>How RAIYA introduces itself</strong> — address the "is it a bot?" question directly</li>
+          <li><strong>TCPA compliance</strong> — explain opt-in mechanics, agents need this</li>
+          <li><strong>AI vs ISA comparison</strong> — cost, response time, scale, consistency</li>
+          <li><strong>Integration with AI Voice</strong> — the handoff from text to call to appointment</li>
+          <li><strong>FAQPage schema</strong> — implement on this page from launch</li>
+        </ul>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="card-green">
+        <h3 style="color:var(--green-light);margin-bottom:8px;">Keyword targets</h3>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:5px;">
+          <li style="font-size:12px;color:var(--body-text);">▸ "AI texting for real estate leads"</li>
+          <li style="font-size:12px;color:var(--body-text);">▸ "real estate AI text follow up"</li>
+          <li style="font-size:12px;color:var(--body-text);">▸ "automated text messaging for realtors"</li>
+          <li style="font-size:12px;color:var(--body-text);">▸ "AI vs ISA real estate"</li>
+          <li style="font-size:12px;color:var(--body-text);">▸ "RAIYA AI real estate"</li>
+          <li style="font-size:12px;color:var(--body-text);">▸ "does AI texting work for real estate"</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:8px;">Why this is Ylopo's content moat</h3>
+        <p style="font-size:12px;color:var(--body-text);">Dynamic remarketing + AI texting + AI voice is a combination no other platform offers. The category "real estate AI texting" has near-zero competition in organic search. Publishing 2–3 authoritative pieces here would make Ylopo the definitive resource for agents researching this topic.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 16: COMPETITOR SNAPSHOT -->
+<div class="slide slide-navy">
+  <div class="slide-header full-left">
+    <div class="slide-label">Competitive Landscape</div>
+    <h2 class="slide-title">Competitor Snapshot</h2>
+    <p class="slide-subtitle">What BoomTown and Sierra Interactive are doing in SEO and content that Ylopo isn't (yet).</p>
+  </div>
+  <div style="width:100%;overflow-x:auto;">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>SEO / Content Factor</th>
+          <th style="text-align:center;">BoomTown</th>
+          <th style="text-align:center;">Sierra Interactive</th>
+          <th style="text-align:center;">CINC</th>
+          <th style="text-align:center;">Ylopo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Public pricing page</td>
+          <td style="text-align:center;"><span class="comp-partial">Partial</span></td>
+          <td style="text-align:center;"><span class="comp-check">✓ Full $</span></td>
+          <td style="text-align:center;"><span class="comp-cross">✗</span></td>
+          <td style="text-align:center;"><span class="comp-partial">Tiers, no $</span></td>
+        </tr>
+        <tr>
+          <td>Competitor comparison pages</td>
+          <td style="text-align:center;"><span class="comp-cross">✗</span></td>
+          <td style="text-align:center;"><span class="comp-check">✓ 7 pages</span></td>
+          <td style="text-align:center;"><span class="comp-cross">✗</span></td>
+          <td style="text-align:center;"><span class="comp-cross">✗ Zero</span></td>
+        </tr>
+        <tr>
+          <td>Unique meta descriptions</td>
+          <td style="text-align:center;"><span class="comp-check">✓</span></td>
+          <td style="text-align:center;"><span class="comp-check">✓</span></td>
+          <td style="text-align:center;"><span class="comp-partial">Partial</span></td>
+          <td style="text-align:center;"><span class="comp-cross">✗ None</span></td>
+        </tr>
+        <tr>
+          <td>FAQPage schema</td>
+          <td style="text-align:center;"><span class="comp-cross">✗</span></td>
+          <td style="text-align:center;"><span class="comp-cross">✗</span></td>
+          <td style="text-align:center;"><span class="comp-cross">✗</span></td>
+          <td style="text-align:center;"><span class="comp-cross">✗</span></td>
+        </tr>
+        <tr>
+          <td>AI bot access (robots.txt)</td>
+          <td style="text-align:center;"><span class="comp-check">✓</span></td>
+          <td style="text-align:center;"><span class="comp-check">✓</span></td>
+          <td style="text-align:center;"><span class="comp-partial">Unknown</span></td>
+          <td style="text-align:center;"><span class="comp-cross">✗ Blocked</span></td>
+        </tr>
+        <tr>
+          <td>Dedicated AI texting page</td>
+          <td style="text-align:center;"><span class="comp-partial">Partial</span></td>
+          <td style="text-align:center;"><span class="comp-partial">Partial</span></td>
+          <td style="text-align:center;"><span class="comp-partial">Partial</span></td>
+          <td style="text-align:center;"><span class="comp-cross">✗ Buried</span></td>
+        </tr>
+        <tr>
+          <td>Team size segmentation on pricing</td>
+          <td style="text-align:center;"><span class="comp-check">✓</span></td>
+          <td style="text-align:center;"><span class="comp-check">✓ Starter/Growth</span></td>
+          <td style="text-align:center;"><span class="comp-partial">Unknown</span></td>
+          <td style="text-align:center;"><span class="comp-cross">✗</span></td>
+        </tr>
+        <tr>
+          <td>Customer ROI data on site</td>
+          <td style="text-align:center;"><span class="comp-partial">Partial</span></td>
+          <td style="text-align:center;"><span class="comp-check">✓ Specific %s</span></td>
+          <td style="text-align:center;"><span class="comp-partial">Unknown</span></td>
+          <td style="text-align:center;"><span class="comp-check">✓ Strong</span></td>
+        </tr>
+        <tr>
+          <td>CRM integration partner list</td>
+          <td style="text-align:center;"><span class="comp-partial">Partial</span></td>
+          <td style="text-align:center;"><span class="comp-partial">Partial</span></td>
+          <td style="text-align:center;"><span class="comp-partial">Unknown</span></td>
+          <td style="text-align:center;"><span class="comp-check">✓ 20+ named</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="margin-top:14px;padding:12px 16px;background:rgba(123,193,9,0.08);border:1px solid rgba(123,193,9,0.2);border-radius:8px;font-size:12px;color:var(--body-text);">
+    <strong style="color:var(--green-light);">CINC note:</strong> Their entire website redirects to a single JS lander with near-zero organic SEO presence. They rely on demos and referrals — not search. This is a direct opportunity for Ylopo to capture all organic traffic in the CINC comparison space.
+  </div>
+</div>
+
+<!-- SLIDE 17: EFFORT IMPACT MATRIX -->
+<div class="slide slide-dark">
+  <div class="slide-header full-left">
+    <div class="slide-label">Prioritization</div>
+    <h2 class="slide-title">Effort / Impact Matrix</h2>
+    <p class="slide-subtitle">All identified opportunities plotted by effort to implement vs. expected SEO/traffic impact.</p>
+  </div>
+  <div style="width:100%;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div style="background:rgba(123,193,9,0.06);border:1px solid rgba(123,193,9,0.2);border-radius:10px;padding:16px;">
+      <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">🎯 Quick Wins — Low Effort, High Impact</div>
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;">
+        <li style="font-size:12px;color:var(--body-text);">▸ Unique meta descriptions sitewide</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ Fix /demo + /contact-us title tags</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ Remove AI bots from robots.txt</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ Create llms.txt</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ Add /faq, /reviews, /testimonials to sitemap</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ FAQPage schema on /faq</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ Fix canonical tags to be self-referencing</li>
+      </ul>
+    </div>
+    <div style="background:rgba(217,119,6,0.06);border:1px solid rgba(217,119,6,0.2);border-radius:10px;padding:16px;">
+      <div style="font-size:11px;font-weight:700;color:#fcd34d;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">📈 High Value — Medium Effort</div>
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;">
+        <li style="font-size:12px;color:var(--body-text);">▸ Fix H1 structure on all product pages</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ FAQPage schema on product pages</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ AggregateRating schema on /reviews</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ Event schema on all webinar pages</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ Open Graph tags on all product pages</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ Noindex culture blog / taxonomy pages</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ Organization schema with sameAs links</li>
+      </ul>
+    </div>
+    <div style="background:rgba(123,193,9,0.04);border:1px solid rgba(123,193,9,0.15);border-radius:10px;padding:16px;">
+      <div style="font-size:11px;font-weight:700;color:var(--green-light);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">🚀 Strategic — Higher Effort, Long-Term Wins</div>
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;">
+        <li style="font-size:12px;color:var(--body-text);">▸ Competitor comparison pages (5 pages)</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ Dedicated AI texting page w/ transcripts</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ "Are online leads worth it?" editorial piece</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ Ylopo + CRM integration landing pages</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ Dedicated AI Voice / RAIYA Voice page</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ Dynamic remarketing educational content</li>
+      </ul>
+    </div>
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:16px;">
+      <div style="font-size:11px;font-weight:700;color:#a0a0b8;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">🔮 Future — Maintain / Monitor</div>
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;">
+        <li style="font-size:12px;color:var(--body-text);">▸ Blog category architecture + internal links</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ Transparent pricing page with ranges</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ Seller-specific feature hub page</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ Unified case studies index</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ Product / SoftwareApplication schema</li>
+        <li style="font-size:12px;color:var(--body-text);">▸ BreadcrumbList schema sitewide</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 18: 30/60/90 DAY ROADMAP -->
+<div class="slide slide-navy">
+  <div class="slide-header full-left">
+    <div class="slide-label">Roadmap</div>
+    <h2 class="slide-title">30 / 60 / 90 Day Action Plan</h2>
+  </div>
+  <div class="cols-3" style="align-items:start;">
+    <div class="roadmap-col">
+      <h3>Days 1–30 <span style="font-size:11px;color:var(--body-text);font-family:'Nunito',sans-serif;font-weight:400;">— Foundation</span></h3>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">Meta descriptions</strong> — write unique copy for all 20+ core pages</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">Fix broken title tags</strong> — /demo, /contact-us, /dyva, all short/generic ones</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">robots.txt</strong> — remove AI bots from Disallow block</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">Create /llms.txt</strong> — list key pages + product summaries</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">Sitemap</strong> — add /faq, /reviews, /testimonials</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">FAQPage schema</strong> on /faq page</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">Canonical tags</strong> — fix to self-referencing on all product pages</div></div>
+    </div>
+    <div class="roadmap-col">
+      <h3>Days 31–60 <span style="font-size:11px;color:var(--body-text);font-family:'Nunito',sans-serif;font-weight:400;">— Structure</span></h3>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">H1 audit + fix</strong> — reduce all product pages to one H1; feature names → H2</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">FAQPage schema</strong> expanded to /pricing, /ylopo-ai, /idx-home-search, /seller</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">AggregateRating schema</strong> on /reviews with star rating</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">Event schema</strong> on all webinar pages</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">OG tags</strong> fixed/added to all product pages (page-specific images)</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">Organization schema</strong> with sameAs: LinkedIn, G2, Crunchbase</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">Noindex</strong> culture blog + webinar taxonomy filter pages</div></div>
+    </div>
+    <div class="roadmap-col">
+      <h3>Days 61–90 <span style="font-size:11px;color:var(--body-text);font-family:'Nunito',sans-serif;font-weight:400;">— Growth</span></h3>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">Comparison pages</strong> — publish /ylopo-vs-cinc and /ylopo-vs-boomtown first</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">/ai-texting-for-real-estate</strong> — dedicated page with conversation transcripts</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">Blog: "Are online leads worth it?"</strong> — long-form with Ylopo data</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">Ylopo + Follow Up Boss</strong> — first CRM-specific integration page</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">/ai-voice</strong> — dedicated RAIYA Voice page</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">Blog: "AI vs ISA"</strong> — direct Ylopo-favorable comparison</div></div>
+      <div class="roadmap-item"><div class="roadmap-dot"></div><div><strong style="color:var(--white);">Measure</strong> — Search Console: impressions + CTR baseline vs. 30 days prior</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 19: APPENDIX — FULL AUDIT TABLE -->
+<div class="slide slide-dark">
+  <div class="slide-header full-left">
+    <div class="slide-label">Appendix A</div>
+    <h2 class="slide-title" style="font-size:clamp(20px,2.8vw,38px);">Full Technical Audit — Key Pages</h2>
+  </div>
+  <div style="width:100%;overflow-y:auto;max-height:62vh;">
+    <table class="data-table">
+      <thead>
+        <tr><th>Page</th><th>Title Length</th><th>Meta Desc</th><th>H1 Count</th><th>Schema</th><th>Canonical</th><th>Priority Issues</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="url">/ (Homepage)</td><td style="color:#fcd34d;">76 (long)</td><td><span class="badge badge-red">Duplicate</span></td><td style="color:#fcd34d;">Multiple</td><td>WebSite, LocalBiz</td><td style="color:#fcd34d;">Root</td><td class="issue-cell">Title too long, multiple H1s, no OG</td></tr>
+        <tr><td class="url">/pricing</td><td style="color:#fc8181;">7 (generic)</td><td><span class="badge badge-red">Duplicate</span></td><td style="color:#fcd34d;">2</td><td>WebSite, LocalBiz</td><td style="color:#fc8181;">Missing</td><td class="issue-cell">Title too short, no meta, no schema</td></tr>
+        <tr><td class="url">/ylopo-ai</td><td style="color:#fc8181;">8 (generic)</td><td><span class="badge badge-red">Duplicate</span></td><td style="color:#fcd34d;">None</td><td>WebSite, LocalBiz</td><td style="color:#fc8181;">Missing</td><td class="issue-cell">Title too short, no H1</td></tr>
+        <tr><td class="url">/real-estate-lead-nurture</td><td style="color:#aad680;">24</td><td><span class="badge badge-red">Duplicate</span></td><td style="color:#fc8181;">9</td><td>WebSite, LocalBiz</td><td style="color:#fc8181;">Missing</td><td class="issue-cell">9 H1s — critical</td></tr>
+        <tr><td class="url">/crm-integration</td><td style="color:#aad680;">51</td><td><span class="badge badge-red">Duplicate</span></td><td style="color:#fc8181;">8</td><td>WebSite, LocalBiz</td><td style="color:#fc8181;">Missing</td><td class="issue-cell">8 H1s — critical</td></tr>
+        <tr><td class="url">/mission-control</td><td style="color:#fcd34d;">21</td><td><span class="badge badge-red">Duplicate</span></td><td style="color:#fc8181;">6, 0 H2s</td><td>WebSite, LocalBiz</td><td style="color:#fc8181;">Missing</td><td class="issue-cell">6 H1s, zero H2s</td></tr>
+        <tr><td class="url">/idx-home-search</td><td style="color:#aad680;">50</td><td><span class="badge badge-red">Duplicate</span></td><td style="color:#fc8181;">6</td><td>WebSite, LocalBiz</td><td style="color:#fcd34d;">Points to root</td><td class="issue-cell">6 H1s, wrong canonical</td></tr>
+        <tr><td class="url">/dynamic-ads-for-real-estate</td><td style="color:#aad680;">37</td><td><span class="badge badge-red">Duplicate</span></td><td style="color:#fcd34d;">2</td><td>WebSite, LocalBiz</td><td style="color:#fc8181;">Missing</td><td class="issue-cell">Title says "Facebook Catalog" — keyword mismatch</td></tr>
+        <tr><td class="url">/demo</td><td style="color:#fc8181;">Wrong</td><td><span class="badge badge-red">Duplicate</span></td><td style="color:#fcd34d;">3</td><td>WebSite, LocalBiz</td><td style="color:#fc8181;">Missing</td><td class="issue-cell">Title = "AI Behavioral Texting" on demo page</td></tr>
+        <tr><td class="url">/contact-us</td><td style="color:#fc8181;">Wrong</td><td><span class="badge badge-red">Duplicate</span></td><td style="color:#fcd34d;">Unclear</td><td>WebSite, LocalBiz</td><td style="color:#fc8181;">Missing</td><td class="issue-cell">Title = "Main Contact Us Page" (internal label)</td></tr>
+        <tr><td class="url">/google-ppc</td><td style="color:#fc8181;">10 (generic)</td><td><span class="badge badge-red">Duplicate</span></td><td style="color:#fcd34d;">4</td><td>WebSite, LocalBiz</td><td style="color:#fc8181;">Missing</td><td class="issue-cell">Generic title, 4 fragmented H1s</td></tr>
+        <tr><td class="url">/faq</td><td style="color:#fcd34d;">12</td><td><span class="badge badge-red">Duplicate</span></td><td style="color:#aad680;">1</td><td>WebSite, LocalBiz</td><td style="color:#fc8181;">Missing</td><td class="issue-cell">Not in sitemap, no FAQPage schema</td></tr>
+        <tr><td class="url">/reviews</td><td style="color:#fc8181;">7 (generic)</td><td><span class="badge badge-red">Duplicate</span></td><td style="color:#aad680;">1</td><td>WebSite, LocalBiz</td><td style="color:#fc8181;">Missing</td><td class="issue-cell">Not in sitemap, no Review schema</td></tr>
+        <tr><td class="url">/dyva</td><td style="color:#fc8181;">Missing</td><td><span class="badge badge-red">Duplicate</span></td><td style="color:#fc8181;">None</td><td>WebSite, LocalBiz</td><td style="color:#fc8181;">Missing</td><td class="issue-cell">No title, no H1 — effectively invisible</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SLIDE 20: APPENDIX — QUESTION BANK -->
+<div class="slide slide-navy">
+  <div class="slide-header full-left">
+    <div class="slide-label">Appendix B</div>
+    <h2 class="slide-title" style="font-size:clamp(20px,2.8vw,38px);">Full Prospect Question Bank</h2>
+    <p class="slide-subtitle" style="margin-bottom:14px;">40+ questions by intent — the raw material for Ylopo's content strategy.</p>
+  </div>
+  <div class="cols-2" style="align-items:start;gap:20px;">
+    <div>
+      <div style="font-size:10px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid rgba(123,193,9,0.2);">Awareness — How does X work?</div>
+      <ul style="list-style:none;padding:0;margin-bottom:14px;">
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">What is an IDX website and why do realtors need one?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">What is dynamic remarketing in real estate?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">What is AI texting for real estate leads?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">What is AI voice calling for real estate?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">How does real estate lead generation software work?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">What does "lead nurture" mean in real estate?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">How do Facebook dynamic ads work for real estate?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;">What is an AVM and how does it generate seller leads?</li>
+      </ul>
+      <div style="font-size:10px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid rgba(123,193,9,0.2);">Decision — Does it work for me?</div>
+      <ul style="list-style:none;padding:0;">
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">How much does Ylopo cost per month?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">Does Ylopo work for solo agents?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">Does Ylopo work in small / rural markets?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">How long before I see results from Ylopo?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">Does Ylopo have long-term contracts?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">What ROI can I expect from Ylopo?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;">Can I use Ylopo with my existing CRM?</li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-size:10px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid rgba(123,193,9,0.2);">Consideration — X vs Y</div>
+      <ul style="list-style:none;padding:0;margin-bottom:14px;">
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">Ylopo vs CINC — which is better for teams?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">Ylopo vs BoomTown — feature comparison</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">Ylopo vs Sierra Interactive — IDX quality</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">Ylopo vs Real Geeks — solo agent comparison</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">AI texting vs ISA — which is more cost-effective?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">Facebook ads vs Google PPC for real estate leads</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;">Buying Zillow leads vs generating your own leads</li>
+      </ul>
+      <div style="font-size:10px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid rgba(123,193,9,0.2);">Feature-Specific — How does [feature] work?</div>
+      <ul style="list-style:none;padding:0;">
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">Does AI texting feel spammy? What do leads see?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">How does Ylopo's remarketing show leads exact properties?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">How does Ylopo's IDX home search differ from Zillow?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">What is Database Ignite and who is it for?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">How does Direct Connect (live transfer) work?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">What is AI² (AI Squared) in Ylopo?</li>
+        <li style="font-size:11px;color:var(--body-text);padding:3px 0;">What CRMs does Ylopo integrate with natively?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div><!-- /.slide-deck -->
+
+<!-- Navigation -->
+<div class="nav-controls">
+  <button class="nav-btn" onclick="prevSlide()">←</button>
+  <span class="slide-counter"><span id="current">1</span> / <span id="total">20</span></span>
+  <button class="nav-btn" onclick="nextSlide()">→</button>
+</div>
+
+<script>
+  let current = 1;
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  document.getElementById('total').textContent = total;
+
+  // Support ?s=N URL param for direct slide access (used for screenshots)
+  const urlSlide = parseInt(new URLSearchParams(window.location.search).get('s'));
+  if (urlSlide && urlSlide >= 1 && urlSlide <= total) current = urlSlide;
+
+  function showSlide(n) {
+    if (n < 1) n = 1;
+    if (n > total) n = total;
+    current = n;
+    slides.forEach((s, i) => s.classList.toggle('active', i === n - 1));
+    document.getElementById('current').textContent = n;
+    document.getElementById('progressBar').style.width = (n / total * 100) + '%';
+  }
+
+  function nextSlide() { showSlide(current + 1); }
+  function prevSlide() { showSlide(current - 1); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+  });
+
+  showSlide(current);
+</script>
+</body>
+</html>

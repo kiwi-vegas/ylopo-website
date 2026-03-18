@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ylopo 2026 Growth Marketing Plan</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800;900&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --green: #7BC109;
+  --green-dark: #508200;
+  --green-light: #a5e040;
+  --green-xlight: #edf9d0;
+  --navy: #172F44;
+  --navy-mid: #1e3d57;
+  --slate: #696F8B;
+  --white: #FFFFFF;
+  --text-light: rgba(255,255,255,0.85);
+  --text-muted: rgba(255,255,255,0.45);
+  --font-head: 'Raleway', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+}
+
+body {
+  background: #0d1821;
+  font-family: var(--font-body);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* ── PROGRESS BAR ── */
+.progress-bar {
+  position: fixed; top: 0; left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--green), var(--green-light));
+  transition: width 0.4s ease;
+  z-index: 1000;
+}
+
+/* ── SLIDE DECK (16:9) ── */
+.slide-deck {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+@media (min-aspect-ratio: 16/9) {
+  .slide-deck { align-items: center; }
+  .slide { height: 100vh; width: calc(100vh * 16 / 9); }
+}
+@media (max-aspect-ratio: 16/9) {
+  .slide { width: 100vw; height: calc(100vw * 9 / 16); }
+}
+
+.slide {
+  position: absolute;
+  display: flex; flex-direction: column;
+  padding: 52px 64px 72px;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.4s ease;
+  background: var(--navy);
+  overflow: hidden;
+}
+.slide.active { opacity: 1; visibility: visible; }
+
+/* ── NAV ── */
+.nav-controls {
+  position: fixed; bottom: 24px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; align-items: center; gap: 20px;
+  z-index: 1000;
+  background: rgba(23,47,68,0.8);
+  backdrop-filter: blur(10px);
+  padding: 10px 20px; border-radius: 40px;
+  border: 1px solid rgba(123,193,9,0.2);
+}
+.nav-btn {
+  background: rgba(255,255,255,0.08); border: none; color: #fff;
+  width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
+  font-size: 16px; display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.nav-btn:hover { background: rgba(123,193,9,0.3); }
+.slide-counter { color: rgba(255,255,255,0.6); font-size: 13px; font-family: var(--font-body); min-width: 48px; text-align: center; }
+
+/* ── SHARED SLIDE ELEMENTS ── */
+.slide-label {
+  font-family: var(--font-body); font-weight: 700; font-size: 11px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 10px;
+}
+.slide-title {
+  font-family: var(--font-head); font-weight: 800;
+  line-height: 1.1; color: var(--white);
+}
+.slide-subtitle {
+  font-family: var(--font-body); font-weight: 400;
+  color: rgba(255,255,255,0.6); line-height: 1.6;
+}
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; width: 100%; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; width: 100%; }
+
+/* Cards */
+.card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px; padding: 20px 22px;
+}
+.card-green { border-color: rgba(123,193,9,0.3); background: rgba(123,193,9,0.06); }
+.card-white {
+  background: white; border: none; border-radius: 10px;
+  padding: 18px 20px; border-left: 4px solid var(--green);
+}
+.stat-big {
+  font-family: var(--font-head); font-weight: 900;
+  font-size: clamp(28px, 4vw, 48px); color: var(--green); line-height: 1;
+}
+.stat-label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+.stat-desc { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 6px; line-height: 1.4; }
+
+/* Section header line */
+.section-line {
+  width: 48px; height: 3px; background: var(--green); border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+/* Bullet list */
+.check-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.check-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: clamp(12px, 1.4vw, 15px); color: rgba(255,255,255,0.8); line-height: 1.5;
+}
+.check-list li::before {
+  content: '✓'; color: var(--green); font-weight: 800;
+  flex-shrink: 0; margin-top: 1px; font-size: 13px;
+}
+
+/* Chart container */
+.chart-wrap {
+  position: relative;
+  width: 100%; flex: 1; min-height: 0;
+}
+
+/* Callout box */
+.callout {
+  background: rgba(123,193,9,0.1); border: 1px solid rgba(123,193,9,0.3);
+  border-radius: 8px; padding: 12px 16px;
+  font-size: clamp(11px, 1.3vw, 13px); color: rgba(255,255,255,0.8); line-height: 1.5;
+}
+.callout strong { color: var(--green); }
+
+/* ─────────────────────────────────────────────
+   SLIDE 1 — TITLE
+───────────────────────────────────────────── */
+#s1 {
+  background: var(--navy);
+  background-image:
+    radial-gradient(ellipse at 15% 50%, rgba(123,193,9,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 20%, rgba(105,111,139,0.15) 0%, transparent 50%);
+  align-items: flex-start; justify-content: center;
+}
+#s1 .eyebrow {
+  font-family: var(--font-body); font-weight: 700; font-size: 12px;
+  letter-spacing: 0.25em; text-transform: uppercase; color: var(--green);
+  margin-bottom: 18px;
+}
+#s1 h1 {
+  font-family: var(--font-head); font-weight: 900;
+  font-size: clamp(40px, 6.5vw, 80px);
+  line-height: 1.0; letter-spacing: -0.03em;
+  color: var(--white); max-width: 800px;
+}
+#s1 h1 span { color: var(--green); }
+#s1 .sub {
+  font-family: var(--font-body); font-size: clamp(13px, 1.6vw, 17px);
+  color: rgba(255,255,255,0.5); margin-top: 20px; line-height: 1.6; max-width: 560px;
+}
+#s1 .meta-row {
+  display: flex; gap: 32px; margin-top: 40px;
+}
+#s1 .meta-item .label {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); font-weight: 700;
+}
+#s1 .meta-item .val {
+  font-family: var(--font-head); font-weight: 700; font-size: 15px;
+  color: rgba(255,255,255,0.7); margin-top: 4px;
+}
+#s1 .green-line {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 5px; background: linear-gradient(to bottom, var(--green), transparent);
+}
+
+/* ─────────────────────────────────────────────
+   SLIDE 2 — EXECUTIVE SUMMARY
+───────────────────────────────────────────── */
+#s2 { justify-content: flex-start; }
+#s2 .stats-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  width: 100%; margin: 18px 0;
+}
+#s2 .body-text {
+  font-size: clamp(12px, 1.4vw, 14px); color: rgba(255,255,255,0.7);
+  line-height: 1.7; max-width: 820px;
+}
+#s2 .opp-row {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; width: 100%; margin-top: 14px;
+}
+#s2 .opp-card {
+  background: rgba(123,193,9,0.08); border: 1px solid rgba(123,193,9,0.2);
+  border-radius: 8px; padding: 14px 16px;
+}
+#s2 .opp-num { font-family: var(--font-head); font-weight: 900; font-size: 28px; color: var(--green); line-height: 1; }
+#s2 .opp-title { font-weight: 700; font-size: 13px; color: white; margin-top: 6px; }
+#s2 .opp-sub { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px; line-height: 1.4; }
+
+/* ─────────────────────────────────────────────
+   SLIDE 3 — WEBSITE STRENGTHS
+───────────────────────────────────────────── */
+#s3 .left { display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+#s3 .chart-title {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5); margin-bottom: 8px;
+}
+
+/* ─────────────────────────────────────────────
+   SLIDE 4 — CRITICAL GAPS
+───────────────────────────────────────────── */
+#s4 { flex-direction: column; }
+#s4 .bubble-wrap { flex: 1; width: 100%; min-height: 0; position: relative; }
+
+/* ─────────────────────────────────────────────
+   SLIDE 6 — AI/LLM SEO
+───────────────────────────────────────────── */
+#s6 .col-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 12px;
+}
+#s6 .col-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+#s6 .col-list li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: clamp(11px, 1.3vw, 13px); color: rgba(255,255,255,0.75); line-height: 1.5;
+}
+#s6 .col-list li::before {
+  content: '→'; color: var(--green); font-weight: 800; flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────
+   SLIDE 7 — COMPETITIVE
+───────────────────────────────────────────── */
+#s7 .big-save {
+  text-align: center; padding: 16px;
+}
+#s7 .save-num {
+  font-family: var(--font-head); font-weight: 900;
+  font-size: clamp(36px, 5.5vw, 72px); color: var(--green); line-height: 1;
+}
+#s7 .save-label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 6px; }
+
+/* ─────────────────────────────────────────────
+   SLIDE 8 — ROI
+───────────────────────────────────────────── */
+#s8 .msg-block { display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+#s8 .msg-item {
+  background: rgba(255,255,255,0.04); border-left: 3px solid var(--green);
+  border-radius: 0 8px 8px 0; padding: 10px 14px;
+  font-size: clamp(11px, 1.3vw, 13px); color: rgba(255,255,255,0.8); line-height: 1.5;
+}
+#s8 .msg-item strong { color: var(--green); font-weight: 700; }
+
+/* ─────────────────────────────────────────────
+   SLIDE 9 — FUNNEL
+───────────────────────────────────────────── */
+#s9 .funnel-wrap {
+  display: flex; flex-direction: column; align-items: center; gap: 0; flex: 1;
+  justify-content: center;
+}
+#s9 .funnel-stage {
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 4px; position: relative;
+  clip-path: polygon(4% 0%, 96% 0%, 100% 100%, 0% 100%);
+}
+#s9 .funnel-stage:first-child { clip-path: polygon(0% 0%, 100% 0%, 97% 100%, 3% 100%); }
+#s9 .stage-label { font-weight: 800; font-size: clamp(9px, 1.1vw, 12px); text-transform: uppercase; letter-spacing: 0.1em; }
+#s9 .stage-sub { font-size: clamp(9px, 1vw, 11px); opacity: 0.8; margin-top: 2px; }
+#s9 .gaps-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+#s9 .gaps-list li {
+  font-size: clamp(11px, 1.3vw, 13px); color: rgba(255,255,255,0.8); line-height: 1.5;
+  display: flex; align-items: flex-start; gap: 8px;
+}
+#s9 .gaps-list li .badge {
+  background: rgba(231,76,60,0.2); border: 1px solid rgba(231,76,60,0.4);
+  color: #ff6b6b; font-size: 10px; font-weight: 700; padding: 1px 7px; border-radius: 4px;
+  letter-spacing: 0.05em; text-transform: uppercase; flex-shrink: 0; margin-top: 2px;
+}
+
+/* ─────────────────────────────────────────────
+   SLIDE 10 — QUICK WINS
+───────────────────────────────────────────── */
+#s10 .wins-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 14px;
+  width: 100%; flex: 1; align-content: start;
+}
+#s10 .win-card {
+  background: white; border-radius: 10px; padding: 18px 20px;
+  border-left: 4px solid var(--green);
+  display: flex; flex-direction: column; gap: 8px;
+}
+#s10 .win-num { font-family: var(--font-head); font-weight: 900; font-size: 28px; color: var(--green); line-height: 1; }
+#s10 .win-title { font-family: var(--font-head); font-weight: 800; font-size: clamp(12px, 1.4vw, 15px); color: var(--navy); }
+#s10 .win-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+#s10 .tag {
+  font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+#s10 .tag-impact { background: rgba(123,193,9,0.15); color: var(--green-dark); }
+#s10 .tag-effort { background: rgba(23,47,68,0.08); color: var(--navy); }
+#s10 .tag-owner { background: rgba(105,111,139,0.12); color: var(--slate); }
+
+/* ─────────────────────────────────────────────
+   SLIDE 11 — ROADMAP (GANTT)
+───────────────────────────────────────────── */
+#s11 { flex-direction: column; }
+#s11 .gantt-wrap { flex: 1; width: 100%; min-height: 0; }
+
+/* ─────────────────────────────────────────────
+   SLIDE 12 — SUMMARY
+───────────────────────────────────────────── */
+#s12 {
+  background: var(--navy);
+  background-image: radial-gradient(ellipse at 80% 80%, rgba(123,193,9,0.12) 0%, transparent 50%);
+}
+#s12 .priority-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; width: 100%;
+  margin: 16px 0;
+}
+#s12 .p-card {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 10px;
+  border-top: 3px solid var(--green);
+}
+#s12 .p-num { font-family: var(--font-head); font-weight: 900; font-size: 36px; color: rgba(123,193,9,0.3); line-height: 1; }
+#s12 .p-title { font-family: var(--font-head); font-weight: 800; font-size: clamp(13px, 1.5vw, 16px); color: white; }
+#s12 .p-body { font-size: clamp(11px, 1.2vw, 12px); color: rgba(255,255,255,0.55); line-height: 1.5; }
+#s12 .kpi-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; width: 100%; margin-top: 4px; }
+#s12 .kpi-card {
+  background: rgba(123,193,9,0.06); border: 1px solid rgba(123,193,9,0.2);
+  border-radius: 8px; padding: 12px 14px;
+}
+#s12 .kpi-label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green); }
+#s12 .kpi-val { font-family: var(--font-head); font-weight: 800; font-size: clamp(16px, 2vw, 22px); color: white; margin-top: 4px; }
+#s12 .kpi-sub { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+#s12 .cta-bar {
+  width: 100%; background: linear-gradient(135deg, var(--green), var(--green-dark));
+  border-radius: 8px; padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 6px;
+}
+#s12 .cta-text { font-family: var(--font-head); font-weight: 800; font-size: clamp(13px, 1.6vw, 16px); color: white; }
+#s12 .cta-arrow { font-size: 20px; color: white; }
+
+/* ─────────────────────────────────────────────
+   SLIDE NUMBER BADGE
+───────────────────────────────────────────── */
+.slide-num-badge {
+  position: absolute; top: 20px; right: 28px;
+  font-family: var(--font-body); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.15em; color: rgba(255,255,255,0.2);
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="slide-deck">
+
+<!-- ═══════════════════════════════════════
+     SLIDE 1 — TITLE
+═══════════════════════════════════════ -->
+<div class="slide active" id="s1">
+  <div class="green-line"></div>
+  <div class="slide-num-badge">01 / 12</div>
+  <p class="eyebrow">Ylopo · Marketing Strategy</p>
+  <h1>2026 Growth<br><span>Marketing Plan</span></h1>
+  <p class="sub">Website Audit &nbsp;·&nbsp; SEO &nbsp;·&nbsp; AI Search &nbsp;·&nbsp; Competitive Strategy &nbsp;·&nbsp; 90-Day Roadmap</p>
+  <div class="meta-row">
+    <div class="meta-item"><div class="label">Prepared</div><div class="val">March 2026</div></div>
+    <div class="meta-item"><div class="label">Scope</div><div class="val">ylopo.com</div></div>
+    <div class="meta-item"><div class="label">Focus</div><div class="val">Website &amp; SEO</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 2 — EXECUTIVE SUMMARY
+═══════════════════════════════════════ -->
+<div class="slide" id="s2">
+  <div class="slide-num-badge">02 / 12</div>
+  <div class="slide-label">Executive Summary</div>
+  <div class="slide-title" style="font-size:clamp(26px,3.8vw,44px); margin-bottom:4px;">Where We Stand</div>
+
+  <div class="stats-row">
+    <div class="card card-green">
+      <div class="stat-big">7+</div>
+      <div class="stat-label">Years AI Lead Nurture</div>
+      <div class="stat-desc">First to market with AI texting + voice (AI²). A moat competitors can't close quickly.</div>
+    </div>
+    <div class="card card-green">
+      <div class="stat-big">$4,087</div>
+      <div class="stat-label">Monthly Savings vs. Competitors</div>
+      <div class="stat-desc">Tools competitors charge for individually — all included in Ylopo's platform fee.</div>
+    </div>
+    <div class="card card-green">
+      <div class="stat-big">900%</div>
+      <div class="stat-label">Documented Client ROI</div>
+      <div class="stat-desc">Named client results from 304%–900% ROI. Real numbers, real agents.</div>
+    </div>
+  </div>
+
+  <p class="body-text">Ylopo has a defensible AI moat, proven ROI case studies, and a bundled platform competitors can't match. The gap: <strong style="color:var(--green)">the website doesn't communicate this clearly enough</strong> to convert more visitors into demo requests at the top of the funnel.</p>
+
+  <div class="opp-row">
+    <div class="opp-card">
+      <div class="opp-num">01</div>
+      <div class="opp-title">Pricing Clarity</div>
+      <div class="opp-sub">No pricing page means visitors can't self-qualify — they leave instead of booking a demo.</div>
+    </div>
+    <div class="opp-card">
+      <div class="opp-num">02</div>
+      <div class="opp-title">AI / LLM SEO</div>
+      <div class="opp-sub">ChatGPT, Perplexity, and Google AI can't easily find or cite Ylopo in key searches.</div>
+    </div>
+    <div class="opp-card">
+      <div class="opp-num">03</div>
+      <div class="opp-title">Conversion Optimization</div>
+      <div class="opp-sub">The demo funnel leaks at the decision stage. ROI calculator and compare page are missing.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 3 — WEBSITE STRENGTHS
+═══════════════════════════════════════ -->
+<div class="slide" id="s3">
+  <div class="slide-num-badge">03 / 12</div>
+  <div class="slide-label">Website Audit</div>
+  <div class="slide-title" style="font-size:clamp(24px,3.5vw,40px); margin-bottom:16px;">What's Working</div>
+  <div class="two-col" style="flex:1; min-height:0; align-items:stretch;">
+    <div class="left">
+      <ul class="check-list">
+        <li><strong style="color:white;">AI² product messaging</strong> is clearly differentiated — no competitor leads with 7 years of AI texting + voice</li>
+        <li><strong style="color:white;">Named ROI case studies</strong> with specific numbers (461%–900%) build credibility with skeptical buyers</li>
+        <li><strong style="color:white;">No long-term contract</strong> positioning reduces barrier to entry and objection handling</li>
+        <li><strong style="color:white;">150+ archived webinars</strong> and strong blog volume signal domain expertise to search engines</li>
+        <li><strong style="color:white;">Multi-channel lead gen</strong> (PPC, Social, LSA, Live Transfer) shows platform maturity</li>
+        <li><strong style="color:white;">Scalable from solo agents</strong> to 800+ agent teams — clear market breadth</li>
+      </ul>
+    </div>
+    <div style="display:flex;flex-direction:column;">
+      <div class="chart-title">Content Coverage by Buyer Journey Stage</div>
+      <div class="chart-wrap">
+        <canvas id="chart3"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 4 — CRITICAL GAPS
+═══════════════════════════════════════ -->
+<div class="slide" id="s4">
+  <div class="slide-num-badge">04 / 12</div>
+  <div class="slide-label">Website Audit</div>
+  <div class="slide-title" style="font-size:clamp(24px,3.5vw,40px); margin-bottom:8px;">Critical Gaps to Fix</div>
+  <p class="slide-subtitle" style="font-size:12px; margin-bottom:12px;">Plotted by business impact vs. implementation effort — focus the top-left quadrant first</p>
+  <div class="bubble-wrap">
+    <canvas id="chart4"></canvas>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 5 — SEO
+═══════════════════════════════════════ -->
+<div class="slide" id="s5">
+  <div class="slide-num-badge">05 / 12</div>
+  <div class="slide-label">SEO Analysis</div>
+  <div class="slide-title" style="font-size:clamp(24px,3.5vw,40px); margin-bottom:8px;">High-Value Keyword Gaps</div>
+  <p class="slide-subtitle" style="font-size:12px; margin-bottom:12px;">Monthly search volume for queries Ylopo currently doesn't rank for</p>
+  <div style="flex:1; min-height:0; width:100%; display:flex; gap:28px; align-items:stretch;">
+    <div style="flex:1.6; min-height:0;">
+      <div class="chart-wrap" style="height:100%;">
+        <canvas id="chart5"></canvas>
+      </div>
+    </div>
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:12px;">
+      <ul class="check-list">
+        <li>No schema markup on product, pricing, or FAQ pages — invisible to AI crawlers</li>
+        <li>Blog content lacks Q&amp;A structure needed for LLM retrieval and featured snippets</li>
+        <li>Competitor brand terms (BoomTown, kvCORE, Sierra) not targeted in content</li>
+        <li>Thin meta descriptions on most product pages — hurts click-through rates</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 6 — AI / LLM SEO
+═══════════════════════════════════════ -->
+<div class="slide" id="s6">
+  <div class="slide-num-badge">06 / 12</div>
+  <div class="slide-label">AI Search Optimization</div>
+  <div class="slide-title" style="font-size:clamp(22px,3.2vw,38px); margin-bottom:16px;">Winning AI Search: ChatGPT, Perplexity &amp; Google AI</div>
+  <div class="two-col" style="flex:1; align-items:start;">
+    <div class="card" style="height:100%;">
+      <div class="col-label">How LLMs Choose What to Cite</div>
+      <ul class="col-list">
+        <li>Clear, direct answers to specific questions (not marketing language)</li>
+        <li>FAQ-structured content with question-formatted H2 headings</li>
+        <li>Schema markup: FAQPage, Product, Organization, HowTo</li>
+        <li>High domain authority paired with dense citation patterns</li>
+        <li>Topical authority clusters — 8+ pages covering one topic deeply</li>
+        <li>"Best [X] for real estate agents" query targeting</li>
+      </ul>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px; height:100%;">
+      <div class="card card-green" style="flex:1;">
+        <div class="col-label">Ylopo's LLM Action Plan</div>
+        <ul class="col-list">
+          <li>Build <strong style="color:var(--green)">/what-is-ylopo</strong> — a direct-answer page for 10 common questions</li>
+          <li>Add FAQPage schema to all product and feature pages</li>
+          <li>Launch topical cluster: "AI real estate marketing" (8+ pages)</li>
+          <li>Target "best lead gen platform for realtors" and similar queries</li>
+          <li>Add HowTo schema to existing workflow and tutorial content</li>
+        </ul>
+      </div>
+      <div class="callout">
+        <strong>3–5x more AI-cited traffic</strong> on pages optimized for LLMs vs. unstructured pages. This is a first-mover window — act before competitors catch up.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 7 — COMPETITIVE POSITIONING
+═══════════════════════════════════════ -->
+<div class="slide" id="s7">
+  <div class="slide-num-badge">07 / 12</div>
+  <div class="slide-label">Competitive Positioning</div>
+  <div class="slide-title" style="font-size:clamp(24px,3.5vw,42px); margin-bottom:8px;">The $4,087/Month Advantage</div>
+  <div class="two-col" style="flex:1; min-height:0; align-items:stretch;">
+    <div style="display:flex; flex-direction:column; min-height:0;">
+      <p style="font-size:11px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.12em; font-weight:700; margin-bottom:8px;">Competitor Tool Costs vs. Ylopo</p>
+      <div class="chart-wrap" style="flex:1;">
+        <canvas id="chart7"></canvas>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; justify-content:center; gap:16px;">
+      <div class="big-save">
+        <div class="save-num">$4,087</div>
+        <div class="save-label">Average Monthly Savings</div>
+      </div>
+      <ul class="check-list">
+        <li><strong style="color:white;">All 12 competitor tools</strong> are included in Ylopo's platform at no extra cost</li>
+        <li><strong style="color:white;">AI² (Text + Voice)</strong> is 7 years ahead of any direct competitor — not replicable fast</li>
+        <li><strong style="color:white;">No long-term contract</strong> vs. 12–24 month minimums from BoomTown/kvCORE</li>
+        <li><strong style="color:white;">One platform, one team</strong> — vs. managing 12 separate vendors and integrations</li>
+      </ul>
+      <div class="callout">
+        <strong>Website gap:</strong> This cost comparison exists in a PDF but not prominently on ylopo.com. Publishing it as a comparison page would be a high-converting SEO asset.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 8 — VALUE PROP & ROI
+═══════════════════════════════════════ -->
+<div class="slide" id="s8">
+  <div class="slide-num-badge">08 / 12</div>
+  <div class="slide-label">Value Proposition</div>
+  <div class="slide-title" style="font-size:clamp(24px,3.5vw,42px); margin-bottom:8px;">Proven Client ROI</div>
+  <div class="two-col" style="flex:1; min-height:0; align-items:stretch;">
+    <div style="display:flex; flex-direction:column; min-height:0;">
+      <p style="font-size:11px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.12em; font-weight:700; margin-bottom:8px;">Documented Client ROI</p>
+      <div class="chart-wrap" style="flex:1;">
+        <canvas id="chart8"></canvas>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px;">
+        <div class="card" style="padding:12px 14px;">
+          <div style="font-family:var(--font-head); font-weight:800; font-size:clamp(16px,2vw,20px); color:var(--green);">$112,310</div>
+          <div style="font-size:10px; color:rgba(255,255,255,0.5); margin-top:3px;">GCI in 8 months · $2,500/mo spend (Chris Phares)</div>
+        </div>
+        <div class="card" style="padding:12px 14px;">
+          <div style="font-family:var(--font-head); font-weight:800; font-size:clamp(16px,2vw,20px); color:var(--green);">45 deals</div>
+          <div style="font-size:10px; color:rgba(255,255,255,0.5); margin-top:3px;">Closed in 8 months · Jason O'Keefe, Canada</div>
+        </div>
+      </div>
+    </div>
+    <div class="msg-block">
+      <p style="font-size:11px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.12em; font-weight:700; margin-bottom:4px;">Messaging Shift Needed</p>
+      <div class="msg-item"><strong>Current:</strong> Feature-first — lists tools, capabilities, and integrations</div>
+      <div class="msg-item"><strong>Recommended:</strong> Outcome-first — "Close more deals. Spend less time on outreach."</div>
+      <div class="msg-item">→ Add an <strong>ROI calculator</strong> to the homepage — let prospects see the math before booking a demo</div>
+      <div class="msg-item">→ Reframe pricing as an <strong>investment with expected return</strong>, not a monthly cost</div>
+      <div class="msg-item">→ Lead every product page with a <strong>specific client outcome</strong>, then explain how</div>
+      <div class="callout" style="margin-top:8px;">
+        Teams that lead with ROI evidence convert <strong>2–3x more demo requests</strong> than feature-forward SaaS sites.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 9 — FUNNEL STRATEGY
+═══════════════════════════════════════ -->
+<div class="slide" id="s9">
+  <div class="slide-num-badge">09 / 12</div>
+  <div class="slide-label">Content Strategy</div>
+  <div class="slide-title" style="font-size:clamp(24px,3.5vw,40px); margin-bottom:12px;">Full-Funnel Content Strategy</div>
+  <div class="two-col" style="flex:1; min-height:0; align-items:center;">
+    <div class="funnel-wrap">
+      <div class="funnel-stage" style="width:100%; height:72px; background:rgba(165,224,64,0.85); margin-bottom:4px;">
+        <div style="text-align:center; color:#1a3a00;">
+          <div class="stage-label">Awareness</div>
+          <div class="stage-sub">SEO Blog · YouTube · Webinars · Social Proof</div>
+        </div>
+      </div>
+      <div class="funnel-stage" style="width:82%; height:72px; background:rgba(123,193,9,0.9); margin:0 auto 4px; margin-bottom:4px;">
+        <div style="text-align:center; color:#fff;">
+          <div class="stage-label">Consideration</div>
+          <div class="stage-sub">Case Studies · ROI Calculator · Demo Request · Compare</div>
+        </div>
+      </div>
+      <div class="funnel-stage" style="width:58%; height:72px; background:var(--navy-mid); border:2px solid var(--green); margin:0 auto;">
+        <div style="text-align:center; color:#fff;">
+          <div class="stage-label">Decision</div>
+          <div class="stage-sub">Pricing Page · FAQ · Live Chat · Free Trial</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:12px; justify-content:center;">
+      <p style="font-size:11px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.12em; font-weight:700; margin-bottom:4px;">Content Gaps by Stage</p>
+      <ul class="gaps-list">
+        <li><span class="badge">Missing</span>&nbsp; ROI Calculator — high-intent consideration asset; prospects want to see the math</li>
+        <li><span class="badge">Missing</span>&nbsp; Pricing transparency page — decision-stage visitors bounce without cost signals</li>
+        <li><span class="badge">Missing</span>&nbsp; /compare competitor page — buyers research alternatives; own that conversation</li>
+        <li><span class="badge">Weak</span>&nbsp; FAQ + schema markup — LLMs and featured snippets can't source Ylopo answers</li>
+        <li><span class="badge">Weak</span>&nbsp; Video testimonials — written case studies exist but video converts 40–80% better</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 10 — QUICK WINS
+═══════════════════════════════════════ -->
+<div class="slide" id="s10">
+  <div class="slide-num-badge">10 / 12</div>
+  <div class="slide-label">30-Day Action Plan</div>
+  <div class="slide-title" style="font-size:clamp(24px,3.5vw,40px); margin-bottom:16px;">Quick Wins: Start Here</div>
+  <div class="wins-grid">
+    <div class="win-card">
+      <div class="win-num">01</div>
+      <div class="win-title">Add FAQ Schema Markup</div>
+      <div class="win-tags">
+        <span class="tag tag-impact">Impact: High</span>
+        <span class="tag tag-effort">Effort: 1 Day</span>
+        <span class="tag tag-owner">Owner: Dev</span>
+      </div>
+      <p style="font-size:11px; color:var(--slate); line-height:1.5;">Immediately improves LLM citability and Google featured snippet eligibility on product pages.</p>
+    </div>
+    <div class="win-card">
+      <div class="win-num">02</div>
+      <div class="win-title">Launch /compare Page</div>
+      <div class="win-tags">
+        <span class="tag tag-impact">Impact: High</span>
+        <span class="tag tag-effort">Effort: 3 Days</span>
+        <span class="tag tag-owner">Owner: Content + Dev</span>
+      </div>
+      <p style="font-size:11px; color:var(--slate); line-height:1.5;">Capture buyers researching BoomTown, kvCORE, Sierra Interactive. Own the comparison conversation.</p>
+    </div>
+    <div class="win-card">
+      <div class="win-num">03</div>
+      <div class="win-title">Soft Pricing Page</div>
+      <div class="win-tags">
+        <span class="tag tag-impact">Impact: Very High</span>
+        <span class="tag tag-effort">Effort: 2 Days</span>
+        <span class="tag tag-owner">Owner: Marketing</span>
+      </div>
+      <p style="font-size:11px; color:var(--slate); line-height:1.5;">Show value tiers with ROI framing — not exact prices. Reduces friction, increases qualified demo requests.</p>
+    </div>
+    <div class="win-card">
+      <div class="win-num">04</div>
+      <div class="win-title">Fix H1/Meta on Top 10 Pages</div>
+      <div class="win-tags">
+        <span class="tag tag-impact">Impact: Medium</span>
+        <span class="tag tag-effort">Effort: 1 Day</span>
+        <span class="tag tag-owner">Owner: Dev/SEO</span>
+      </div>
+      <p style="font-size:11px; color:var(--slate); line-height:1.5;">Correct keyword targeting in H1 and meta descriptions improves CTR and ranking signals within weeks.</p>
+    </div>
+    <div class="win-card">
+      <div class="win-num">05</div>
+      <div class="win-title">ROI Calculator Widget</div>
+      <div class="win-tags">
+        <span class="tag tag-impact">Impact: Very High</span>
+        <span class="tag tag-effort">Effort: 5 Days</span>
+        <span class="tag tag-owner">Owner: Dev</span>
+      </div>
+      <p style="font-size:11px; color:var(--slate); line-height:1.5;">Interactive calculator on homepage converts consideration-stage visitors by making ROI tangible and personal.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 11 — 90-DAY ROADMAP
+═══════════════════════════════════════ -->
+<div class="slide" id="s11">
+  <div class="slide-num-badge">11 / 12</div>
+  <div class="slide-label">Execution Roadmap</div>
+  <div class="slide-title" style="font-size:clamp(24px,3.5vw,40px); margin-bottom:6px;">90-Day Execution Roadmap</div>
+  <p class="slide-subtitle" style="font-size:12px; margin-bottom:10px;">4 parallel workstreams · prioritized by impact and dependencies</p>
+  <div class="gantt-wrap">
+    <canvas id="chart11"></canvas>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 12 — SUMMARY
+═══════════════════════════════════════ -->
+<div class="slide" id="s12">
+  <div class="slide-num-badge">12 / 12</div>
+  <div class="slide-label">Summary</div>
+  <div class="slide-title" style="font-size:clamp(26px,3.8vw,44px); margin-bottom:12px;">The Path Forward</div>
+
+  <div class="priority-grid">
+    <div class="p-card">
+      <div class="p-num">01</div>
+      <div class="p-title">Fix the Bottom of the Funnel</div>
+      <div class="p-body">Pricing page + /compare + FAQ schema. This is where qualified buyers drop off today. Fix it first — biggest impact on demo conversions within 30 days.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-num">02</div>
+      <div class="p-title">Own AI Search Now</div>
+      <div class="p-body">Build LLM-optimized content before competitors do. ChatGPT and Perplexity are reshaping how buyers discover platforms. This is a first-mover window that closes fast.</div>
+    </div>
+    <div class="p-card">
+      <div class="p-num">03</div>
+      <div class="p-title">Prove the ROI Upfront</div>
+      <div class="p-body">Add an ROI calculator to the homepage. Let prospects see the math — input their team size and spend, see projected GCI — before they book a demo.</div>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-label">KPI 1</div>
+      <div class="kpi-val">+25%</div>
+      <div class="kpi-sub">Demo request rate — target by Day 90</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">KPI 2</div>
+      <div class="kpi-val">+40%</div>
+      <div class="kpi-sub">Organic traffic to product pages — 6 months</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">KPI 3</div>
+      <div class="kpi-val">Baseline</div>
+      <div class="kpi-sub">AI citation rate — track monthly in ChatGPT/Perplexity</div>
+    </div>
+  </div>
+
+  <div class="cta-bar">
+    <div class="cta-text">Ready to execute? Start with the 30-day quick wins →</div>
+    <div class="cta-arrow">⚡</div>
+  </div>
+</div>
+
+</div><!-- /.slide-deck -->
+
+<!-- Navigation -->
+<div class="nav-controls">
+  <button class="nav-btn" onclick="prevSlide()">←</button>
+  <span class="slide-counter"><span id="current">1</span> / <span id="total">12</span></span>
+  <button class="nav-btn" onclick="nextSlide()">→</button>
+</div>
+
+<script>
+let current = 1;
+const total = 12;
+document.getElementById('total').textContent = total;
+
+function showSlide(n) {
+  if (n < 1) n = 1;
+  if (n > total) n = total;
+  current = n;
+  document.querySelectorAll('.slide').forEach((s, i) => {
+    s.classList.toggle('active', i === n - 1);
+  });
+  document.getElementById('current').textContent = n;
+  document.getElementById('progressBar').style.width = (n / total * 100) + '%';
+}
+
+function nextSlide() { showSlide(current + 1); }
+function prevSlide() { showSlide(current - 1); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+});
+document.addEventListener('click', e => {
+  if (!e.target.closest('.nav-controls')) nextSlide();
+});
+
+showSlide(1);
+
+// ═══════════════════════════════════
+// CHART 3 — Content Coverage (H-bar)
+// ═══════════════════════════════════
+new Chart(document.getElementById('chart3'), {
+  type: 'bar',
+  data: {
+    labels: ['Awareness', 'Consideration', 'Decision', 'Retention'],
+    datasets: [{
+      data: [72, 58, 31, 44],
+      backgroundColor: ctx => ctx.raw < 40 ? 'rgba(232,91,74,0.8)' : '#7BC109',
+      borderRadius: 6,
+      barThickness: 48
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.raw}% coverage` } }
+    },
+    scales: {
+      x: {
+        min: 0, max: 100,
+        grid: { color: 'rgba(255,255,255,0.06)' },
+        ticks: { color: 'rgba(255,255,255,0.5)', font: { family: 'Nunito', size: 11 }, callback: v => v + '%' }
+      },
+      y: {
+        grid: { display: false },
+        ticks: { color: 'rgba(255,255,255,0.8)', font: { family: 'Nunito', size: 13, weight: '600' } }
+      }
+    }
+  },
+  plugins: [{
+    id: 'barValueLabels',
+    afterDatasetsDraw(chart) {
+      const ctx = chart.ctx;
+      chart.data.datasets[0].data.forEach((val, i) => {
+        const meta = chart.getDatasetMeta(0);
+        const bar = meta.data[i];
+        ctx.save();
+        ctx.fillStyle = 'rgba(255,255,255,0.7)';
+        ctx.font = 'bold 12px Nunito';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(val + '%', bar.x + 8, bar.y);
+        ctx.restore();
+      });
+    }
+  }]
+});
+
+// ═══════════════════════════════════
+// CHART 4 — Gap Matrix (Bubble)
+// ═══════════════════════════════════
+new Chart(document.getElementById('chart4'), {
+  type: 'bubble',
+  data: {
+    datasets: [{
+      label: 'Gaps',
+      data: [
+        { x: 3, y: 9,  r: 14, label: 'Pricing Page' },
+        { x: 4, y: 8,  r: 13, label: 'Compare Page' },
+        { x: 2, y: 8,  r: 13, label: 'FAQ Schema' },
+        { x: 5, y: 9,  r: 14, label: 'ROI Calculator' },
+        { x: 4, y: 9,  r: 14, label: 'LLM Pages' },
+        { x: 6, y: 7,  r: 12, label: 'Mobile CTA' },
+        { x: 2, y: 6,  r: 11, label: 'H1/Meta Fixes' },
+        { x: 7, y: 7,  r: 12, label: 'Video Testimonials' },
+      ],
+      backgroundColor: 'rgba(123,193,9,0.55)',
+      borderColor: '#7BC109',
+      borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => {
+            const d = ctx.raw;
+            return ` ${d.label} — Effort: ${d.x}/10, Impact: ${d.y}/10`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        min: 0, max: 10,
+        title: { display: true, text: 'Effort (Low → High)', color: 'rgba(255,255,255,0.4)', font: { family: 'Nunito', size: 11 } },
+        grid: { color: 'rgba(255,255,255,0.06)' },
+        ticks: { color: 'rgba(255,255,255,0.5)', font: { family: 'Nunito', size: 11 } }
+      },
+      y: {
+        min: 0, max: 10,
+        title: { display: true, text: 'Impact (Low → High)', color: 'rgba(255,255,255,0.4)', font: { family: 'Nunito', size: 11 } },
+        grid: { color: 'rgba(255,255,255,0.06)' },
+        ticks: { color: 'rgba(255,255,255,0.5)', font: { family: 'Nunito', size: 11 } }
+      }
+    }
+  },
+  plugins: [{
+    id: 'bubbleLabels',
+    afterDatasetsDraw(chart) {
+      const ctx = chart.ctx;
+      chart.data.datasets[0].data.forEach((d, i) => {
+        const meta = chart.getDatasetMeta(0);
+        const pt = meta.data[i];
+        ctx.save();
+        ctx.fillStyle = 'rgba(255,255,255,0.85)';
+        ctx.font = 'bold 10px Nunito';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(d.label, pt.x, pt.y);
+        ctx.restore();
+      });
+    }
+  }, {
+    id: 'quadrantLabels',
+    afterDraw(chart) {
+      const ctx = chart.ctx;
+      const { chartArea: ca } = chart;
+      const mx = (ca.left + ca.right) / 2;
+      const my = (ca.top + ca.bottom) / 2;
+      const labels = [
+        { text: '⚡ Quick Wins', x: ca.left + 20, y: ca.top + 16 },
+        { text: '🔧 Major Projects', x: mx + 20, y: ca.top + 16 },
+        { text: 'Low Priority', x: ca.left + 20, y: ca.bottom - 10 },
+        { text: 'Fill-in Work', x: mx + 20, y: ca.bottom - 10 }
+      ];
+      labels.forEach(l => {
+        ctx.save();
+        ctx.fillStyle = 'rgba(255,255,255,0.2)';
+        ctx.font = 'bold 11px Nunito';
+        ctx.fillText(l.text, l.x, l.y);
+        ctx.restore();
+      });
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+      ctx.setLineDash([4,4]);
+      ctx.beginPath(); ctx.moveTo(mx, ca.top); ctx.lineTo(mx, ca.bottom); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(ca.left, my); ctx.lineTo(ca.right, my); ctx.stroke();
+      ctx.restore();
+    }
+  }]
+});
+
+// ═══════════════════════════════════
+// CHART 5 — SEO Keywords (H-bar)
+// ═══════════════════════════════════
+new Chart(document.getElementById('chart5'), {
+  type: 'bar',
+  data: {
+    labels: [
+      'real estate lead gen software',
+      'best real estate marketing platform',
+      'IDX website for realtors',
+      'real estate CRM with lead gen',
+      'AI real estate texting',
+      'Zillow alternative for agents'
+    ],
+    datasets: [{
+      data: [2900, 1900, 1600, 1200, 880, 720],
+      backgroundColor: [
+        'rgba(123,193,9,0.85)',
+        'rgba(123,193,9,0.75)',
+        'rgba(123,193,9,0.65)',
+        'rgba(123,193,9,0.55)',
+        'rgba(123,193,9,0.45)',
+        'rgba(123,193,9,0.35)',
+      ],
+      borderRadius: 5,
+      barThickness: 22
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.raw.toLocaleString()} searches/mo` } }
+    },
+    scales: {
+      x: {
+        grid: { color: 'rgba(255,255,255,0.05)' },
+        ticks: { color: 'rgba(255,255,255,0.4)', font: { family: 'Nunito', size: 10 }, callback: v => v.toLocaleString() }
+      },
+      y: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.75)', font: { family: 'Nunito', size: 11 } } }
+    }
+  }
+});
+
+// ═══════════════════════════════════
+// CHART 7 — Competitor Costs (H-bar)
+// ═══════════════════════════════════
+new Chart(document.getElementById('chart7'), {
+  type: 'bar',
+  data: {
+    labels: [
+      'Open House Tool', 'A-Z Design Studio', 'Branded Market Trends',
+      'Zoodealio', 'Coaching', 'Seller Suite', 'BS/HSS & Lead Nurture',
+      'Behavioral Texting', 'Automations', 'Buyer Presentation',
+      'Single Listing Flyer', 'Listing Detail'
+    ],
+    datasets: [
+      {
+        label: 'Competitor Cost /mo',
+        data: [100, 500, 349, 599, 1000, 800, 399, 150, 100, 30, 30, 30],
+        backgroundColor: 'rgba(232,91,74,0.75)',
+        borderRadius: 4,
+        barThickness: 14
+      },
+      {
+        label: 'Ylopo Cost',
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        backgroundColor: 'rgba(123,193,9,0.5)',
+        borderRadius: 4,
+        barThickness: 14
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: true, position: 'top',
+        labels: { color: 'rgba(255,255,255,0.6)', font: { family: 'Nunito', size: 11 }, boxWidth: 12 }
+      },
+      tooltip: { callbacks: { label: ctx => ctx.datasetIndex === 0 ? ` $${ctx.raw}/mo` : ' Included' } }
+    },
+    scales: {
+      x: {
+        grid: { color: 'rgba(255,255,255,0.05)' },
+        ticks: { color: 'rgba(255,255,255,0.4)', font: { family: 'Nunito', size: 10 }, callback: v => '$' + v }
+      },
+      y: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.7)', font: { family: 'Nunito', size: 10 } } }
+    }
+  }
+});
+
+// ═══════════════════════════════════
+// CHART 8 — ROI Examples (V-bar)
+// ═══════════════════════════════════
+new Chart(document.getElementById('chart8'), {
+  type: 'bar',
+  data: {
+    labels: ['Ryan Rodenbeck\n(Team Leader)', 'Chris Phares\n(Single Agent)', 'Ryan Steel\n(2x Spend)', 'Top Performer'],
+    datasets: [{
+      data: [304, 461, 700, 900],
+      backgroundColor: [
+        'rgba(123,193,9,0.5)',
+        'rgba(123,193,9,0.65)',
+        'rgba(123,193,9,0.8)',
+        'rgba(123,193,9,1.0)'
+      ],
+      borderRadius: 6,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.raw}% ROI` } },
+      datalabels: { display: false }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.7)', font: { family: 'Nunito', size: 10 } } },
+      y: {
+        grid: { color: 'rgba(255,255,255,0.05)' },
+        ticks: { color: 'rgba(255,255,255,0.4)', font: { family: 'Nunito', size: 10 }, callback: v => v + '%' }
+      }
+    }
+  },
+  plugins: [{
+    id: 'roiLabels',
+    afterDatasetsDraw(chart) {
+      const ctx = chart.ctx;
+      chart.data.datasets[0].data.forEach((val, i) => {
+        const meta = chart.getDatasetMeta(0);
+        const bar = meta.data[i];
+        ctx.save();
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 12px Nunito';
+        ctx.textAlign = 'center';
+        ctx.fillText(val + '%', bar.x, bar.y - 6);
+        ctx.restore();
+      });
+    }
+  }]
+});
+
+// ═══════════════════════════════════
+// CHART 11 — Gantt Roadmap (floating bars)
+// ═══════════════════════════════════
+const ganttTaskLabels = {
+  0: { // SEO Technical
+    0: 'H1/meta fixes, schema markup, sitemap update'
+  },
+  1: { // Content & Pages
+    0: 'Pricing page, /compare page, FAQ pages',
+    1: 'AI² feature hub, What-is-Ylopo, topical cluster'
+  },
+  2: { // AI / LLM SEO
+    1: 'FAQPage schema, HowTo schema, Org markup',
+    2: 'Citation monitoring, topical cluster expansion'
+  },
+  3: { // Conversion Optimization
+    2: 'ROI calculator, CTA A/B tests, demo flow optimization'
+  }
+};
+
+new Chart(document.getElementById('chart11'), {
+  type: 'bar',
+  data: {
+    labels: ['SEO Technical', 'Content & Pages', 'AI / LLM SEO', 'Conversion Optimization'],
+    datasets: [
+      {
+        label: 'Month 1',
+        // [start, end] for each workstream row; null = not active
+        data: [ [0,4], [0,4], null, null ],
+        backgroundColor: 'rgba(123,193,9,0.9)',
+        borderRadius: 6, barThickness: 36,
+        borderSkipped: false
+      },
+      {
+        label: 'Month 2',
+        data: [ null, [4,8], [4,8], null ],
+        backgroundColor: 'rgba(123,193,9,0.55)',
+        borderRadius: 6, barThickness: 36,
+        borderSkipped: false
+      },
+      {
+        label: 'Month 3',
+        data: [ null, null, [8,12], [8,12] ],
+        backgroundColor: 'rgba(80,130,0,0.85)',
+        borderRadius: 6, barThickness: 36,
+        borderSkipped: false
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: true, position: 'top',
+        labels: { color: 'rgba(255,255,255,0.6)', font: { family: 'Nunito', size: 12 }, boxWidth: 14, padding: 20 }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => {
+            const rowIdx = ctx.dataIndex;
+            const dsIdx = ctx.datasetIndex;
+            const val = ctx.raw;
+            if (!val) return null;
+            const task = ganttTaskLabels[rowIdx]?.[dsIdx];
+            return task ? ` ${task}` : null;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        min: 0, max: 12,
+        grid: { color: 'rgba(255,255,255,0.05)' },
+        ticks: {
+          color: 'rgba(255,255,255,0.45)', font: { family: 'Nunito', size: 12 },
+          callback: v => v === 0 ? 'Start' : v === 4 ? 'Month 1' : v === 8 ? 'Month 2' : v === 12 ? 'Month 3' : ''
+        }
+      },
+      y: {
+        grid: { color: 'rgba(255,255,255,0.04)' },
+        ticks: { color: 'rgba(255,255,255,0.85)', font: { family: 'Nunito', size: 13, weight: '600' } }
+      }
+    }
+  },
+  plugins: [{
+    id: 'ganttBarLabels',
+    afterDatasetsDraw(chart) {
+      const ctx = chart.ctx;
+      const taskText = [
+        ['H1, Meta, Schema, Sitemap', null, null],
+        ['Pricing, /compare, FAQs', 'AI² Hub, What-is-Ylopo', null],
+        [null, 'FAQPage & HowTo Schema', 'Monitoring & Expansion'],
+        [null, null, 'ROI Calc, CTA Tests, Demo Flow']
+      ];
+      chart.data.datasets.forEach((ds, dsIdx) => {
+        const meta = chart.getDatasetMeta(dsIdx);
+        meta.data.forEach((bar, rowIdx) => {
+          const text = taskText[rowIdx]?.[dsIdx];
+          if (!text || !ds.data[rowIdx]) return;
+          const barWidth = bar.width || 0;
+          if (barWidth < 60) return;
+          ctx.save();
+          ctx.fillStyle = 'rgba(255,255,255,0.85)';
+          ctx.font = '600 10px Nunito';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(text, bar.x, bar.y);
+          ctx.restore();
+        });
+      });
+    }
+  }]
+});
+</script>
+</body>
+</html>

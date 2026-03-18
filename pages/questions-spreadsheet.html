@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ylopo — 25 Questions to Answer on the Website</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --green: #7BC109;
+    --green-dark: #508200;
+    --green-xlight: #f0fad8;
+    --navy: #172F44;
+    --navy-mid: #1e3d57;
+    --navy-light: #2d5575;
+    --slate: #696F8B;
+    --slate-light: #f0f1f5;
+    --white: #FFFFFF;
+    --text: #1a1a2e;
+    --text-muted: #666;
+    --border: #e2e4ed;
+  }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: #f5f6fa;
+    color: var(--text);
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: var(--navy);
+    padding: 40px 48px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--green), #a5e040);
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .logo-badge {
+    background: var(--green);
+    color: var(--navy);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    padding: 6px 14px;
+    border-radius: 4px;
+  }
+  .header-divider {
+    color: rgba(255,255,255,0.3);
+    font-size: 20px;
+  }
+  .header-label {
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .page-title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .page-subtitle {
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+    max-width: 680px;
+    line-height: 1.6;
+  }
+  .export-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    background: rgba(123,193,9,0.15);
+    border: 1px solid rgba(123,193,9,0.3);
+    color: #a5e040;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 6px;
+  }
+
+  /* ── LEGEND ── */
+  .legend-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 48px;
+  }
+  .legend-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .legend-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--slate);
+  }
+  .legend-items {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-barry { background: var(--green); }
+  .dot-gee { background: var(--navy); }
+  .dot-howard { background: var(--slate); }
+  .priority-legend {
+    display: flex;
+    gap: 16px;
+    margin-left: auto;
+  }
+  .priority-pill {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .p-critical { background: #fff0f0; color: #c0392b; border: 1px solid #f5c6cb; }
+  .p-high { background: #fff8e1; color: #d68910; border: 1px solid #fde68a; }
+  .p-medium { background: var(--green-xlight); color: var(--green-dark); border: 1px solid #c3e88d; }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 48px 80px;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 40px 0 16px;
+  }
+  .section-header:first-child { margin-top: 0; }
+  .section-badge {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .badge-decision { background: #fff0f0; color: #c0392b; border: 1px solid #f5c6cb; }
+  .badge-consideration { background: #fff8e1; color: #d68910; border: 1px solid #fde68a; }
+  .badge-awareness { background: #e8f4fd; color: #1a6da8; border: 1px solid #b8d9f5; }
+  .badge-onboarding { background: var(--green-xlight); color: var(--green-dark); border: 1px solid #c3e88d; }
+  .badge-risk { background: #f5f0ff; color: #6b3fa0; border: 1px solid #d4b8f5; }
+
+  .section-title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--navy);
+  }
+  .section-count {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  /* ── TABLE ── */
+  .table-wrap {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(23,47,68,0.06);
+    margin-bottom: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  thead th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.75);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  thead th:first-child { width: 44px; text-align: center; }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #fafbff; }
+
+  td {
+    padding: 14px 16px;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  td:first-child {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--slate);
+    width: 44px;
+  }
+
+  .question-text {
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  /* Spokesperson chip */
+  .spokesperson {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+  }
+  .sp-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .sp-name {
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .sp-role {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .sp-barry .sp-dot { background: var(--green); }
+  .sp-barry .sp-name { color: var(--green-dark); }
+  .sp-gee .sp-dot { background: var(--navy); }
+  .sp-gee .sp-name { color: var(--navy); }
+  .sp-howard .sp-dot { background: var(--slate); }
+  .sp-howard .sp-name { color: var(--slate); }
+
+  /* Publish tags */
+  .publish-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .tag {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 4px;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+  .tag-web { background: #e8f4fd; color: #1a6da8; }
+  .tag-yt { background: #fff0f0; color: #c0392b; }
+  .tag-both { background: var(--green-xlight); color: var(--green-dark); }
+
+  /* Priority */
+  .priority {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* ── FOOTER NOTE ── */
+  .footer-note {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .note-block h4 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--navy);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .note-block p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .note-block strong { color: var(--text); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="header-inner">
+    <div class="logo-row">
+      <span class="logo-badge">YLOPO</span>
+      <span class="header-divider">/</span>
+      <span class="header-label">Website Strategy</span>
+    </div>
+    <h1 class="page-title">25 Questions We Need to Answer Better</h1>
+    <p class="page-subtitle">Questions identified from the 2026 Growth Marketing Plan and a live audit of ylopo.com. Each question is mapped to the right spokesperson and the best publishing destination.</p>
+    <div class="export-note">
+      ↗ To export: Select the table below → Copy → Paste into Google Sheets or Excel
+    </div>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend-bar">
+  <div class="legend-inner">
+    <span class="legend-title">Spokesperson</span>
+    <div class="legend-items">
+      <div class="legend-item"><span class="legend-dot dot-barry"></span> Barry Jenkins — Realtor-in-Residence</div>
+      <div class="legend-item"><span class="legend-dot dot-gee"></span> Gee — President, CMO &amp; CPO</div>
+    </div>
+    <div class="priority-legend">
+      <span class="priority-pill p-critical">Critical</span>
+      <span class="priority-pill p-high">High</span>
+      <span class="priority-pill p-medium">Medium</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- SECTION 1: PRICING & COST -->
+  <div class="section-header">
+    <span class="section-badge badge-decision">Decision Stage</span>
+    <h2 class="section-title">Pricing &amp; Cost</h2>
+    <span class="section-count">Questions 1–5 · Highest funnel leak</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th style="min-width:340px">Question</th>
+          <th style="min-width:160px">Ask</th>
+          <th style="min-width:200px">Publish Where</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><span class="question-text">How does Ylopo pricing work — and why do you need a demo to get a real number?</span></td>
+          <td>
+            <div class="spokesperson sp-gee">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Gee</span><span class="sp-role">CMO — owns pricing decisions</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">Pricing Page</span>
+              <span class="tag tag-yt">YouTube</span>
+            </div>
+          </td>
+          <td><span class="priority p-critical">Critical</span></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><span class="question-text">Does spending more on ads get me more leads — or does it just mean bigger audiences and more volume?</span></td>
+          <td>
+            <div class="spokesperson sp-gee">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Gee</span><span class="sp-role">CMO — owns ad spend guidance</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">Pricing Page</span>
+              <span class="tag tag-web">FAQ</span>
+            </div>
+          </td>
+          <td><span class="priority p-critical">Critical</span></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><span class="question-text">What's the difference in cost between Social leads, PPC leads, and Live Transfer / Direct Connect leads — and why?</span></td>
+          <td>
+            <div class="spokesperson sp-gee">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Gee</span><span class="sp-role">CMO/President — designed the lead tier model</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">Pricing Page</span>
+              <span class="tag tag-web">FAQ</span>
+            </div>
+          </td>
+          <td><span class="priority p-critical">Critical</span></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><span class="question-text">How does Ylopo's total cost compare to buying 12 separate tools on my own?</span></td>
+          <td>
+            <div class="spokesperson sp-gee">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Gee</span><span class="sp-role">CMO — owns competitive messaging</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">/compare Page</span>
+              <span class="tag tag-yt">YouTube</span>
+            </div>
+          </td>
+          <td><span class="priority p-critical">Critical</span></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><span class="question-text">Why does Ylopo require a demo before quoting a price — what happens in that call, and what should I prepare?</span></td>
+          <td>
+            <div class="spokesperson sp-gee">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Gee</span><span class="sp-role">CMO/President — runs the discovery process</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">Pricing Page</span>
+              <span class="tag tag-web">FAQ</span>
+            </div>
+          </td>
+          <td><span class="priority p-high">High</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 2: ROI & RESULTS -->
+  <div class="section-header">
+    <span class="section-badge badge-decision">Decision / Consideration</span>
+    <h2 class="section-title">ROI &amp; Results</h2>
+    <span class="section-count">Questions 6–10 · Proof drives 2–3x more demos</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th style="min-width:340px">Question</th>
+          <th style="min-width:160px">Ask</th>
+          <th style="min-width:200px">Publish Where</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>6</td>
+          <td><span class="question-text">What ROI can I realistically expect? What have real agents actually made?</span></td>
+          <td>
+            <div class="spokesperson sp-barry">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Barry Jenkins</span><span class="sp-role">Realtor-in-Residence — lived experience</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">Homepage</span>
+              <span class="tag tag-web">Case Studies</span>
+              <span class="tag tag-yt">YouTube</span>
+            </div>
+          </td>
+          <td><span class="priority p-critical">Critical</span></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><span class="question-text">How long does it typically take to close a deal from a Ylopo lead?</span></td>
+          <td>
+            <div class="spokesperson sp-barry">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Barry Jenkins</span><span class="sp-role">Realtor-in-Residence — has the data</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">FAQ</span>
+              <span class="tag tag-yt">YouTube</span>
+            </div>
+          </td>
+          <td><span class="priority p-high">High</span></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><span class="question-text">What's a typical cost-per-lead across the different channels — PPC, Social, Live Transfer?</span></td>
+          <td>
+            <div class="spokesperson sp-gee">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Gee</span><span class="sp-role">CMO — owns channel performance data</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">Lead Gen Page</span>
+              <span class="tag tag-web">FAQ</span>
+            </div>
+          </td>
+          <td><span class="priority p-high">High</span></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><span class="question-text">Can you show me the actual math on "1–2 listings covers the cost"?</span></td>
+          <td>
+            <div class="spokesperson sp-barry">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Barry Jenkins</span><span class="sp-role">Realtor-in-Residence — can walk through his numbers</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">Pricing Page</span>
+              <span class="tag tag-yt">YouTube</span>
+            </div>
+          </td>
+          <td><span class="priority p-high">High</span></td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><span class="question-text">What results can a solo agent realistically expect vs. a large team of 10+ agents?</span></td>
+          <td>
+            <div class="spokesperson sp-barry">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Barry Jenkins</span><span class="sp-role">Realtor-in-Residence — runs a large team</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">FAQ</span>
+              <span class="tag tag-yt">YouTube</span>
+            </div>
+          </td>
+          <td><span class="priority p-high">High</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 3: PRODUCT & DIFFERENTIATION -->
+  <div class="section-header">
+    <span class="section-badge badge-consideration">Consideration Stage</span>
+    <h2 class="section-title">Product &amp; Differentiation</h2>
+    <span class="section-count">Questions 11–15 · Win the comparison moment</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th style="min-width:340px">Question</th>
+          <th style="min-width:160px">Ask</th>
+          <th style="min-width:200px">Publish Where</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>11</td>
+          <td><span class="question-text">How does Ylopo's AI actually work — what does it say to my leads, and who controls the script?</span></td>
+          <td>
+            <div class="spokesperson sp-gee">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Gee</span><span class="sp-role">CMO/CPO — built the AI product</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">AI² Page</span>
+              <span class="tag tag-yt">YouTube</span>
+            </div>
+          </td>
+          <td><span class="priority p-critical">Critical</span></td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td><span class="question-text">Are my leads exclusive to me, or are they shared with other agents in my market?</span></td>
+          <td>
+            <div class="spokesperson sp-gee">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Gee</span><span class="sp-role">CMO — owns product policy</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">FAQ</span>
+              <span class="tag tag-web">Lead Gen Page</span>
+            </div>
+          </td>
+          <td><span class="priority p-critical">Critical</span></td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td><span class="question-text">How does Ylopo compare to BoomTown, CINC, kvCORE, and Zillow Flex — and why should I switch?</span></td>
+          <td>
+            <div class="spokesperson sp-barry">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Barry Jenkins</span><span class="sp-role">Realtor — has used competitors firsthand</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">/compare Page</span>
+              <span class="tag tag-yt">YouTube</span>
+            </div>
+          </td>
+          <td><span class="priority p-critical">Critical</span></td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td><span class="question-text">What CRMs integrate with Ylopo, and how deep is the sync — contacts, activities, or both?</span></td>
+          <td>
+            <div class="spokesperson sp-gee">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Gee</span><span class="sp-role">CMO/CPO — owns integrations roadmap</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">Integrations Page</span>
+              <span class="tag tag-web">FAQ</span>
+            </div>
+          </td>
+          <td><span class="priority p-high">High</span></td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td><span class="question-text">What is "Managed Marketing" — who actually does the work, and how hands-off can I be?</span></td>
+          <td>
+            <div class="spokesperson sp-gee">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Gee</span><span class="sp-role">CMO — designed the service model</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">Pricing Page</span>
+              <span class="tag tag-web">FAQ</span>
+            </div>
+          </td>
+          <td><span class="priority p-high">High</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 4: FIT & QUALIFICATION -->
+  <div class="section-header">
+    <span class="section-badge badge-awareness">Awareness / Consideration</span>
+    <h2 class="section-title">Fit &amp; Qualification</h2>
+    <span class="section-count">Questions 16–19 · Help prospects self-select</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th style="min-width:340px">Question</th>
+          <th style="min-width:160px">Ask</th>
+          <th style="min-width:200px">Publish Where</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>16</td>
+          <td><span class="question-text">Is Ylopo right for a solo agent, or do I need to be running a team to get value from it?</span></td>
+          <td>
+            <div class="spokesperson sp-barry">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Barry Jenkins</span><span class="sp-role">Realtor — can speak to both situations</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">Homepage</span>
+              <span class="tag tag-web">FAQ</span>
+              <span class="tag tag-yt">YouTube</span>
+            </div>
+          </td>
+          <td><span class="priority p-high">High</span></td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td><span class="question-text">What team size gets the best value from Ylopo — at what point does it become a no-brainer?</span></td>
+          <td>
+            <div class="spokesperson sp-barry">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Barry Jenkins</span><span class="sp-role">Realtor — runs a large Ylopo-powered team</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">FAQ</span>
+              <span class="tag tag-yt">YouTube</span>
+            </div>
+          </td>
+          <td><span class="priority p-medium">Medium</span></td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td><span class="question-text">Does Ylopo work in my specific market — rural areas, mid-size metros, Canada, slower markets?</span></td>
+          <td>
+            <div class="spokesperson sp-gee">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Gee</span><span class="sp-role">CMO — has geographic coverage data</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">FAQ</span>
+              <span class="tag tag-web">Lead Gen Page</span>
+            </div>
+          </td>
+          <td><span class="priority p-high">High</span></td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td><span class="question-text">What kind of agent is Ylopo NOT a good fit for? Be honest with me.</span></td>
+          <td>
+            <div class="spokesperson sp-barry">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Barry Jenkins</span><span class="sp-role">Realtor — trusted voice, earns credibility by being direct</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">FAQ</span>
+              <span class="tag tag-yt">YouTube</span>
+            </div>
+          </td>
+          <td><span class="priority p-high">High</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 5: ONBOARDING & SUPPORT -->
+  <div class="section-header">
+    <span class="section-badge badge-onboarding">Decision / Retention</span>
+    <h2 class="section-title">Onboarding &amp; Support</h2>
+    <span class="section-count">Questions 20–23 · Remove fear of the unknown</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th style="min-width:340px">Question</th>
+          <th style="min-width:160px">Ask</th>
+          <th style="min-width:200px">Publish Where</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>20</td>
+          <td><span class="question-text">What does the first 30, 60, and 90 days look like after I sign up — what should I actually expect?</span></td>
+          <td>
+            <div class="spokesperson sp-barry">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Barry Jenkins</span><span class="sp-role">Realtor — has lived the onboarding experience</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">/how-it-works</span>
+              <span class="tag tag-yt">YouTube</span>
+            </div>
+          </td>
+          <td><span class="priority p-high">High</span></td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td><span class="question-text">How long until I start seeing leads come in after I turn on Ylopo?</span></td>
+          <td>
+            <div class="spokesperson sp-barry">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Barry Jenkins</span><span class="sp-role">Realtor — can give an honest timeline</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">FAQ</span>
+              <span class="tag tag-yt">YouTube</span>
+            </div>
+          </td>
+          <td><span class="priority p-high">High</span></td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td><span class="question-text">What technical skill level do I need — do I have to be a tech person to use this?</span></td>
+          <td>
+            <div class="spokesperson sp-barry">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Barry Jenkins</span><span class="sp-role">Realtor — relatable, not a tech person</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">FAQ</span>
+              <span class="tag tag-yt">YouTube</span>
+            </div>
+          </td>
+          <td><span class="priority p-medium">Medium</span></td>
+        </tr>
+        <tr>
+          <td>23</td>
+          <td><span class="question-text">What support is available — can I call a real person when something goes wrong?</span></td>
+          <td>
+            <div class="spokesperson sp-gee">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Gee</span><span class="sp-role">CMO/President — sets support standards and culture</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">FAQ</span>
+              <span class="tag tag-web">About Page</span>
+            </div>
+          </td>
+          <td><span class="priority p-medium">Medium</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 6: RISK, CONTRACTS & TRUST -->
+  <div class="section-header">
+    <span class="section-badge badge-risk">Risk &amp; Trust</span>
+    <h2 class="section-title">Contracts, Data &amp; Exit</h2>
+    <span class="section-count">Questions 24–25 · Remove the last barrier to signing</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th style="min-width:340px">Question</th>
+          <th style="min-width:160px">Ask</th>
+          <th style="min-width:200px">Publish Where</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>24</td>
+          <td><span class="question-text">"No long-term contracts" — what does that actually mean? Can I cancel month-to-month, and what's the process?</span></td>
+          <td>
+            <div class="spokesperson sp-gee">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Gee</span><span class="sp-role">CMO/President — owns contract and terms decisions</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">Pricing Page</span>
+              <span class="tag tag-web">FAQ</span>
+            </div>
+          </td>
+          <td><span class="priority p-critical">Critical</span></td>
+        </tr>
+        <tr>
+          <td>25</td>
+          <td><span class="question-text">If I cancel Ylopo, do I keep all my leads and data — or does it disappear?</span></td>
+          <td>
+            <div class="spokesperson sp-gee">
+              <span class="sp-dot"></span>
+              <div><span class="sp-name">Gee</span><span class="sp-role">CMO/President — data ownership is a product/business decision</span></div>
+            </div>
+          </td>
+          <td>
+            <div class="publish-tags">
+              <span class="tag tag-web">FAQ</span>
+              <span class="tag tag-web">Pricing Page</span>
+            </div>
+          </td>
+          <td><span class="priority p-critical">Critical</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTER NOTE -->
+  <div class="footer-note">
+    <div class="note-block">
+      <h4>Why These 25</h4>
+      <p>These questions were identified from two sources: the <strong>2026 Growth Marketing Plan</strong> (which flagged the decision stage at 31% coverage) and a live audit of <strong>ylopo.com</strong> in March 2026. Every question on this list either has no answer on the current site, or has an answer that is too vague to be useful to a prospect.</p>
+    </div>
+    <div class="note-block">
+      <h4>Who Gets Priority</h4>
+      <p><strong>Barry</strong> answers anything about the agent experience — he's the social proof engine and the most relatable voice. <strong>Gee</strong> answers everything: product, pricing, AI, business terms, contracts, and data ownership. As President and CMO/CPO, he has the full picture. When in doubt, lead with Barry on YouTube and Gee on the website.</p>
+    </div>
+    <div class="note-block">
+      <h4>Where to Start</h4>
+      <p>The <strong>8 Critical questions</strong> (#1, 2, 3, 4, 11, 12, 13, 24, 25) will have the biggest impact on demo conversions within 30 days. The three pages that don't exist yet and should: <strong>/pricing with real numbers</strong>, <strong>/compare</strong>, and <strong>/how-it-works</strong>. YouTube is secondary but powerful for questions #6, 9, 10, 13, and 20.</p>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+</body>
+</html>
