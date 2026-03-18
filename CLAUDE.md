@@ -161,3 +161,13 @@ Installed locally (`npx netlify`). Interactive commands won't work in this shell
 - **Do not modify `style-guide.html`** — it is a completed deliverable
 - After every code change: commit to GitHub AND redeploy to Netlify
 - The 90-day plan uses `localStorage` key `ylopo-90day-v3` — bump the version if task IDs change
+
+---
+
+## Maintenance Instructions
+After every significant change, update this file to reflect:
+- New features or components added
+- Decisions made and why
+- Current status and what's next
+- Any new conventions established
+
