@@ -11,6 +11,8 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@netlify/blobs": "^10.7.3",
+    "@netlify/functions": "^5.1.4",
     "netlify-cli": "^24.3.0",
     "puppeteer": "^24.39.1"
   }

@@ -595,6 +595,12 @@
       state['sel-' + sel.dataset.id] = sel.value;
     });
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    // Sync to server so the weekly report has current data
+    fetch('/.netlify/functions/update-state', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ state }),
+    }).catch(() => {});
   }
 
   function loadState() {
