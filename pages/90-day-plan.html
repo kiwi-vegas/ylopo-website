@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ylopo — 90-Day Content & SEO Action Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --green: #7BC109;
+    --green-dark: #508200;
+    --green-xlight: #f0fad8;
+    --navy: #172F44;
+    --navy-mid: #1e3d57;
+    --slate: #696F8B;
+    --slate-light: #f0f1f5;
+    --white: #FFFFFF;
+    --text: #1a1a2e;
+    --text-muted: #666;
+    --border: #e2e4ed;
+    --kiwi-color: #172F44;
+    --jojo-color: #7BC109;
+  }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: #f5f6fa;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: var(--navy);
+    padding: 40px 48px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--green), #a5e040);
+  }
+  .header-inner { max-width: 1200px; margin: 0 auto; }
+  .logo-row { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+  .logo-badge {
+    background: var(--green); color: var(--navy);
+    font-family: 'Raleway', sans-serif; font-weight: 800;
+    font-size: 18px; letter-spacing: 0.05em;
+    padding: 6px 14px; border-radius: 4px;
+  }
+  .header-divider { color: rgba(255,255,255,0.3); font-size: 20px; }
+  .header-label {
+    color: rgba(255,255,255,0.6); font-size: 13px;
+    font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .page-title {
+    font-family: 'Raleway', sans-serif; font-weight: 800;
+    font-size: 32px; color: var(--white); line-height: 1.2; margin-bottom: 10px;
+  }
+  .page-subtitle {
+    color: rgba(255,255,255,0.7); font-size: 16px;
+    max-width: 680px; line-height: 1.6;
+  }
+
+  /* ── OVERALL PROGRESS ── */
+  .overall-bar {
+    background: var(--white); border-bottom: 1px solid var(--border); padding: 16px 48px;
+  }
+  .overall-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  }
+  .overall-label {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--slate); white-space: nowrap;
+  }
+  .progress-track {
+    flex: 1; min-width: 200px; height: 8px;
+    background: var(--slate-light); border-radius: 4px; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; background: var(--green);
+    border-radius: 4px; transition: width 0.4s ease;
+  }
+  .overall-pct {
+    font-family: 'Raleway', sans-serif; font-weight: 800;
+    font-size: 22px; color: var(--navy); white-space: nowrap;
+  }
+  .overall-count {
+    font-size: 13px; color: var(--text-muted); font-weight: 600; white-space: nowrap;
+  }
+
+  /* ── ASSIGNEE LEGEND ── */
+  .legend-bar {
+    background: var(--white); border-bottom: 1px solid var(--border); padding: 10px 48px;
+  }
+  .legend-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  }
+  .legend-title {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--slate);
+  }
+  .assignee-chip {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700;
+  }
+  .chip-kiwi { background: #e8f0f8; color: var(--kiwi-color); border: 1px solid #c3d4e8; }
+  .chip-jojo { background: var(--green-xlight); color: var(--green-dark); border: 1px solid #c3e88d; }
+  .chip-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .dot-kiwi { background: var(--kiwi-color); }
+  .dot-jojo { background: var(--green); }
+
+  /* ── MAIN ── */
+  .main { max-width: 1200px; margin: 0 auto; padding: 40px 48px 80px; }
+
+  /* ── PHASE BLOCK ── */
+  .phase-block { margin-bottom: 40px; }
+  .phase-header {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 16px; flex-wrap: wrap;
+  }
+  .phase-badge {
+    font-family: 'Raleway', sans-serif; font-weight: 800;
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 4px; white-space: nowrap;
+  }
+  .badge-p1 { background: #fff0f0; color: #c0392b; border: 1px solid #f5c6cb; }
+  .badge-p2 { background: #fff8e1; color: #d68910; border: 1px solid #fde68a; }
+  .badge-p3 { background: var(--green-xlight); color: var(--green-dark); border: 1px solid #c3e88d; }
+  .phase-title {
+    font-family: 'Raleway', sans-serif; font-weight: 700;
+    font-size: 20px; color: var(--navy);
+  }
+  .phase-dates { font-size: 13px; color: var(--text-muted); font-weight: 600; }
+  .phase-progress-wrap {
+    display: flex; align-items: center; gap: 12px; margin-left: auto;
+  }
+  .phase-pct {
+    font-family: 'Raleway', sans-serif; font-weight: 800;
+    font-size: 16px; color: var(--navy); white-space: nowrap;
+  }
+  .phase-track {
+    width: 120px; height: 6px;
+    background: var(--slate-light); border-radius: 3px; overflow: hidden;
+  }
+  .phase-fill { height: 100%; background: var(--green); border-radius: 3px; transition: width 0.4s; }
+
+  /* ── TABLE ── */
+  .table-wrap {
+    background: var(--white); border-radius: 10px;
+    border: 1px solid var(--border); overflow: hidden;
+    box-shadow: 0 2px 8px rgba(23,47,68,0.06);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead th {
+    background: var(--navy); color: rgba(255,255,255,0.75);
+    font-family: 'Raleway', sans-serif; font-weight: 700;
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 11px 16px; text-align: left; white-space: nowrap;
+  }
+  thead th:first-child { width: 52px; text-align: center; }
+  thead th:last-child { width: 130px; }
+
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #fafbff; }
+  tbody tr.done { background: #f8fdf0; }
+  tbody tr.done .task-text { text-decoration: line-through; color: #aaa; }
+
+  td { padding: 13px 16px; vertical-align: middle; line-height: 1.5; }
+  td:first-child { text-align: center; }
+
+  /* Checkbox */
+  .cb-wrap { display: flex; align-items: center; justify-content: center; }
+  .cb {
+    width: 20px; height: 20px; cursor: pointer;
+    accent-color: var(--green); flex-shrink: 0;
+  }
+
+  .task-text { font-weight: 600; color: var(--navy); }
+  .task-note { font-size: 12px; color: var(--text-muted); font-weight: 400; margin-top: 3px; }
+
+  /* Category tag */
+  .cat {
+    font-size: 11px; font-weight: 700; padding: 3px 9px;
+    border-radius: 4px; white-space: nowrap; letter-spacing: 0.02em;
+  }
+  .cat-interview { background: #e8f4fd; color: #1a6da8; }
+  .cat-content { background: #fff8e1; color: #d68910; }
+  .cat-web { background: var(--green-xlight); color: var(--green-dark); }
+  .cat-seo { background: #f5f0ff; color: #6b3fa0; }
+  .cat-review { background: #fff0f0; color: #c0392b; }
+  .cat-analytics { background: #f0f8ff; color: #0e6db3; }
+
+  /* Assignee dropdown */
+  .assignee-select {
+    appearance: none; -webkit-appearance: none;
+    border: 1.5px solid var(--border); border-radius: 6px;
+    padding: 5px 28px 5px 10px; font-family: 'Nunito', sans-serif;
+    font-size: 12px; font-weight: 700; cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 12px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23696F8B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    transition: border-color 0.15s;
+    min-width: 100px;
+  }
+  .assignee-select:focus { outline: none; border-color: var(--green); }
+  .assignee-select.val-kiwi {
+    background-color: #e8f0f8; color: var(--kiwi-color); border-color: #c3d4e8;
+  }
+  .assignee-select.val-jojo {
+    background-color: var(--green-xlight); color: var(--green-dark); border-color: #c3e88d;
+  }
+  .assignee-select.val-unset { background-color: var(--white); color: var(--slate); }
+
+  /* ── CONTEXT CARD ── */
+  .context-card {
+    background: var(--navy); border-radius: 10px;
+    padding: 24px 28px; margin-bottom: 40px; color: var(--white);
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px;
+  }
+  .ctx-block h4 {
+    font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--green); margin-bottom: 8px;
+  }
+  .ctx-block p { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+  .ctx-block a { color: var(--green); font-weight: 700; text-decoration: none; }
+  .ctx-block a:hover { text-decoration: underline; }
+
+  /* ── FOOTER ── */
+  .footer-note {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px 24px; margin-top: 48px;
+    font-size: 13px; color: var(--text-muted); text-align: center; line-height: 1.6;
+  }
+  .footer-note strong { color: var(--text); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="header-inner">
+    <div class="logo-row">
+      <span class="logo-badge">YLOPO</span>
+      <span class="header-divider">/</span>
+      <span class="header-label">Content &amp; SEO Plan</span>
+    </div>
+    <h1 class="page-title">90-Day Action Plan — Q1/Q2 2026</h1>
+    <p class="page-subtitle">Turning the 25 unanswered questions and SEO gap analysis into published content, new pages, and measurable demo lift. Check off items as you go — progress saves automatically.</p>
+  </div>
+</div>
+
+<!-- OVERALL PROGRESS -->
+<div class="overall-bar">
+  <div class="overall-inner">
+    <span class="overall-label">Overall Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="overall-fill" style="width:0%"></div></div>
+    <span class="overall-pct" id="overall-pct">0%</span>
+    <span class="overall-count" id="overall-count">0 of 0 tasks done</span>
+  </div>
+</div>
+
+<!-- ASSIGNEE LEGEND -->
+<div class="legend-bar">
+  <div class="legend-inner">
+    <span class="legend-title">Assignees</span>
+    <span class="assignee-chip chip-kiwi"><span class="chip-dot dot-kiwi"></span>Kiwi — Strategy &amp; Approvals</span>
+    <span class="assignee-chip chip-jojo"><span class="chip-dot dot-jojo"></span>Jojo — Production &amp; Publishing</span>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- CONTEXT -->
+  <div class="context-card">
+    <div class="ctx-block">
+      <h4>What this plan is based on</h4>
+      <p>The <a href="questions-spreadsheet.html">25 unanswered questions</a> mapped from the 2026 Growth Marketing Plan and live ylopo.com audit. Eight are rated Critical — these drive the most demo conversions.</p>
+    </div>
+    <div class="ctx-block">
+      <h4>Week 1 priority</h4>
+      <p>Interviews with <strong style="color:#fff;">Barry Jenkins</strong> and <strong style="color:#fff;">Ge</strong> are already scheduled for next Tuesday. Those sessions unlock everything downstream — every video clip, FAQ answer, and page draft flows from those two conversations.</p>
+    </div>
+    <div class="ctx-block">
+      <h4>How to use this page</h4>
+      <p>Check the box when a task is done. Use the dropdown to assign each task to <strong style="color:#fff;">Kiwi</strong> or <strong style="color:#fff;">Jojo</strong>. Everything saves to your browser automatically — no login needed.</p>
+    </div>
+  </div>
+
+  <!-- ── PHASE 1 ── -->
+  <div class="phase-block">
+    <div class="phase-header">
+      <span class="phase-badge badge-p1">Phase 1</span>
+      <div>
+        <div class="phase-title">Days 1–30 — Interviews, Transcripts &amp; Critical Pages</div>
+        <div class="phase-dates">March 18 – April 17, 2026 &nbsp;·&nbsp; Foundation sprint</div>
+      </div>
+      <div class="phase-progress-wrap">
+        <span class="phase-pct" id="p1-pct">0%</span>
+        <div class="phase-track"><div class="phase-fill" id="p1-fill" style="width:0%"></div></div>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table id="phase1">
+        <thead>
+          <tr>
+            <th>✓</th>
+            <th>Task</th>
+            <th>Category</th>
+            <th>Assign To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-1"></div></td>
+            <td><div class="task-text">Interview Barry Jenkins — film answers to all 25 questions</div><div class="task-note">Schedule Tuesday next week. Use the questions-spreadsheet as your run-of-show.</div></td>
+            <td><span class="cat cat-interview">Interview</span></td>
+            <td><select class="assignee-select" data-id="1-1"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-2"></div></td>
+            <td><div class="task-text">Interview Ge — film answers to all 25 questions</div><div class="task-note">Schedule Tuesday next week alongside Barry or back-to-back.</div></td>
+            <td><span class="cat cat-interview">Interview</span></td>
+            <td><select class="assignee-select" data-id="1-2"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-3"></div></td>
+            <td><div class="task-text">Send raw video files to editor / upload to shared drive</div><div class="task-note">Keep Barry and Ge footage in separate folders labeled by question number.</div></td>
+            <td><span class="cat cat-content">Content</span></td>
+            <td><select class="assignee-select" data-id="1-3"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-4"></div></td>
+            <td><div class="task-text">Transcribe Barry Jenkins interview (all 25 answers)</div><div class="task-note">Use Otter.ai, Descript, or Rev. Clean up filler words before handing off to copy.</div></td>
+            <td><span class="cat cat-content">Content</span></td>
+            <td><select class="assignee-select" data-id="1-4"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-5"></div></td>
+            <td><div class="task-text">Transcribe Ge interview (all 25 answers)</div><div class="task-note">Pay special attention to Q1–5 (pricing), Q11 (AI), Q24–25 (contracts &amp; data). These are Critical priority.</div></td>
+            <td><span class="cat cat-content">Content</span></td>
+            <td><select class="assignee-select" data-id="1-5"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-6"></div></td>
+            <td><div class="task-text">Edit and publish first 3 YouTube videos from Barry interview</div><div class="task-note">Start with Q6 (ROI), Q9 (the math), and Q19 (who Ylopo is NOT for) — highest engagement potential.</div></td>
+            <td><span class="cat cat-content">Content</span></td>
+            <td><select class="assignee-select" data-id="1-6"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-7"></div></td>
+            <td><div class="task-text">Write FAQ page copy from transcripts (8 Critical questions minimum)</div><div class="task-note">Pull Q1, 2, 3, 4, 11, 12, 24, 25 from the transcripts. Edit for web — concise, scannable answers.</div></td>
+            <td><span class="cat cat-web">Web Page</span></td>
+            <td><select class="assignee-select" data-id="1-7"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-8"></div></td>
+            <td><div class="task-text">Build /faq page in HTML (FAQ schema markup included)</div><div class="task-note">Add JSON-LD FAQPage schema so Google can pull rich results for branded searches.</div></td>
+            <td><span class="cat cat-web">Web Page</span></td>
+            <td><select class="assignee-select" data-id="1-8"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-9"></div></td>
+            <td><div class="task-text">Build /pricing page — explain pricing tiers and why a demo is required</div><div class="task-note">Lead with the 3 lead types (Social → PPC → Live Transfer) and the factors that determine cost. CTA = Book a Demo.</div></td>
+            <td><span class="cat cat-web">Web Page</span></td>
+            <td><select class="assignee-select" data-id="1-9"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-10"></div></td>
+            <td><div class="task-text">Review and approve /faq and /pricing pages before publishing</div><div class="task-note">Kiwi signs off on accuracy, brand voice, and legal-safe claims (especially pricing language).</div></td>
+            <td><span class="cat cat-review">Review</span></td>
+            <td><select class="assignee-select" data-id="1-10"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-11"></div></td>
+            <td><div class="task-text">Deploy /faq and /pricing to GitHub + Netlify</div><div class="task-note">Follow the same push workflow: git commit → push → Netlify redeploy via curl.</div></td>
+            <td><span class="cat cat-web">Web Page</span></td>
+            <td><select class="assignee-select" data-id="1-11"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-12"></div></td>
+            <td><div class="task-text">Add FAQ schema markup to the homepage</div><div class="task-note">Pick the 3–5 most searched questions and add them as FAQPage schema to index.html.</div></td>
+            <td><span class="cat cat-seo">SEO</span></td>
+            <td><select class="assignee-select" data-id="1-12"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── PHASE 2 ── -->
+  <div class="phase-block">
+    <div class="phase-header">
+      <span class="phase-badge badge-p2">Phase 2</span>
+      <div>
+        <div class="phase-title">Days 31–60 — Comparison Pages, Case Studies &amp; YouTube Engine</div>
+        <div class="phase-dates">April 18 – May 17, 2026 &nbsp;·&nbsp; Win the comparison moment</div>
+      </div>
+      <div class="phase-progress-wrap">
+        <span class="phase-pct" id="p2-pct">0%</span>
+        <div class="phase-track"><div class="phase-fill" id="p2-fill" style="width:0%"></div></div>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table id="phase2">
+        <thead>
+          <tr>
+            <th>✓</th>
+            <th>Task</th>
+            <th>Category</th>
+            <th>Assign To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-1"></div></td>
+            <td><div class="task-text">Publish 5 more YouTube videos from Barry &amp; Ge interviews</div><div class="task-note">Prioritize Q13 (vs competitors), Q20 (first 90 days), Q16 (solo vs team), Q7 (close timeline), Q21 (time to first lead).</div></td>
+            <td><span class="cat cat-content">Content</span></td>
+            <td><select class="assignee-select" data-id="2-1"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-2"></div></td>
+            <td><div class="task-text">Write copy for /ylopo-vs-cinc comparison page</div><div class="task-note">Use Barry's firsthand comparison (Q13 transcript). CINC is the most-searched head-to-head.</div></td>
+            <td><span class="cat cat-web">Web Page</span></td>
+            <td><select class="assignee-select" data-id="2-2"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-3"></div></td>
+            <td><div class="task-text">Write copy for /ylopo-vs-boomtown comparison page</div><div class="task-note">BoomTown has high overlap with Ylopo's large-team ICP. Key angle: AI nurture vs. manual follow-up.</div></td>
+            <td><span class="cat cat-web">Web Page</span></td>
+            <td><select class="assignee-select" data-id="2-3"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-4"></div></td>
+            <td><div class="task-text">Write copy for /ylopo-vs-sierra-interactive comparison page</div><div class="task-note">Sierra is running a vs-Ylopo page against you. This is a defensive must-have. Flip the script.</div></td>
+            <td><span class="cat cat-web">Web Page</span></td>
+            <td><select class="assignee-select" data-id="2-4"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-5"></div></td>
+            <td><div class="task-text">Build all 3 comparison pages in HTML and deploy</div><div class="task-note">Use a consistent comparison table layout. Each page needs its own schema markup and meta description.</div></td>
+            <td><span class="cat cat-web">Web Page</span></td>
+            <td><select class="assignee-select" data-id="2-5"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-6"></div></td>
+            <td><div class="task-text">Build /how-it-works page (onboarding timeline — days 1, 30, 60, 90)</div><div class="task-note">Pull from Q20 and Q21 transcripts. Visual timeline format. Barry's voice as the narrator/quote source.</div></td>
+            <td><span class="cat cat-web">Web Page</span></td>
+            <td><select class="assignee-select" data-id="2-6"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-7"></div></td>
+            <td><div class="task-text">Collect 3 client case studies with real ROI numbers</div><div class="task-note">Ask Ge or the client success team for clients who will go on record. Need: before/after metrics, team size, market.</div></td>
+            <td><span class="cat cat-content">Content</span></td>
+            <td><select class="assignee-select" data-id="2-7"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-8"></div></td>
+            <td><div class="task-text">Build /case-studies page and deploy</div><div class="task-note">Include agent name, team size, market, lead volume, and GCI impact. Quote from the agent. Photo if available.</div></td>
+            <td><span class="cat cat-web">Web Page</span></td>
+            <td><select class="assignee-select" data-id="2-8"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-9"></div></td>
+            <td><div class="task-text">Add video embeds (YouTube) to /faq, /pricing, and /how-it-works pages</div><div class="task-note">Match Barry and Ge clips to the relevant page section. Video on page = longer dwell time = better rankings.</div></td>
+            <td><span class="cat cat-seo">SEO</span></td>
+            <td><select class="assignee-select" data-id="2-9"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-10"></div></td>
+            <td><div class="task-text">Add schema markup (FAQ, HowTo, Product) to all new pages</div><div class="task-note">Each page type gets the right schema: FAQPage for /faq, HowTo for /how-it-works, Review/AggregateRating for /case-studies.</div></td>
+            <td><span class="cat cat-seo">SEO</span></td>
+            <td><select class="assignee-select" data-id="2-10"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-11"></div></td>
+            <td><div class="task-text">Submit updated XML sitemap to Google Search Console</div><div class="task-note">Include all new pages. Verify Search Console access first. Target: indexed within 2 weeks of submission.</div></td>
+            <td><span class="cat cat-seo">SEO</span></td>
+            <td><select class="assignee-select" data-id="2-11"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-12"></div></td>
+            <td><div class="task-text">Kiwi approves all Phase 2 pages before they go live</div><div class="task-note">Review for: brand voice, accurate claims, correct Ge/Barry quotes, CTA consistency.</div></td>
+            <td><span class="cat cat-review">Review</span></td>
+            <td><select class="assignee-select" data-id="2-12"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── PHASE 3 ── -->
+  <div class="phase-block">
+    <div class="phase-header">
+      <span class="phase-badge badge-p3">Phase 3</span>
+      <div>
+        <div class="phase-title">Days 61–90 — Optimization, Tools &amp; Scale</div>
+        <div class="phase-dates">May 18 – June 16, 2026 &nbsp;·&nbsp; Compound the gains</div>
+      </div>
+      <div class="phase-progress-wrap">
+        <span class="phase-pct" id="p3-pct">0%</span>
+        <div class="phase-track"><div class="phase-fill" id="p3-fill" style="width:0%"></div></div>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table id="phase3">
+        <thead>
+          <tr>
+            <th>✓</th>
+            <th>Task</th>
+            <th>Category</th>
+            <th>Assign To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-1"></div></td>
+            <td><div class="task-text">Review YouTube analytics — identify top 3 performing videos</div><div class="task-note">Look at: watch time, click-through rate, and which videos drove traffic to ylopo.com. Double down on what's working.</div></td>
+            <td><span class="cat cat-analytics">Analytics</span></td>
+            <td><select class="assignee-select" data-id="3-1"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-2"></div></td>
+            <td><div class="task-text">Record follow-up clips on the 3 highest-performing topics</div><div class="task-note">Schedule a 30-min follow-up session with Barry or Ge. Go deeper on what resonated.</div></td>
+            <td><span class="cat cat-content">Content</span></td>
+            <td><select class="assignee-select" data-id="3-2"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-3"></div></td>
+            <td><div class="task-text">Build /integrations page (CRM list, sync depth, setup guides)</div><div class="task-note">Pull from Q14 transcript (Ge). List supported CRMs, describe sync depth (contacts + activities), link to setup docs.</div></td>
+            <td><span class="cat cat-web">Web Page</span></td>
+            <td><select class="assignee-select" data-id="3-3"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-4"></div></td>
+            <td><div class="task-text">Build ROI calculator tool — "How many listings do I need to break even?"</div><div class="task-note">Inputs: avg commission, avg home price, lead type. Output: break-even leads and estimated GCI at 3 conversion rates.</div></td>
+            <td><span class="cat cat-web">Web Page</span></td>
+            <td><select class="assignee-select" data-id="3-4"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-5"></div></td>
+            <td><div class="task-text">Audit internal links across all pages — make sure every page links to at least 2 others</div><div class="task-note">Especially: /pricing ↔ /faq ↔ /how-it-works ↔ /case-studies. Internal links pass authority and improve crawl depth.</div></td>
+            <td><span class="cat cat-seo">SEO</span></td>
+            <td><select class="assignee-select" data-id="3-5"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-6"></div></td>
+            <td><div class="task-text">Review and update meta titles and descriptions on all pages</div><div class="task-note">Each page needs a unique, keyword-targeted title (under 60 chars) and description (under 155 chars). No duplicates.</div></td>
+            <td><span class="cat cat-seo">SEO</span></td>
+            <td><select class="assignee-select" data-id="3-6"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-7"></div></td>
+            <td><div class="task-text">Google Search Console audit — confirm all new pages are indexed</div><div class="task-note">Check Coverage report for errors. Fix any 4xx / redirect issues. Request indexing for any pages still pending.</div></td>
+            <td><span class="cat cat-analytics">Analytics</span></td>
+            <td><select class="assignee-select" data-id="3-7"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-8"></div></td>
+            <td><div class="task-text">Analytics review — measure demo conversions from new pages vs. baseline</div><div class="task-note">Compare demo form submissions and "Book a Demo" clicks before vs. after the new pages launched. Pull 30-day window.</div></td>
+            <td><span class="cat cat-analytics">Analytics</span></td>
+            <td><select class="assignee-select" data-id="3-8"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-9"></div></td>
+            <td><div class="task-text">Publish 4 more YouTube videos to round out the 25-question series</div><div class="task-note">Cover any remaining Critical or High priority questions not yet published. Aim to have all 25 live on YouTube by day 90.</div></td>
+            <td><span class="cat cat-content">Content</span></td>
+            <td><select class="assignee-select" data-id="3-9"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-10"></div></td>
+            <td><div class="task-text">Final brand and copy review of all 90-day published content</div><div class="task-note">Scan for off-brand language, outdated claims, inconsistent spokesperson attribution, and broken links.</div></td>
+            <td><span class="cat cat-review">Review</span></td>
+            <td><select class="assignee-select" data-id="3-10"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-11"></div></td>
+            <td><div class="task-text">Plan Q3 content calendar based on analytics, comments, and sales team feedback</div><div class="task-note">What questions are still coming up in demos? What YouTube comments are asking follow-ups? Feed those into the next 90-day sprint.</div></td>
+            <td><span class="cat cat-analytics">Analytics</span></td>
+            <td><select class="assignee-select" data-id="3-11"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><option value="jojo">Jojo</option></select></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-note">
+    <strong>Progress auto-saves to this browser.</strong> &nbsp;·&nbsp;
+    Source: <a href="questions-spreadsheet.html" style="color:var(--green-dark);font-weight:700;">25 Questions Spreadsheet</a> &nbsp;·&nbsp;
+    <a href="seo-opportunity-report.html" style="color:var(--green-dark);font-weight:700;">SEO Opportunity Report</a> &nbsp;·&nbsp;
+    Last updated March 2026
+  </div>
+
+</div><!-- /main -->
+
+<script>
+  const STORAGE_KEY = 'ylopo-90day-v1';
+
+  function saveState() {
+    const state = {};
+    document.querySelectorAll('.cb').forEach(cb => {
+      state['cb-' + cb.dataset.id] = cb.checked;
+    });
+    document.querySelectorAll('.assignee-select').forEach(sel => {
+      state['sel-' + sel.dataset.id] = sel.value;
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  function loadState() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const state = JSON.parse(raw);
+    document.querySelectorAll('.cb').forEach(cb => {
+      if (state['cb-' + cb.dataset.id]) cb.checked = true;
+    });
+    document.querySelectorAll('.assignee-select').forEach(sel => {
+      if (state['sel-' + sel.dataset.id]) sel.value = state['sel-' + sel.dataset.id];
+    });
+  }
+
+  function styleRow(cb) {
+    const row = cb.closest('tr');
+    if (cb.checked) row.classList.add('done');
+    else row.classList.remove('done');
+  }
+
+  function styleSelect(sel) {
+    sel.classList.remove('val-kiwi', 'val-jojo', 'val-unset');
+    if (sel.value === 'kiwi') sel.classList.add('val-kiwi');
+    else if (sel.value === 'jojo') sel.classList.add('val-jojo');
+    else sel.classList.add('val-unset');
+  }
+
+  function updateProgress() {
+    const phases = [
+      { tableId: 'phase1', fillId: 'p1-fill', pctId: 'p1-pct' },
+      { tableId: 'phase2', fillId: 'p2-fill', pctId: 'p2-pct' },
+      { tableId: 'phase3', fillId: 'p3-fill', pctId: 'p3-pct' },
+    ];
+    let totalDone = 0, totalAll = 0;
+    phases.forEach(p => {
+      const boxes = document.querySelectorAll('#' + p.tableId + ' .cb');
+      const done = Array.from(boxes).filter(cb => cb.checked).length;
+      const pct = boxes.length ? Math.round((done / boxes.length) * 100) : 0;
+      document.getElementById(p.fillId).style.width = pct + '%';
+      document.getElementById(p.pctId).textContent = pct + '%';
+      totalDone += done;
+      totalAll += boxes.length;
+    });
+    const overallPct = totalAll ? Math.round((totalDone / totalAll) * 100) : 0;
+    document.getElementById('overall-fill').style.width = overallPct + '%';
+    document.getElementById('overall-pct').textContent = overallPct + '%';
+    document.getElementById('overall-count').textContent = totalDone + ' of ' + totalAll + ' tasks done';
+  }
+
+  // Init
+  loadState();
+  document.querySelectorAll('.cb').forEach(cb => {
+    styleRow(cb);
+    cb.addEventListener('change', () => { styleRow(cb); updateProgress(); saveState(); });
+  });
+  document.querySelectorAll('.assignee-select').forEach(sel => {
+    styleSelect(sel);
+    sel.addEventListener('change', () => { styleSelect(sel); saveState(); });
+  });
+  updateProgress();
+</script>
+
+</body>
+</html>
