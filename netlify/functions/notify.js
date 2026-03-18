@@ -104,11 +104,11 @@ exports.handler = async (event) => {
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+        'Authorization': `Bearer ${process.env.RESEND_API_KEY || process.env.RESEND}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Ylopo 90-Day Plan <noreply@ylopo-website.netlify.app>',
+        from: 'Ylopo 90-Day Plan <onboarding@resend.dev>',
         to: [assigneeEmail],
         subject,
         html,
