@@ -4,8 +4,8 @@
 
 const { getStore } = require('@netlify/blobs');
 
-// Sprint start date — adjust if the 90-day clock starts on a different day
-const SPRINT_START = new Date('2026-03-17T00:00:00-08:00');
+// Sprint start date — real work begins March 23, 2026
+const SPRINT_START = new Date('2026-03-23T00:00:00-08:00');
 
 // Phase task counts
 const PHASES = [
@@ -69,68 +69,78 @@ exports.handler = async () => {
   const today = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'America/Los_Angeles' });
 
   const progressBar = (pct, color) => `
-    <div style="background:#e5e7eb;border-radius:6px;height:14px;overflow:hidden;margin:6px 0 12px;">
-      <div style="background:${color};height:100%;width:${pct}%;border-radius:6px;transition:width 0.3s;"></div>
+    <div style="background:#e5e7eb;border-radius:6px;height:12px;overflow:hidden;margin:6px 0 8px;">
+      <div style="background:${color};height:100%;width:${pct}%;border-radius:6px;"></div>
     </div>`;
 
   const phaseRows = phaseStats.map((p, i) => {
     const isActive = i === currentPhaseIdx;
     return `
       <tr>
-        <td style="padding:10px 0;border-bottom:1px solid #f3f4f6;">
-          <div style="font-size:13px;font-weight:${isActive ? '700' : '500'};color:${isActive ? '#172F44' : '#6b7280'};">
-            ${isActive ? '▶ ' : ''}${p.label}
+        <td style="padding:12px 0;border-bottom:1px solid #f3f4f6;">
+          <div style="font-size:13px;font-weight:${isActive ? '700' : '500'};color:${isActive ? '#172F44' : '#9ca3af'};">
+            ${isActive ? '▶ ' : ''}${p.label}${isActive ? ' <span style="font-weight:400;color:#9ca3af;">(current)</span>' : ''}
           </div>
-          ${progressBar(p.pct, p.color)}
-          <div style="font-size:12px;color:#6b7280;">${p.done} of ${p.total} tasks complete &nbsp;·&nbsp; ${p.pct}%</div>
+          ${progressBar(p.pct, isActive ? paceColor : p.color)}
+          <div style="font-size:12px;color:#9ca3af;">${p.done} of ${p.total} tasks · ${p.pct}%</div>
         </td>
       </tr>`;
   }).join('');
 
+  const catchupTasks = delta < -10 ? Math.ceil((expectedPct / 100) * currentPhase.total) - currentPhase.done : 0;
+  const actionLine = delta < -10
+    ? `You need <strong>${catchupTasks} more task${catchupTasks !== 1 ? 's' : ''}</strong> this week to get back on track.`
+    : delta >= 10
+    ? `You're <strong>${delta}% ahead</strong> — great work, keep the pace.`
+    : `You're right on pace. Keep going and you'll hit the phase target on time.`;
+
   const html = `
-    <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
-      <div style="background:#172F44;padding:20px 24px;border-radius:8px 8px 0 0;">
-        <img src="https://ylopo-website.netlify.app/ylopo-logo-2021.png" alt="Ylopo" style="height:30px;">
+    <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,0.10);">
+
+      <!-- STATUS BANNER — the entire top block is the pace color -->
+      <div style="background:${paceColor};padding:28px 28px 24px;">
+        <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">
+          Week ${weekNum} · ${today}
+        </div>
+        <div style="font-size:36px;font-weight:900;color:#fff;line-height:1;margin-bottom:8px;">
+          ${paceEmoji} ${paceLabel}
+        </div>
+        <div style="font-size:15px;color:rgba(255,255,255,0.90);">
+          Week ${weekInPhase} of 4 in ${currentPhase.label.split('—')[0].trim()} · Expected ${expectedPct}%, actual ${currentPhase.pct}%
+        </div>
       </div>
-      <div style="padding:24px;border:1px solid #e5e7eb;border-top:none;">
 
-        <p style="margin:0 0 4px;font-size:13px;color:#9ca3af;">Weekly Progress Report · ${today}</p>
-        <h2 style="margin:0 0 20px;font-size:20px;color:#172F44;">90-Day Sprint — Week ${weekNum} Update</h2>
+      <!-- WHAT TO DO THIS WEEK -->
+      <div style="background:${paceColor}18;border-bottom:1px solid ${paceColor}33;padding:16px 28px;">
+        <p style="margin:0;font-size:14px;color:#172F44;">${actionLine}</p>
+      </div>
 
-        <!-- Overall -->
-        <div style="background:#f9fafb;border-radius:8px;padding:16px 20px;margin-bottom:24px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-            <span style="font-size:14px;font-weight:700;color:#172F44;">Overall Progress</span>
-            <span style="font-size:18px;font-weight:700;color:#7BC109;">${overallPct}%</span>
-          </div>
-          ${progressBar(overallPct, '#7BC109')}
-          <div style="font-size:13px;color:#6b7280;">${totalDone} of ${totalTasks} total tasks complete</div>
+      <!-- OVERALL PROGRESS -->
+      <div style="background:#fff;padding:24px 28px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+          <span style="font-size:13px;font-weight:700;color:#172F44;text-transform:uppercase;letter-spacing:0.08em;">Overall Sprint Progress</span>
+          <span style="font-size:24px;font-weight:900;color:#172F44;">${overallPct}%</span>
         </div>
+        ${progressBar(overallPct, paceColor)}
+        <div style="font-size:12px;color:#9ca3af;">${totalDone} of ${totalTasks} total tasks complete</div>
 
-        <!-- Pace indicator -->
-        <div style="background:#f9fafb;border-left:4px solid ${paceColor};padding:12px 16px;border-radius:4px;margin-bottom:24px;">
-          <span style="font-size:14px;font-weight:700;color:${paceColor};">${paceEmoji} ${paceLabel}</span>
-          <p style="margin:4px 0 0;font-size:13px;color:#374151;">
-            Week ${weekInPhase} of 4 in ${currentPhase.label.split('—')[0].trim()} —
-            expected ${expectedPct}% done, currently at ${currentPhase.pct}%.
-            ${delta < -10 ? `Push to complete ${Math.ceil((expectedPct / 100) * currentPhase.total) - currentPhase.done} more task${Math.ceil((expectedPct / 100) * currentPhase.total) - currentPhase.done !== 1 ? 's' : ''} this week to get back on track.` : delta >= 10 ? 'Great work — you\'re ahead of pace!' : 'Keep the current pace through next week.'}
-          </p>
+        <!-- Phase breakdown -->
+        <div style="margin-top:20px;">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#9ca3af;margin-bottom:4px;">Phase Breakdown</div>
+          <table style="width:100%;border-collapse:collapse;">
+            <tbody>${phaseRows}</tbody>
+          </table>
         </div>
-
-        <!-- Per-phase breakdown -->
-        <h3 style="margin:0 0 12px;font-size:14px;color:#172F44;text-transform:uppercase;letter-spacing:0.05em;">Phase Breakdown</h3>
-        <table style="width:100%;border-collapse:collapse;">
-          <tbody>${phaseRows}</tbody>
-        </table>
 
         <div style="margin-top:24px;">
           <a href="https://ylopo-website.netlify.app/pages/90-day-plan.html"
-             style="display:inline-block;background:#7BC109;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px;">
+             style="display:inline-block;background:${paceColor};color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px;">
             Open the 90-Day Plan →
           </a>
         </div>
       </div>
-      <div style="padding:12px 24px;background:#f9fafb;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;">
+
+      <div style="padding:12px 28px;background:#f9fafb;border-top:1px solid #e5e7eb;">
         <p style="margin:0;font-size:12px;color:#9ca3af;">Sent every Friday at 5am PT · Ylopo Marketing Team</p>
       </div>
     </div>`;

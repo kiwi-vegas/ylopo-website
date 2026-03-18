@@ -27,6 +27,9 @@
     --jom-color: #1a6da8;
     --paul-color: #d97706;
     --mike-color: #0e7490;
+    /* Pace color — updated by JS on load */
+    --pace-color: #1a6da8;
+    --pace-bg: rgba(26,109,168,0.10);
   }
 
   body {
@@ -43,12 +46,17 @@
     position: relative;
     overflow: hidden;
   }
+  .page-header {
+    transition: box-shadow 0.6s ease;
+  }
   .page-header::after {
     content: '';
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--green), #a5e040);
+    height: 5px;
+    background: linear-gradient(90deg, var(--pace-color), var(--pace-color));
+    transition: background 0.6s ease;
+    box-shadow: 0 0 18px 2px var(--pace-color);
   }
   .header-inner { max-width: 1200px; margin: 0 auto; }
   .logo-row { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
@@ -266,6 +274,51 @@
     font-size: 13px; color: var(--text-muted); text-align: center; line-height: 1.6;
   }
   .footer-note strong { color: var(--text); }
+
+  /* ── PACE BADGE ── */
+  .pace-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 5px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 700; white-space: nowrap;
+    background: var(--pace-bg);
+    color: var(--pace-color);
+    border: 1.5px solid var(--pace-color);
+    transition: all 0.6s ease;
+  }
+  .pace-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--pace-color);
+    box-shadow: 0 0 6px var(--pace-color);
+    transition: all 0.6s ease;
+  }
+
+  /* ── NOTES ── */
+  .notes-toggle {
+    display: inline-flex; align-items: center; gap: 4px;
+    margin-top: 7px; background: none; border: none;
+    padding: 2px 0; font-size: 11px; font-weight: 700;
+    color: var(--slate); cursor: pointer;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    font-family: 'Nunito', sans-serif;
+  }
+  .notes-toggle:hover { color: var(--navy); }
+  .notes-toggle .toggle-arrow { transition: transform 0.2s; display: inline-block; }
+  .notes-toggle.open .toggle-arrow { transform: rotate(180deg); }
+  .notes-wrap {
+    display: none; margin-top: 8px;
+  }
+  .notes-wrap.open { display: block; }
+  .task-notes-input {
+    width: 100%; min-height: 72px;
+    padding: 8px 10px; resize: vertical;
+    font-family: 'Nunito', sans-serif; font-size: 13px;
+    color: var(--text); line-height: 1.5;
+    border: 1.5px solid var(--border); border-radius: 6px;
+    background: #fafbff; transition: border-color 0.15s;
+  }
+  .task-notes-input:focus { outline: none; border-color: var(--green); background: #fff; }
+  .task-notes-input::placeholder { color: #c0c4d0; }
+  .notes-has-content .notes-toggle { color: var(--navy); }
 </style>
 </head>
 <body>
@@ -290,6 +343,10 @@
     <div class="progress-track"><div class="progress-fill" id="overall-fill" style="width:0%"></div></div>
     <span class="overall-pct" id="overall-pct">0%</span>
     <span class="overall-count" id="overall-count">0 of 0 tasks done</span>
+    <span class="pace-badge" id="pace-badge" style="display:none;">
+      <span class="pace-dot" id="pace-dot"></span>
+      <span id="pace-label">On Track</span>
+    </span>
   </div>
 </div>
 
@@ -331,7 +388,7 @@
       <span class="phase-badge badge-p1">Phase 1</span>
       <div>
         <div class="phase-title">Days 1–30 — Interviews &amp; Technical Quick Wins</div>
-        <div class="phase-dates">March 18 – April 17, 2026 &nbsp;·&nbsp; Two tracks running in parallel</div>
+        <div class="phase-dates">March 23 – April 21, 2026 &nbsp;·&nbsp; Two tracks running in parallel</div>
       </div>
       <div class="phase-progress-wrap">
         <span class="phase-pct" id="p1-pct">0%</span>
@@ -426,7 +483,7 @@
       <span class="phase-badge badge-p2">Phase 2</span>
       <div>
         <div class="phase-title">Days 31–60 — Core Pages, Comparison Content &amp; YouTube</div>
-        <div class="phase-dates">April 18 – May 17, 2026 &nbsp;·&nbsp; Build the content engine</div>
+        <div class="phase-dates">April 22 – May 21, 2026 &nbsp;·&nbsp; Build the content engine</div>
       </div>
       <div class="phase-progress-wrap">
         <span class="phase-pct" id="p2-pct">0%</span>
@@ -508,7 +565,7 @@
       <span class="phase-badge badge-p3">Phase 3</span>
       <div>
         <div class="phase-title">Days 61–90 — Scale, Optimize &amp; Measure</div>
-        <div class="phase-dates">May 18 – June 16, 2026 &nbsp;·&nbsp; Compound the gains</div>
+        <div class="phase-dates">May 22 – June 20, 2026 &nbsp;·&nbsp; Compound the gains</div>
       </div>
       <div class="phase-progress-wrap">
         <span class="phase-pct" id="p3-pct">0%</span>
@@ -585,7 +642,10 @@
 
 <script>
   const STORAGE_KEY = 'ylopo-90day-v3';
+  // Sprint start — real work begins March 23, 2026
+  const SPRINT_START = new Date('2026-03-23T00:00:00-08:00');
 
+  // ── STATE ─────────────────────────────────────────────────────────────────
   function saveState() {
     const state = {};
     document.querySelectorAll('.cb').forEach(cb => {
@@ -594,8 +654,10 @@
     document.querySelectorAll('.assignee-select').forEach(sel => {
       state['sel-' + sel.dataset.id] = sel.value;
     });
+    document.querySelectorAll('.task-notes-input').forEach(ta => {
+      if (ta.value) state['note-' + ta.dataset.id] = ta.value;
+    });
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    // Sync to server so the weekly report has current data
     fetch('/.netlify/functions/update-state', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -613,8 +675,57 @@
     document.querySelectorAll('.assignee-select').forEach(sel => {
       if (state['sel-' + sel.dataset.id]) sel.value = state['sel-' + sel.dataset.id];
     });
+    document.querySelectorAll('.task-notes-input').forEach(ta => {
+      const saved = state['note-' + ta.dataset.id];
+      if (saved) {
+        ta.value = saved;
+        const wrap = ta.closest('.notes-wrap');
+        const toggle = ta.closest('td').querySelector('.notes-toggle');
+        if (wrap) wrap.classList.add('open');
+        if (toggle) toggle.classList.add('open');
+        ta.closest('td').classList.add('notes-has-content');
+      }
+    });
   }
 
+  // ── NOTES UI (injected dynamically so HTML rows stay clean) ───────────────
+  function initNotes() {
+    document.querySelectorAll('tbody tr').forEach(row => {
+      const cb = row.querySelector('.cb');
+      if (!cb) return;
+      const id = cb.dataset.id;
+      const taskTd = row.cells[1];
+
+      const toggle = document.createElement('button');
+      toggle.className = 'notes-toggle';
+      toggle.dataset.id = id;
+      toggle.innerHTML = '<span class="toggle-arrow">▼</span> Notes';
+      toggle.type = 'button';
+      taskTd.appendChild(toggle);
+
+      const wrap = document.createElement('div');
+      wrap.className = 'notes-wrap';
+      const ta = document.createElement('textarea');
+      ta.className = 'task-notes-input';
+      ta.dataset.id = id;
+      ta.placeholder = 'Add notes, links, or status updates here…';
+      wrap.appendChild(ta);
+      taskTd.appendChild(wrap);
+
+      toggle.addEventListener('click', () => {
+        const open = wrap.classList.toggle('open');
+        toggle.classList.toggle('open', open);
+        if (open) ta.focus();
+      });
+
+      ta.addEventListener('input', () => {
+        taskTd.classList.toggle('notes-has-content', ta.value.length > 0);
+        saveState();
+      });
+    });
+  }
+
+  // ── STYLE HELPERS ─────────────────────────────────────────────────────────
   function styleRow(cb) {
     const row = cb.closest('tr');
     if (cb.checked) row.classList.add('done');
@@ -647,8 +758,55 @@
     document.getElementById('overall-fill').style.width = overallPct + '%';
     document.getElementById('overall-pct').textContent = overallPct + '%';
     document.getElementById('overall-count').textContent = totalDone + ' of ' + totalAll + ' tasks done';
+    updatePaceGlow();
   }
 
+  // ── PACE GLOW ─────────────────────────────────────────────────────────────
+  function updatePaceGlow() {
+    const now = new Date();
+    const daysSinceStart = Math.floor((now - SPRINT_START) / (1000 * 60 * 60 * 24));
+    if (daysSinceStart < 0) return; // sprint hasn't started yet
+
+    const phaseData = [
+      { tableId: 'phase1', total: 12 },
+      { tableId: 'phase2', total: 10 },
+      { tableId: 'phase3', total: 8 },
+    ];
+    const phaseIdx = daysSinceStart >= 60 ? 2 : daysSinceStart >= 30 ? 1 : 0;
+    const p = phaseData[phaseIdx];
+    const boxes = document.querySelectorAll('#' + p.tableId + ' .cb');
+    const done = Array.from(boxes).filter(cb => cb.checked).length;
+    const actualPct = Math.round((done / p.total) * 100);
+
+    const weekInPhase = Math.max(1, Math.min(4, Math.floor((daysSinceStart % 30) / 7) + 1));
+    const expectedPct = Math.round((weekInPhase / 4) * 100);
+    const delta = actualPct - expectedPct;
+
+    let color, bg, label;
+    if (delta >= 10)       { color = '#7BC109'; bg = 'rgba(123,193,9,0.10)';    label = '🟢 Ahead of Schedule'; }
+    else if (delta >= -10) { color = '#1a6da8'; bg = 'rgba(26,109,168,0.10)';  label = '🔵 On Track'; }
+    else                   { color = '#e53e3e'; bg = 'rgba(229,62,62,0.10)';   label = '🔴 Behind Schedule'; }
+
+    const root = document.documentElement;
+    root.style.setProperty('--pace-color', color);
+    root.style.setProperty('--pace-bg', bg);
+
+    const badge = document.getElementById('pace-badge');
+    const dot = document.getElementById('pace-dot');
+    const lbl = document.getElementById('pace-label');
+    if (badge) {
+      badge.style.display = 'inline-flex';
+      badge.style.background = bg;
+      badge.style.color = color;
+      badge.style.borderColor = color;
+    }
+    if (dot) { dot.style.background = color; dot.style.boxShadow = '0 0 6px ' + color; }
+    if (lbl) lbl.textContent = label;
+
+    document.querySelector('.page-header').style.boxShadow = '0 8px 40px ' + color + '44';
+  }
+
+  // ── NOTIFICATIONS ─────────────────────────────────────────────────────────
   function getTaskText(id) {
     const el = document.querySelector('.cb[data-id="' + id + '"]');
     if (!el) return '';
@@ -663,15 +821,16 @@
   }
 
   function sendNotification(type, taskId, taskText, assignee, completedBy) {
-    if (!assignee) return;
+    if (type === 'assigned' && !assignee) return;
     fetch('/.netlify/functions/notify', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ type, taskId, taskText, assignee, completedBy }),
-    }).catch(() => {}); // fire-and-forget; failures are silent to the user
+    }).catch(() => {});
   }
 
-  // Init
+  // ── INIT ──────────────────────────────────────────────────────────────────
+  initNotes();
   loadState();
   document.querySelectorAll('.cb').forEach(cb => {
     styleRow(cb);

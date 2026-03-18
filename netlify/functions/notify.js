@@ -100,6 +100,12 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: 'Unknown type' };
   }
 
+  // On completion, always notify Kiwi as project leader (in addition to assignee)
+  const recipients = [assigneeEmail];
+  if (type === 'completed' && assignee !== 'kiwi') {
+    recipients.push('kiwi@ylopo.com');
+  }
+
   try {
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -109,7 +115,7 @@ exports.handler = async (event) => {
       },
       body: JSON.stringify({
         from: 'Ylopo 90-Day Plan <onboarding@resend.dev>',
-        to: [assigneeEmail],
+        to: recipients,
         subject,
         html,
       }),
