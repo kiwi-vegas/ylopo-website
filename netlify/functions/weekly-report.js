@@ -17,6 +17,27 @@ const PHASES = [
 // Jojo (jerasquin@ylopo.com) can be added once ylopo.com is verified in Resend
 const RECIPIENTS = ['kiwi@ylopo.com'];
 
+// ── SEO data helper ────────────────────────────────────────────────────────
+async function getSEOData() {
+  try {
+    const store = getStore('seo-data');
+    const raw   = await store.get('weekly');
+    if (!raw) return null;
+    const data = JSON.parse(raw);
+    return data.weeks && data.weeks.length > 0 ? data : null;
+  } catch { return null; }
+}
+
+function seoArrow(curr, prev, lowerBetter) {
+  if (!prev || prev === 0) return '—';
+  const pct = Math.round(((curr - prev) / prev) * 100);
+  if (pct === 0) return '→ no change';
+  const better = lowerBetter ? pct < 0 : pct > 0;
+  const arrow  = pct > 0 ? '▲' : '▼';
+  const color  = better ? '#7BC109' : '#e53e3e';
+  return `<span style="color:${color};font-weight:700;">${arrow} ${Math.abs(pct)}%</span>`;
+}
+
 // Run every Friday at 13:00 UTC (5am PST / 6am PDT)
 exports.config = { schedule: '0 13 * * 5' };
 
@@ -30,6 +51,9 @@ exports.handler = async () => {
   } catch (err) {
     console.error('Blob read error:', err);
   }
+
+  // ── Fetch SEO data in parallel ─────────────────────────────────────────────
+  const [, seoData] = await Promise.all([Promise.resolve(), getSEOData()]);
 
   // ── Calculate progress ─────────────────────────────────────────────────────
   const phaseStats = PHASES.map(p => {
@@ -131,6 +155,38 @@ exports.handler = async () => {
             <tbody>${phaseRows}</tbody>
           </table>
         </div>
+
+        <!-- SEO METRICS -->
+        ${seoData ? (() => {
+          const weeks = seoData.weeks;
+          const last  = weeks[weeks.length - 1];
+          const prev  = weeks.length > 1 ? weeks[weeks.length - 2] : null;
+          const rows  = [
+            ['Organic Clicks',  last.clicks.toLocaleString(),      prev ? seoArrow(last.clicks, prev.clicks, false) : '—'],
+            ['Impressions',     last.impressions.toLocaleString(),  prev ? seoArrow(last.impressions, prev.impressions, false) : '—'],
+            ['Avg Position',    last.avgPosition,                   prev ? seoArrow(last.avgPosition, prev.avgPosition, true) : '—'],
+            ['CTR',             last.avgCtr + '%',                  prev ? seoArrow(last.avgCtr, prev.avgCtr, false) : '—'],
+          ];
+          return `
+          <div style="margin-top:24px;border-top:1px solid #e5e7eb;padding-top:20px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#9ca3af;margin-bottom:12px;">
+              📈 Organic Search — ylopo.com (last week)
+            </div>
+            <table style="width:100%;border-collapse:collapse;">
+              <tbody>
+                ${rows.map(([lbl, val, delta]) => `
+                <tr>
+                  <td style="padding:7px 0;border-bottom:1px solid #f3f4f6;font-size:13px;color:#6b7280;width:45%;">${lbl}</td>
+                  <td style="padding:7px 0;border-bottom:1px solid #f3f4f6;font-size:15px;font-weight:700;color:#172F44;width:25%;">${val}</td>
+                  <td style="padding:7px 0;border-bottom:1px solid #f3f4f6;font-size:12px;color:#9ca3af;">${delta}</td>
+                </tr>`).join('')}
+              </tbody>
+            </table>
+          </div>`;
+        })() : `
+          <div style="margin-top:24px;border-top:1px solid #e5e7eb;padding-top:16px;">
+            <div style="font-size:12px;color:#9ca3af;">📈 SEO data not yet available — will appear after first Thursday fetch.</div>
+          </div>`}
 
         <div style="margin-top:24px;">
           <a href="https://ylopo-website.netlify.app/pages/90-day-plan.html"
