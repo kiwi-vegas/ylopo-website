@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real Estate Lead Generation — Ylopo</title>
+<meta name="description" content="Find the right lead source for your real estate business. Compare PPC+, PPC Buy/Sell, PPC Seller, Social Ads, and LSA — all powered by Ylopo's AI platform.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --green: #7BC109;
+  --green-dark: #5a8f07;
+  --green-light: #9ed62a;
+  --green-xlight: #f0fad8;
+  --green-mid: rgba(123,193,9,0.12);
+  --navy: #172F44;
+  --navy-mid: #1e3d57;
+  --navy-light: #2a5070;
+  --slate: #696F8B;
+  --slate-light: #f0f1f5;
+  --white: #FFFFFF;
+  --text: #172F44;
+  --text-muted: #5a6275;
+  --border: #e2e4ed;
+  --border-light: #eef0f6;
+  --card-shadow: 0 2px 16px rgba(23,47,68,0.07);
+  --card-shadow-hover: 0 8px 32px rgba(23,47,68,0.13);
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #f5f6fa;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3, h4, h5 { font-family: 'Raleway', sans-serif; font-weight: 800; line-height: 1.2; }
+h1 { font-size: clamp(36px, 5vw, 62px); }
+h2 { font-size: clamp(28px, 3.5vw, 42px); }
+h3 { font-size: clamp(20px, 2.5vw, 26px); }
+h4 { font-size: 18px; }
+p { font-size: 16px; color: var(--text-muted); line-height: 1.7; }
+
+/* ── LAYOUT ── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+section { padding: 88px 0; }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 8px;
+  font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 15px;
+  text-decoration: none; cursor: pointer; border: none;
+  transition: all 0.2s ease; letter-spacing: 0.02em;
+}
+.btn-primary {
+  background: var(--green); color: var(--navy);
+}
+.btn-primary:hover { background: var(--green-dark); color: var(--white); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(123,193,9,0.35); }
+.btn-secondary {
+  background: var(--navy); color: var(--white);
+}
+.btn-secondary:hover { background: var(--navy-mid); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(23,47,68,0.3); }
+.btn-outline {
+  background: transparent; color: var(--navy); border: 2px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--green); color: var(--green-dark); }
+.btn-lg { padding: 18px 36px; font-size: 17px; }
+
+/* ── BADGES ── */
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 12px; border-radius: 100px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.badge-new { background: var(--green); color: var(--navy); }
+.badge-popular { background: var(--navy); color: var(--white); }
+.badge-limited { background: #fff3cd; color: #856404; border: 1px solid #ffc107; }
+.badge-restricted { background: #f8f9fa; color: var(--slate); border: 1px solid var(--border); }
+
+/* ── SECTION LABELS ── */
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--green-dark); margin-bottom: 16px;
+}
+.section-label::before { content: ''; display: block; width: 20px; height: 2px; background: var(--green); }
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+.hero {
+  background: var(--navy);
+  padding: 80px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(123,193,9,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 80%, rgba(123,193,9,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(123,193,9,0.15); color: var(--green);
+  padding: 6px 14px; border-radius: 100px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 24px; border: 1px solid rgba(123,193,9,0.25);
+}
+.hero h1 { color: var(--white); margin-bottom: 24px; }
+.hero h1 span { color: var(--green); }
+.hero-desc {
+  color: rgba(255,255,255,0.72); font-size: 18px; line-height: 1.7; margin-bottom: 36px;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-stats {
+  display: flex; gap: 32px; margin-top: 48px; padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.hero-stat-num {
+  font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 30px; color: var(--white);
+}
+.hero-stat-label { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+
+/* Hero visual — product stack preview */
+.hero-visual {
+  position: relative; display: flex; flex-direction: column; gap: 10px;
+  padding-bottom: 0;
+}
+.hero-card-preview {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius); padding: 18px 22px;
+  display: flex; align-items: center; gap: 16px;
+  backdrop-filter: blur(8px);
+  transform: translateX(0); transition: transform 0.3s ease;
+}
+.hero-card-preview:hover { transform: translateX(-4px); }
+.hero-card-preview.featured {
+  background: rgba(123,193,9,0.12); border-color: rgba(123,193,9,0.35);
+}
+.hcp-icon {
+  width: 42px; height: 42px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.hcp-icon.green { background: rgba(123,193,9,0.2); }
+.hcp-icon.blue { background: rgba(26,109,168,0.25); }
+.hcp-icon.orange { background: rgba(217,119,6,0.25); }
+.hcp-icon.teal { background: rgba(14,116,144,0.25); }
+.hcp-icon.purple { background: rgba(107,63,160,0.25); }
+.hcp-name { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 14px; color: var(--white); }
+.hcp-desc { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+.hcp-badge {
+  margin-left: auto; flex-shrink: 0;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 100px;
+}
+.hcp-badge.new { background: var(--green); color: var(--navy); }
+.hcp-badge.popular { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); }
+
+.hero-bottom-bar {
+  background: rgba(255,255,255,0.04); border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 20px 0; margin-top: 64px;
+}
+.hero-bottom-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 40px;
+  display: flex; align-items: center; gap: 36px; flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 8px;
+  color: rgba(255,255,255,0.55); font-size: 13px; font-weight: 600;
+}
+.trust-item svg { opacity: 0.7; }
+
+/* ══════════════════════════════════════════
+   PRODUCT FINDER
+══════════════════════════════════════════ */
+.finder { background: var(--white); }
+.finder-header { text-align: center; margin-bottom: 56px; }
+.finder-header h2 { margin-bottom: 16px; }
+.finder-header p { max-width: 560px; margin: 0 auto; font-size: 17px; }
+
+.finder-filters {
+  display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px;
+}
+.filter-btn {
+  padding: 9px 20px; border-radius: 100px;
+  border: 1.5px solid var(--border); background: var(--white);
+  font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 600;
+  color: var(--text-muted); cursor: pointer; transition: all 0.2s ease;
+}
+.filter-btn:hover { border-color: var(--green); color: var(--green-dark); }
+.filter-btn.active {
+  background: var(--navy); color: var(--white); border-color: var(--navy);
+}
+
+/* ── PRODUCT CARDS GRID ── */
+.products-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  align-items: start;
+}
+.product-card {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 32px;
+  transition: all 0.25s ease; position: relative; overflow: hidden;
+}
+.product-card:hover {
+  border-color: var(--green); box-shadow: var(--card-shadow-hover);
+  transform: translateY(-3px);
+}
+.product-card.featured {
+  border-color: var(--green); grid-column: span 3;
+  background: linear-gradient(135deg, #0f2234 0%, #1a3a56 100%);
+  color: var(--white);
+}
+.product-card.featured::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--green), var(--green-light));
+}
+.product-card.hidden { display: none; }
+
+.card-top {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 20px;
+}
+.card-icon {
+  width: 52px; height: 52px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; font-size: 24px;
+}
+.card-icon.green { background: var(--green-xlight); }
+.card-icon.green-inv { background: rgba(123,193,9,0.15); }
+.card-icon.navy { background: var(--slate-light); }
+
+.product-name {
+  font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 20px;
+  margin-bottom: 6px; color: var(--text);
+}
+.featured .product-name { color: var(--white); }
+.product-tagline { font-size: 14px; color: var(--text-muted); font-weight: 500; margin-bottom: 18px; }
+.featured .product-tagline { color: rgba(255,255,255,0.65); }
+
+.product-desc { font-size: 15px; line-height: 1.65; margin-bottom: 24px; }
+.featured .product-desc { color: rgba(255,255,255,0.78); }
+
+/* Featured card — 3-col sub-grid */
+.featured-body {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px;
+  margin-top: 28px; padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.featured-pillar-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 10px;
+}
+.featured-pillar-title {
+  font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 16px;
+  color: var(--white); margin-bottom: 8px;
+}
+.featured-pillar-desc { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.6; }
+
+.featured-stats {
+  display: flex; gap: 32px; margin-bottom: 28px; flex-wrap: wrap;
+}
+.fstat-num {
+  font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 34px; color: var(--green);
+}
+.fstat-label { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+
+.feature-list {
+  list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;
+}
+.feature-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--text-muted);
+}
+.featured .feature-list li { color: rgba(255,255,255,0.7); }
+.feature-list li::before {
+  content: '✓'; color: var(--green); font-weight: 700;
+  flex-shrink: 0; margin-top: 1px; font-size: 13px;
+}
+
+.card-footer {
+  margin-top: auto; padding-top: 20px;
+  border-top: 1px solid var(--border-light);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.featured .card-footer { border-top-color: rgba(255,255,255,0.1); }
+
+.card-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 14px;
+  color: var(--green-dark); text-decoration: none; transition: gap 0.2s;
+}
+.card-cta:hover { gap: 10px; }
+.featured .card-cta { color: var(--green); }
+.card-note { font-size: 12px; color: var(--text-muted); }
+.featured .card-note { color: rgba(255,255,255,0.4); }
+
+/* ══════════════════════════════════════════
+   COMPARISON TABLE
+══════════════════════════════════════════ */
+.compare-section { background: var(--slate-light); }
+.compare-header { text-align: center; margin-bottom: 52px; }
+.compare-header h2 { margin-bottom: 16px; }
+
+.compare-table-wrap {
+  overflow-x: auto; border-radius: var(--radius); border: 1.5px solid var(--border);
+  box-shadow: var(--card-shadow);
+}
+.compare-table {
+  width: 100%; border-collapse: collapse; background: var(--white);
+  font-size: 14px;
+}
+.compare-table th {
+  font-family: 'Raleway', sans-serif; font-weight: 700;
+  padding: 18px 20px; text-align: left;
+  background: var(--navy); color: var(--white);
+  white-space: nowrap;
+}
+.compare-table th:first-child { border-radius: 0; }
+.compare-table th.featured-col {
+  background: linear-gradient(135deg, #1a3a56, #0f2234);
+  position: relative;
+}
+.compare-table th.featured-col::after {
+  content: 'NEW';
+  position: absolute; top: 8px; right: 10px;
+  background: var(--green); color: var(--navy);
+  font-size: 9px; font-weight: 800; letter-spacing: 0.08em;
+  padding: 2px 6px; border-radius: 3px;
+}
+.compare-table td {
+  padding: 16px 20px; border-bottom: 1px solid var(--border-light);
+  color: var(--text-muted); vertical-align: top;
+}
+.compare-table td:first-child {
+  font-weight: 600; color: var(--text); font-family: 'Raleway', sans-serif;
+}
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:hover td { background: var(--slate-light); }
+.compare-table td.featured-col { background: rgba(123,193,9,0.04); }
+.compare-table tr:hover td.featured-col { background: rgba(123,193,9,0.08); }
+
+.check { color: var(--green); font-weight: 700; font-size: 16px; }
+.dash { color: #ccc; }
+.partial { color: #f59e0b; font-size: 13px; }
+.highlight-cell { font-weight: 700; color: var(--navy); }
+
+/* ══════════════════════════════════════════
+   PPC+ DEEP DIVE
+══════════════════════════════════════════ */
+.ppcplus-section { background: var(--white); }
+.ppcplus-intro {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+  margin-bottom: 72px;
+}
+.ppcplus-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--green-xlight); color: var(--green-dark);
+  padding: 5px 12px; border-radius: 100px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 20px; border: 1px solid rgba(123,193,9,0.25);
+}
+.ppcplus-intro h2 { margin-bottom: 20px; }
+.ppcplus-intro p { font-size: 17px; margin-bottom: 16px; }
+
+.ppcplus-visual {
+  background: linear-gradient(135deg, #0f2234 0%, #1a3a56 100%);
+  border-radius: var(--radius); padding: 40px;
+  position: relative; overflow: hidden;
+}
+.ppcplus-visual::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 20%, rgba(123,193,9,0.15) 0%, transparent 60%);
+}
+.funnel-diagram {
+  position: relative; z-index: 1;
+}
+.funnel-step {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 12px;
+}
+.funnel-step:last-child { margin-bottom: 0; }
+.funnel-node {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+}
+.funnel-node.green { background: rgba(123,193,9,0.2); border-color: rgba(123,193,9,0.4); }
+.funnel-text-label {
+  font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 15px; color: var(--white);
+}
+.funnel-text-sub { font-size: 12px; color: rgba(255,255,255,0.5); }
+.funnel-arrow {
+  margin: 4px 0 4px 22px;
+  color: rgba(123,193,9,0.5); font-size: 18px; line-height: 1;
+}
+.funnel-split {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-left: 60px;
+}
+.funnel-split-item {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 12px 14px;
+}
+.funnel-split-item.green-border { border-color: rgba(123,193,9,0.35); }
+.funnel-split-label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.7); margin-bottom: 2px; }
+.funnel-split-desc { font-size: 11px; color: rgba(255,255,255,0.45); }
+
+/* 3 pillars */
+.pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.pillar-card {
+  background: var(--slate-light); border-radius: var(--radius); padding: 32px;
+  border: 1.5px solid var(--border); transition: all 0.2s;
+}
+.pillar-card:hover { border-color: var(--green); box-shadow: var(--card-shadow-hover); }
+.pillar-num {
+  font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 38px; color: var(--green);
+  line-height: 1; margin-bottom: 12px;
+}
+.pillar-card h4 { margin-bottom: 12px; font-size: 18px; }
+.pillar-card p { font-size: 14px; }
+
+/* ══════════════════════════════════════════
+   WHICH IS RIGHT FOR YOU
+══════════════════════════════════════════ */
+.quiz-section { background: var(--navy); }
+.quiz-section h2 { color: var(--white); text-align: center; margin-bottom: 14px; }
+.quiz-section > .container > p { text-align: center; color: rgba(255,255,255,0.6); font-size: 17px; margin-bottom: 52px; }
+
+.quiz-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.quiz-card {
+  background: rgba(255,255,255,0.05); border: 1.5px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius); padding: 32px;
+  cursor: pointer; transition: all 0.2s ease;
+}
+.quiz-card:hover, .quiz-card.selected {
+  background: rgba(123,193,9,0.1); border-color: var(--green);
+}
+.quiz-card-icon { font-size: 32px; margin-bottom: 16px; }
+.quiz-card h4 { color: var(--white); margin-bottom: 10px; font-size: 17px; }
+.quiz-card p { color: rgba(255,255,255,0.55); font-size: 14px; }
+.quiz-result {
+  display: none; margin-top: 48px;
+  background: rgba(255,255,255,0.07); border: 1.5px solid rgba(123,193,9,0.3);
+  border-radius: var(--radius); padding: 36px;
+}
+.quiz-result.visible { display: block; }
+.quiz-result-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 12px;
+}
+.quiz-result h3 { color: var(--white); margin-bottom: 12px; }
+.quiz-result p { color: rgba(255,255,255,0.65); }
+.quiz-result-products {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px;
+}
+.qrp-tag {
+  background: rgba(123,193,9,0.15); color: var(--green);
+  border: 1px solid rgba(123,193,9,0.35);
+  padding: 6px 14px; border-radius: 100px;
+  font-size: 13px; font-weight: 600;
+}
+.quiz-result-cta { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+/* ══════════════════════════════════════════
+   FAQ
+══════════════════════════════════════════ */
+.faq-section { background: var(--slate-light); }
+.faq-header { text-align: center; margin-bottom: 52px; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.faq-item {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+  transition: border-color 0.2s;
+}
+.faq-item.open { border-color: var(--green); }
+.faq-q {
+  padding: 22px 24px; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 15px;
+  color: var(--text); user-select: none;
+}
+.faq-q:hover { color: var(--green-dark); }
+.faq-chevron {
+  width: 24px; height: 24px; border-radius: 50%;
+  border: 1.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 12px; transition: all 0.25s;
+  color: var(--slate);
+}
+.faq-item.open .faq-chevron { background: var(--green); border-color: var(--green); color: var(--navy); transform: rotate(180deg); }
+.faq-a {
+  max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 24px;
+  font-size: 14px; color: var(--text-muted); line-height: 1.75;
+}
+.faq-item.open .faq-a { max-height: 300px; padding: 0 24px 22px; }
+
+/* ══════════════════════════════════════════
+   FINAL CTA
+══════════════════════════════════════════ */
+.cta-section {
+  background: linear-gradient(135deg, #0f2234 0%, #172F44 60%, #1a3a56 100%);
+  text-align: center; padding: 100px 0;
+  position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(123,193,9,0.12) 0%, transparent 60%);
+}
+.cta-section .container { position: relative; z-index: 1; }
+.cta-section h2 { color: var(--white); margin-bottom: 20px; }
+.cta-section p { color: rgba(255,255,255,0.65); font-size: 18px; max-width: 540px; margin: 0 auto 40px; }
+.cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.cta-trust {
+  margin-top: 36px; display: flex; gap: 28px; justify-content: center; flex-wrap: wrap;
+}
+.cta-trust-item {
+  display: flex; align-items: center; gap: 7px;
+  color: rgba(255,255,255,0.45); font-size: 13px; font-weight: 600;
+}
+
+/* ══════════════════════════════════════════
+   NAV BAR
+══════════════════════════════════════════ */
+.site-nav {
+  background: var(--navy); padding: 16px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav-logo {
+  font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 20px;
+  color: var(--white); letter-spacing: 0.05em;
+  display: flex; align-items: center; gap: 10px; text-decoration: none;
+}
+.nav-logo-mark {
+  background: var(--green); color: var(--navy);
+  padding: 3px 9px; border-radius: 4px; font-size: 14px;
+}
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a {
+  color: rgba(255,255,255,0.65); font-size: 14px; font-weight: 600;
+  text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--green); }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .container { padding: 0 24px; }
+  section { padding: 64px 0; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-visual { display: none; }
+  .products-grid { grid-template-columns: 1fr; }
+  .product-card.featured { grid-column: span 1; }
+  .featured-body { grid-template-columns: 1fr; gap: 20px; }
+  .ppcplus-intro { grid-template-columns: 1fr; gap: 40px; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .quiz-cards { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .compare-table th, .compare-table td { padding: 12px 14px; font-size: 13px; }
+}
+
+/* ══════════════════════════════════════════
+   UTILITY
+══════════════════════════════════════════ */
+.text-center { text-align: center; }
+.mt-8 { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mt-32 { margin-top: 32px; }
+
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="site-nav">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-mark">Y</span>
+    Ylopo
+  </a>
+  <div class="nav-links">
+    <a href="#" class="active">Lead Generation</a>
+    <a href="#">How It Works</a>
+    <a href="#">Pricing</a>
+    <a href="#">Case Studies</a>
+    <a href="#" style="color:rgba(255,255,255,0.9); background:var(--green); padding:8px 18px; border-radius:6px; color:var(--navy);">Book a Demo</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          Real Estate Lead Generation
+        </div>
+        <h1>More leads.<br><span>Better leads.</span><br>Proven results.</h1>
+        <p class="hero-desc">Ylopo powers some of the highest-producing real estate teams in the country with a suite of lead generation products — from AI-optimized Google campaigns to social ads that run while you sleep.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-primary btn-lg">Book a Free Demo</a>
+          <a href="#products" class="btn btn-outline btn-lg" style="color:rgba(255,255,255,0.8); border-color:rgba(255,255,255,0.2);">See All Products ↓</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num">10%</div>
+            <div class="hero-stat-label">lower CPL with PPC+</div>
+          </div>
+          <div style="width:1px; background:rgba(255,255,255,0.1);"></div>
+          <div>
+            <div class="hero-stat-num">5</div>
+            <div class="hero-stat-label">distinct lead channels</div>
+          </div>
+          <div style="width:1px; background:rgba(255,255,255,0.1);"></div>
+          <div>
+            <div class="hero-stat-num">1%</div>
+            <div class="hero-stat-label">top-team infrastructure, available to you</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card-preview featured">
+          <div class="hcp-icon green">⚡</div>
+          <div>
+            <div class="hcp-name">PPC+</div>
+            <div class="hcp-desc">AI-optimized Google leads + vetted live calls</div>
+          </div>
+          <span class="hcp-badge new">New</span>
+        </div>
+        <div class="hero-card-preview">
+          <div class="hcp-icon blue">🎯</div>
+          <div>
+            <div class="hcp-name">PPC Buy/Sell</div>
+            <div class="hcp-desc">High-intent Google search leads</div>
+          </div>
+          <span class="hcp-badge popular">Popular</span>
+        </div>
+        <div class="hero-card-preview">
+          <div class="hcp-icon orange">🏠</div>
+          <div>
+            <div class="hcp-name">PPC Seller</div>
+            <div class="hcp-desc">AVM-targeted homeowner leads</div>
+          </div>
+        </div>
+        <div class="hero-card-preview">
+          <div class="hcp-icon teal">📱</div>
+          <div>
+            <div class="hcp-name">Dynamic Social Ads</div>
+            <div class="hcp-desc">Facebook & Instagram lead generation</div>
+          </div>
+          <span class="hcp-badge popular">Lower CPL</span>
+        </div>
+        <div class="hero-card-preview">
+          <div class="hcp-icon purple">✅</div>
+          <div>
+            <div class="hcp-name">LSA</div>
+            <div class="hcp-desc">Google's verified agent badge leads</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-bottom-bar">
+    <div class="hero-bottom-inner">
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Exclusive leads — never shared
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        No lead lock-in — your data, always
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/></svg>
+        AI-powered nurture on every lead source
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Dedicated onboarding support
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PRODUCTS
+══════════════════════════════════════════ -->
+<section class="finder" id="products">
+  <div class="container">
+    <div class="finder-header">
+      <div class="section-label">Lead Sources</div>
+      <h2>Five ways to fill your pipeline</h2>
+      <p>Every lead source has a different cost, intent level, and use case. Filter by what matters most to find your fit.</p>
+    </div>
+
+    <div class="finder-filters">
+      <button class="filter-btn active" data-filter="all">All Products</button>
+      <button class="filter-btn" data-filter="google">Google / PPC</button>
+      <button class="filter-btn" data-filter="social">Social</button>
+      <button class="filter-btn" data-filter="buyers">Buyer Leads</button>
+      <button class="filter-btn" data-filter="sellers">Seller Leads</button>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- PPC+ — FEATURED -->
+      <div class="product-card featured" data-tags="all google buyers sellers">
+        <div class="card-top">
+          <div>
+            <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px;">
+              <span class="badge badge-new">New in 2026</span>
+              <span class="badge badge-limited">Limited Cohort</span>
+            </div>
+            <div class="product-name" style="font-size:28px; color:var(--white);">PPC+ &nbsp;<span style="color:var(--green);">Buy/Sell</span></div>
+            <div class="product-tagline">The complete winning-team infrastructure — bundled and optimized</div>
+          </div>
+          <div class="card-icon green-inv" style="width:60px; height:60px; font-size:28px; flex-shrink:0;">⚡</div>
+        </div>
+
+        <p class="product-desc">After analyzing our top 1% of performing teams, we discovered they all run the same infrastructure. PPC+ is that infrastructure — AI-optimized Google campaigns combined with vetted live call transfers, all at a lower cost per lead than standard PPC.</p>
+
+        <div class="featured-stats">
+          <div>
+            <div class="fstat-num">10%</div>
+            <div class="fstat-label">lower avg. cost per lead</div>
+          </div>
+          <div>
+            <div class="fstat-num">~7%</div>
+            <div class="fstat-label">of traffic becomes a live call</div>
+          </div>
+          <div>
+            <div class="fstat-num">30</div>
+            <div class="fstat-label">spots in the April cohort</div>
+          </div>
+        </div>
+
+        <div class="featured-body">
+          <div>
+            <div class="featured-pillar-label">Pillar 1</div>
+            <div class="featured-pillar-title">AI-Driven Lower CPL</div>
+            <div class="featured-pillar-desc">Advanced bidding, routing, and intent signals reduce your cost per lead by ~10% vs. standard PPC Buy/Sell. Same budget, more opportunities.</div>
+          </div>
+          <div>
+            <div class="featured-pillar-label">Pillar 2</div>
+            <div class="featured-pillar-title">Vetted Live Transfers</div>
+            <div class="featured-pillar-desc">Every Google ad shows a call-out number. Our call center vets every inbound caller and transfers only validated, high-motivation prospects to you.</div>
+          </div>
+          <div>
+            <div class="featured-pillar-label">Pillar 3</div>
+            <div class="featured-pillar-title">AI Voice — Bundled</div>
+            <div class="featured-pillar-desc">Voice AI is required and included. It handles inbound call routing, follow-up, and can work your full database — zero manual effort.</div>
+          </div>
+        </div>
+
+        <div class="card-footer" style="margin-top:28px;">
+          <a href="#" class="btn btn-primary">Join the April Cohort →</a>
+          <span class="card-note">Custom pricing based on market &amp; volume</span>
+        </div>
+      </div>
+
+      <!-- PPC Buy/Sell -->
+      <div class="product-card" data-tags="all google buyers sellers">
+        <div class="card-top">
+          <div class="card-icon green">🎯</div>
+          <span class="badge badge-popular">Most Popular</span>
+        </div>
+        <div class="product-name">PPC Buy/Sell</div>
+        <div class="product-tagline">Proven Google leads for buyers and sellers</div>
+        <p class="product-desc">High-intent search leads from Google — people actively looking to buy or sell right now. The most battle-tested lead source in real estate.</p>
+        <ul class="feature-list">
+          <li>Buyers and sellers in one campaign</li>
+          <li>AI behavioral texting on every lead</li>
+          <li>Real-time lead routing to your CRM</li>
+          <li>Dedicated campaign management</li>
+        </ul>
+        <div class="card-footer">
+          <a href="#" class="card-cta">Learn more →</a>
+          <span class="card-note">Custom quote after demo</span>
+        </div>
+      </div>
+
+      <!-- PPC Seller -->
+      <div class="product-card" data-tags="all google sellers">
+        <div class="card-top">
+          <div class="card-icon navy">🏠</div>
+          <span class="badge badge-restricted">Select Markets</span>
+        </div>
+        <div class="product-name">PPC Seller</div>
+        <div class="product-tagline">Target homeowners checking their home's value</div>
+        <p class="product-desc">AVM-targeted Google campaigns designed to capture seller leads from homeowners actively searching for their property's estimated value — a strong intent signal.</p>
+        <ul class="feature-list">
+          <li>AVM (Automated Valuation Model) targeting</li>
+          <li>High seller-intent traffic</li>
+          <li>AI-driven nurture sequences</li>
+          <li>Not available in all markets — ask your rep</li>
+        </ul>
+        <div class="card-footer">
+          <a href="#" class="card-cta">Check availability →</a>
+          <span class="card-note">Market-dependent availability</span>
+        </div>
+      </div>
+
+      <!-- Dynamic Social -->
+      <div class="product-card" data-tags="all social buyers sellers">
+        <div class="card-top">
+          <div class="card-icon green">📱</div>
+          <span class="badge" style="background:#e3f2fd; color:#1a6da8; border:1px solid #90caf9;">Lower Cost</span>
+        </div>
+        <div class="product-name">Dynamic Social Media Ads</div>
+        <div class="product-tagline">Facebook & Instagram leads at a lower cost per lead</div>
+        <p class="product-desc">Ylopo's dynamic social ads automatically populate with listing photos from your MLS, making ads hyperlocal and highly relevant. Typically one-third the cost of PPC leads.</p>
+        <ul class="feature-list">
+          <li>Auto-populated with live MLS listings</li>
+          <li>Facebook & Instagram delivery</li>
+          <li>Lower average CPL than Google</li>
+          <li>Ideal for high-volume teams</li>
+        </ul>
+        <div class="card-footer">
+          <a href="#" class="card-cta">Learn more →</a>
+          <span class="card-note">Custom quote after demo</span>
+        </div>
+      </div>
+
+      <!-- LSA -->
+      <div class="product-card" data-tags="all google buyers sellers">
+        <div class="card-top">
+          <div class="card-icon navy">✅</div>
+          <span class="badge" style="background:#e8f5e9; color:#2e7d32; border:1px solid #a5d6a7;">Google Verified</span>
+        </div>
+        <div class="product-name">LSA</div>
+        <div class="product-tagline">Local Service Ads — Google's verified agent leads</div>
+        <p class="product-desc">Google's Local Service Ads put a "Google Screened" or "Google Guaranteed" badge next to your name at the very top of search results. Pay per lead, not per click — and only for real contacts.</p>
+        <ul class="feature-list">
+          <li>Top-of-search placement with verification badge</li>
+          <li>Pay per lead, not per click</li>
+          <li>Google vets lead quality on their end</li>
+          <li>Strong trust signal for consumers</li>
+        </ul>
+        <div class="card-footer">
+          <a href="#" class="card-cta">Learn more →</a>
+          <span class="card-note">Custom quote after demo</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     COMPARISON TABLE
+══════════════════════════════════════════ -->
+<section class="compare-section">
+  <div class="container">
+    <div class="compare-header">
+      <div class="section-label">Side-by-Side</div>
+      <h2>Compare all lead sources</h2>
+      <p style="color:var(--text-muted); margin-top:12px; max-width:500px; margin-left:auto; margin-right:auto;">Every product is different. Here's how they stack up on the factors that matter most to growing teams.</p>
+    </div>
+
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="width:200px;">Feature</th>
+            <th class="featured-col">PPC+</th>
+            <th>PPC Buy/Sell</th>
+            <th>PPC Seller</th>
+            <th>Social Ads</th>
+            <th>LSA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lead channel</td>
+            <td class="featured-col highlight-cell">Google Search + Calls</td>
+            <td>Google Search</td>
+            <td>Google Search</td>
+            <td>Facebook / Instagram</td>
+            <td>Google Search</td>
+          </tr>
+          <tr>
+            <td>Buyer leads</td>
+            <td class="featured-col"><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="dash">—</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Seller leads</td>
+            <td class="featured-col"><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Live call transfers</td>
+            <td class="featured-col"><span class="check">✓ Vetted</span></td>
+            <td><span class="dash">—</span></td>
+            <td><span class="dash">—</span></td>
+            <td><span class="dash">—</span></td>
+            <td><span class="dash">—</span></td>
+          </tr>
+          <tr>
+            <td>Call center vetting</td>
+            <td class="featured-col"><span class="check">✓</span></td>
+            <td><span class="dash">—</span></td>
+            <td><span class="dash">—</span></td>
+            <td><span class="dash">—</span></td>
+            <td><span class="partial">Via Google</span></td>
+          </tr>
+          <tr>
+            <td>AI Voice included</td>
+            <td class="featured-col"><span class="check">✓ Bundled</span></td>
+            <td><span class="partial">Add-on</span></td>
+            <td><span class="partial">Add-on</span></td>
+            <td><span class="partial">Add-on</span></td>
+            <td><span class="partial">Add-on</span></td>
+          </tr>
+          <tr>
+            <td>Relative cost per lead</td>
+            <td class="featured-col highlight-cell">Lower than PPC Buy/Sell</td>
+            <td>Mid</td>
+            <td>Mid–High</td>
+            <td>Lowest (~1/3 PPC)</td>
+            <td>Pay per lead</td>
+          </tr>
+          <tr>
+            <td>Lead intent level</td>
+            <td class="featured-col highlight-cell">High + Highest (calls)</td>
+            <td>High</td>
+            <td>High</td>
+            <td>Medium</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <td>Availability</td>
+            <td class="featured-col"><span class="partial">30-spot cohort</span></td>
+            <td><span class="check">All markets</span></td>
+            <td><span class="partial">Select markets</span></td>
+            <td><span class="check">All markets</span></td>
+            <td><span class="check">All markets</span></td>
+          </tr>
+          <tr>
+            <td>Best for</td>
+            <td class="featured-col">High-spending teams wanting max efficiency</td>
+            <td>Teams scaling Google leads</td>
+            <td>Listing-focused agents</td>
+            <td>High-volume, budget-conscious</td>
+            <td>Reputation-driven agents</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PPC+ DEEP DIVE
+══════════════════════════════════════════ -->
+<section class="ppcplus-section">
+  <div class="container">
+    <div class="ppcplus-intro">
+      <div>
+        <div class="ppcplus-tag">⚡ Introducing PPC+</div>
+        <h2>Not a tweak. A step-change in how demand is captured.</h2>
+        <p>PPC+ is built from Ylopo's latest advancements in AI optimization, real conversion data, and everything learned from running Google campaigns at scale. It does three things no other lead source can do together.</p>
+        <p>We analyzed over 1,000 teams to find what separates the top 1%. They all run the same infrastructure. PPC+ is that infrastructure — now available in a limited April cohort.</p>
+        <div style="margin-top:28px;">
+          <a href="#" class="btn btn-primary" style="margin-right:12px;">Join the Waitlist</a>
+          <a href="#" class="btn btn-outline">See the Webinar →</a>
+        </div>
+      </div>
+
+      <!-- Funnel visual -->
+      <div class="ppcplus-visual">
+        <div class="funnel-diagram">
+          <div class="funnel-step">
+            <div class="funnel-node">🔍</div>
+            <div>
+              <div class="funnel-text-label">Google Search</div>
+              <div class="funnel-text-sub">Buyer or seller searches, sees your ad</div>
+            </div>
+          </div>
+          <div class="funnel-arrow">↓</div>
+          <div class="funnel-step">
+            <div class="funnel-node green">⚡</div>
+            <div>
+              <div class="funnel-text-label">AI-Optimized Ad</div>
+              <div class="funnel-text-sub">Bidding + routing delivers lower CPL</div>
+            </div>
+          </div>
+          <div class="funnel-arrow">↓</div>
+          <div style="margin-bottom:12px;">
+            <div style="font-size:12px; color:rgba(255,255,255,0.4); margin-left:60px; margin-bottom:8px; letter-spacing:0.05em;">PROSPECT CHOOSES THEIR PATH</div>
+            <div class="funnel-split">
+              <div class="funnel-split-item">
+                <div class="funnel-split-label">📝 Form Fill</div>
+                <div class="funnel-split-desc">Goes into AI nurture — texting, email, drip</div>
+              </div>
+              <div class="funnel-split-item green-border">
+                <div class="funnel-split-label" style="color:var(--green);">📞 Calls Directly</div>
+                <div class="funnel-split-desc">~7% of prospects. Call center vets &amp; transfers</div>
+              </div>
+            </div>
+          </div>
+          <div class="funnel-arrow">↓</div>
+          <div class="funnel-step">
+            <div class="funnel-node green">👤</div>
+            <div>
+              <div class="funnel-text-label">You — Ready to Close</div>
+              <div class="funnel-text-sub">Both paths deliver validated, motivated prospects</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 Pillars -->
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-num">01</div>
+        <h4>Lower Cost Per Lead — Proven</h4>
+        <p>AI-driven bidding, routing, and intent signals across the full campaign reduce your average CPL by ~10% vs. standard PPC Buy/Sell. Same budget, more total opportunities. This isn't a projection — it's live performance data.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">02</div>
+        <h4>Vetted Live Transfers — No Spam</h4>
+        <p>Every PPC+ ad includes a call-out phone number. When prospects call, our call center acts as a firewall — filtering spam, vendors, and tire-kickers so you only receive real, validated prospects ready to act now.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">03</div>
+        <h4>AI Voice — Bundled by Design</h4>
+        <p>Because PPC+ includes inbound calling, Ylopo Voice is required and bundled. This unlocks AI outbound calls on form registrations, full database coverage, and zero manual follow-up for your team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     QUIZ — WHICH IS RIGHT FOR YOU
+══════════════════════════════════════════ -->
+<section class="quiz-section">
+  <div class="container">
+    <h2>Which lead source is right for your team?</h2>
+    <p>Answer one question and we'll point you to the best fit.</p>
+
+    <div class="quiz-cards">
+      <div class="quiz-card" data-result="ppc-plus" onclick="selectQuiz(this)">
+        <div class="quiz-card-icon">🚀</div>
+        <h4>I want the best ROI and I'm already spending on Google</h4>
+        <p>I have an active team and I'm ready to maximize every dollar with the latest tech.</p>
+      </div>
+      <div class="quiz-card" data-result="ppc-basic" onclick="selectQuiz(this)">
+        <div class="quiz-card-icon">🎯</div>
+        <h4>I want high-intent Google leads and I'm just getting started</h4>
+        <p>I'm new to Ylopo or scaling up and want a proven Google lead source without add-ons.</p>
+      </div>
+      <div class="quiz-card" data-result="social" onclick="selectQuiz(this)">
+        <div class="quiz-card-icon">💰</div>
+        <h4>I need the lowest cost per lead and highest volume</h4>
+        <p>My team handles nurture well and I want to maximize lead flow at the best price.</p>
+      </div>
+      <div class="quiz-card" data-result="seller" onclick="selectQuiz(this)">
+        <div class="quiz-card-icon">🏠</div>
+        <h4>I'm focused on getting listings — sellers are my priority</h4>
+        <p>I want to target homeowners who are curious about their home's value.</p>
+      </div>
+      <div class="quiz-card" data-result="lsa" onclick="selectQuiz(this)">
+        <div class="quiz-card-icon">✅</div>
+        <h4>I want Google's badge next to my name and pay per lead only</h4>
+        <p>Trust signals matter to me. I want verified placement and to pay only for real contacts.</p>
+      </div>
+      <div class="quiz-card" data-result="mixed" onclick="selectQuiz(this)">
+        <div class="quiz-card-icon">📊</div>
+        <h4>I'm not sure — I want a mix or expert guidance</h4>
+        <p>I'd rather talk to a Ylopo rep who can look at my market and recommend the right stack.</p>
+      </div>
+    </div>
+
+    <div class="quiz-result" id="quiz-result"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="faq-header">
+      <div class="section-label">Common Questions</div>
+      <h2>Frequently asked</h2>
+    </div>
+
+    <div class="faq-grid">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What's the difference between PPC+ and regular PPC Buy/Sell?
+          <div class="faq-chevron">▾</div>
+        </div>
+        <div class="faq-a">PPC+ is the next evolution of PPC Buy/Sell. It adds AI-driven optimization that lowers your cost per lead by ~10%, includes vetted live call transfers from a call center that filters spam and vendors, and bundles Ylopo Voice so your entire pipeline is covered. PPC Buy/Sell is still a great standalone product — PPC+ just adds more infrastructure on top of it.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Are my leads exclusive? Can other agents in my market get the same leads?
+          <div class="faq-chevron">▾</div>
+        </div>
+        <div class="faq-a">Yes — your leads are exclusive to you. Ylopo does not resell or share leads across agents in the same market. Every lead generated from your campaigns belongs only to you.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          If I cancel, do I keep my leads and data?
+          <div class="faq-chevron">▾</div>
+        </div>
+        <div class="faq-a">Yes. Your leads are your data. If you ever decide to leave Ylopo, you take your leads with you. We don't hold data hostage — your contact list is yours from day one.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Why isn't PPC Seller available in all markets?
+          <div class="faq-chevron">▾</div>
+        </div>
+        <div class="faq-a">PPC Seller campaigns use AVM (Automated Valuation Model) targeting to find homeowners actively searching for their home's value. In some markets, search volume for these terms is too low to run an efficient campaign. Your Ylopo rep can check availability in your specific market during the demo.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What does "live transfer" mean in PPC+, and how does the vetting work?
+          <div class="faq-chevron">▾</div>
+        </div>
+        <div class="faq-a">When someone calls the phone number shown in a PPC+ ad, that call goes to Ylopo's call center first. Our agents confirm the caller is a real buyer or seller (not a spam bot, vendor, or wrong number), and then connect the call directly to you in real time. You only receive validated prospects — roughly 7% of total ad traffic — who wanted to speak with someone immediately.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          How does Social Ads pricing compare to Google PPC?
+          <div class="faq-chevron">▾</div>
+        </div>
+        <div class="faq-a">Dynamic Social Media Ads typically run at roughly one-third the cost per lead compared to Google PPC Buy/Sell. The trade-off is intent level — Google captures people actively searching to buy or sell right now, while social ads reach people who are browsing and may be in an earlier stage of their journey. Many high-producing teams run both in parallel to balance cost and intent.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What is LSA and do I need to qualify for it?
+          <div class="faq-chevron">▾</div>
+        </div>
+        <div class="faq-a">Local Service Ads are a Google product where real estate agents can earn a "Google Screened" verification badge that appears at the very top of search results — above regular ads. Unlike standard PPC, you pay per lead rather than per click, and Google's own system handles a level of lead quality filtering. There is a Google background check and licensing verification process required, which Ylopo can help you navigate.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Does spending more on ads get me more leads?
+          <div class="faq-chevron">▾</div>
+        </div>
+        <div class="faq-a">Generally, yes — but there's a market ceiling. Ad spend translates directly to lead volume up to the point where you've captured most of the available search traffic in your market. Bigger teams with more agents need more leads, which means more ad spend. Your Ylopo rep will look at your market size, competition, and team capacity to recommend a budget that makes sense — not one that's over- or under-buying for your situation.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FINAL CTA
+══════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to find the right lead source for your team?</h2>
+    <p>Book a 30-minute demo and a Ylopo strategist will look at your market, your team size, and your budget — and recommend exactly what makes sense for you.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn btn-primary btn-lg">Book a Free Demo</a>
+      <a href="#" class="btn btn-outline btn-lg" style="color:rgba(255,255,255,0.8); border-color:rgba(255,255,255,0.25);">Join the PPC+ Waitlist</a>
+    </div>
+    <div class="cta-trust">
+      <div class="cta-trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        30-minute call, no pressure
+      </div>
+      <div class="cta-trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Exclusive leads, always
+      </div>
+      <div class="cta-trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/></svg>
+        Custom pricing, not one-size-fits-all
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// ── FILTER BUTTONS ──
+const filterBtns = document.querySelectorAll('.filter-btn');
+const productCards = document.querySelectorAll('.product-card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    productCards.forEach(card => {
+      const tags = card.dataset.tags || '';
+      if (filter === 'all' || tags.includes(filter)) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+
+// ── FAQ ACCORDION ──
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ── QUIZ ──
+const quizResults = {
+  'ppc-plus': {
+    label: 'Recommended for you',
+    title: 'PPC+ — The Winning Cohort Bundle',
+    desc: 'You\'re already invested in Google leads and you\'re ready for the infrastructure the top 1% of teams are running. PPC+ gives you lower CPL, vetted live transfers, and bundled AI Voice — all in one. Ask about the April cohort.',
+    products: ['PPC+'],
+    cta: 'Join the April Cohort',
+    ctaLink: '#'
+  },
+  'ppc-basic': {
+    label: 'Recommended for you',
+    title: 'PPC Buy/Sell — The Proven Starting Point',
+    desc: 'PPC Buy/Sell is Ylopo\'s most popular product for a reason. High-intent Google search leads, AI behavioral texting on every contact, and real-time routing to your CRM. A proven foundation to build on.',
+    products: ['PPC Buy/Sell'],
+    cta: 'Book a Demo',
+    ctaLink: '#'
+  },
+  'social': {
+    label: 'Recommended for you',
+    title: 'Dynamic Social Media Ads — Maximum Volume at Lowest Cost',
+    desc: 'If your team handles nurture well and you want to maximize lead flow, Social Ads are your best bet — typically one-third the cost of Google PPC. Many high-volume teams pair Social with PPC Buy/Sell for a full-funnel approach.',
+    products: ['Dynamic Social Media Ads', 'PPC Buy/Sell (to pair with)'],
+    cta: 'Book a Demo',
+    ctaLink: '#'
+  },
+  'seller': {
+    label: 'Recommended for you',
+    title: 'PPC Seller — AVM Targeting for Listing-Focused Agents',
+    desc: 'PPC Seller targets homeowners actively searching for their home\'s estimated value — a strong seller intent signal. Note: not available in all markets. Your Ylopo rep can check availability for your area during the demo.',
+    products: ['PPC Seller'],
+    cta: 'Check Market Availability',
+    ctaLink: '#'
+  },
+  'lsa': {
+    label: 'Recommended for you',
+    title: 'Local Service Ads — Google\'s Verified Agent Leads',
+    desc: 'LSA puts a Google Screened badge next to your name at the top of search results — and you only pay per lead, not per click. Ideal for agents where trust and reputation are the primary conversion driver.',
+    products: ['LSA (Local Service Ads)'],
+    cta: 'Book a Demo',
+    ctaLink: '#'
+  },
+  'mixed': {
+    label: 'Our recommendation',
+    title: 'Talk to a Ylopo Strategist — Get a Custom Stack',
+    desc: 'The highest-producing teams on Ylopo usually run 2–3 lead sources together. A Ylopo rep can look at your specific market, team size, and budget and put together the exact combination that makes sense — no guessing.',
+    products: ['PPC Buy/Sell', 'Dynamic Social Media Ads', 'PPC+ (if eligible)'],
+    cta: 'Book a Strategy Call',
+    ctaLink: '#'
+  }
+};
+
+function selectQuiz(el) {
+  document.querySelectorAll('.quiz-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+
+  const result = quizResults[el.dataset.result];
+  const resultEl = document.getElementById('quiz-result');
+  resultEl.innerHTML = `
+    <div class="quiz-result-label">${result.label}</div>
+    <h3>${result.title}</h3>
+    <p>${result.desc}</p>
+    <div class="quiz-result-products">
+      ${result.products.map(p => `<span class="qrp-tag">${p}</span>`).join('')}
+    </div>
+    <div class="quiz-result-cta">
+      <a href="${result.ctaLink}" class="btn btn-primary">${result.cta} →</a>
+      <a href="#products" class="btn btn-outline" style="border-color:rgba(255,255,255,0.2); color:rgba(255,255,255,0.7);">Compare all products</a>
+    </div>
+  `;
+  resultEl.classList.add('visible');
+  resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+
+</body>
+</html>
