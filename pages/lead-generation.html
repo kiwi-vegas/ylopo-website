@@ -534,6 +534,83 @@ section { padding: 88px 0; }
 
 
 /* ══════════════════════════════════════════
+   TESTIMONIAL VIDEOS
+══════════════════════════════════════════ */
+.videos-section { background: var(--navy); }
+.videos-header { text-align: center; margin-bottom: 48px; }
+.videos-header h2 { color: var(--white); margin-bottom: 12px; }
+.videos-header p { color: rgba(255,255,255,0.6); font-size: 17px; }
+
+.video-carousel-outer {
+  position: relative; padding: 0 52px;
+}
+.carousel-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 10; width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.18);
+  color: var(--white); font-size: 22px; cursor: pointer; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s ease; padding: 0;
+}
+.carousel-btn:hover { background: rgba(123,193,9,0.25); border-color: var(--green); color: var(--green); }
+.carousel-prev { left: 0; }
+.carousel-next { right: 0; }
+
+.video-carousel {
+  display: flex; gap: 14px; overflow-x: auto; scroll-behavior: smooth;
+  scroll-snap-type: x mandatory; padding: 8px 2px 16px;
+  -ms-overflow-style: none; scrollbar-width: none;
+}
+.video-carousel::-webkit-scrollbar { display: none; }
+
+.video-card {
+  flex-shrink: 0; scroll-snap-align: start;
+  border-radius: 14px; overflow: hidden; cursor: pointer;
+  position: relative; background: #000;
+  /* Shorts = 9:16, use a fixed width and let aspect-ratio drive height */
+  width: 210px;
+}
+.video-card.landscape { width: 320px; }
+
+.video-thumb-wrap {
+  aspect-ratio: 9 / 16; position: relative; overflow: hidden;
+}
+.video-card.landscape .video-thumb-wrap { aspect-ratio: 16 / 9; }
+
+.video-thumb {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.35s ease;
+}
+.video-card:hover .video-thumb { transform: scale(1.04); }
+
+.video-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(23,47,68,0.75) 0%, transparent 50%);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.video-card:hover .video-overlay { background: linear-gradient(to top, rgba(23,47,68,0.6) 0%, rgba(0,0,0,0.15) 50%); }
+
+.video-play-icon {
+  width: 54px; height: 54px; border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.video-play-icon svg { margin-left: 4px; }
+.video-card:hover .video-play-icon { transform: scale(1.12); background: var(--green); }
+.video-card:hover .video-play-icon svg path { fill: var(--navy); }
+
+.video-iframe-wrap {
+  width: 100%; height: 100%; position: relative;
+}
+.video-iframe-wrap iframe {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  border: none; display: block;
+}
+
+/* ══════════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════════ */
 @media (max-width: 900px) {
@@ -549,6 +626,10 @@ section { padding: 88px 0; }
   .quiz-cards { grid-template-columns: 1fr; }
   .faq-grid { grid-template-columns: 1fr; }
   .compare-table th, .compare-table td { padding: 12px 14px; font-size: 13px; }
+  .video-carousel-outer { padding: 0 36px; }
+  .video-card { width: 160px; }
+  .video-card.landscape { width: 260px; }
+  .carousel-btn { width: 34px; height: 34px; font-size: 18px; }
 }
 
 /* ══════════════════════════════════════════
@@ -1021,6 +1102,101 @@ section { padding: 88px 0; }
 </section>
 
 <!-- ══════════════════════════════════════════
+     TESTIMONIAL VIDEOS
+══════════════════════════════════════════ -->
+<section class="videos-section">
+  <div class="container">
+    <div class="videos-header">
+      <div class="section-label" style="justify-content:center; color:var(--green);">Client Stories</div>
+      <h2>Hear it from agents using Ylopo</h2>
+      <p>Real teams. Real results. In their own words.</p>
+    </div>
+
+    <div class="video-carousel-outer">
+      <button class="carousel-btn carousel-prev" onclick="scrollCarousel(-1)" aria-label="Previous">&#8249;</button>
+
+      <div class="video-carousel" id="videoCarousel">
+
+        <!-- Video 1 — regular YouTube (landscape) -->
+        <div class="video-card landscape" onclick="playVideo(this, 'EI1Ct8SZiVY')">
+          <div class="video-thumb-wrap">
+            <img class="video-thumb" src="https://img.youtube.com/vi/EI1Ct8SZiVY/hqdefault.jpg" alt="Ylopo client testimonial" loading="lazy">
+            <div class="video-overlay">
+              <div class="video-play-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 3l14 9-14 9V3z" fill="#172F44"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 2 — Short -->
+        <div class="video-card" onclick="playVideo(this, 'byBP3Yp6zCk')">
+          <div class="video-thumb-wrap">
+            <img class="video-thumb" src="https://img.youtube.com/vi/byBP3Yp6zCk/hqdefault.jpg" alt="Ylopo client testimonial" loading="lazy">
+            <div class="video-overlay">
+              <div class="video-play-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 3l14 9-14 9V3z" fill="#172F44"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 3 — Short -->
+        <div class="video-card" onclick="playVideo(this, 'x-3XrIViVzc')">
+          <div class="video-thumb-wrap">
+            <img class="video-thumb" src="https://img.youtube.com/vi/x-3XrIViVzc/hqdefault.jpg" alt="Ylopo client testimonial" loading="lazy">
+            <div class="video-overlay">
+              <div class="video-play-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 3l14 9-14 9V3z" fill="#172F44"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 4 — Short -->
+        <div class="video-card" onclick="playVideo(this, 'TuEQ0S-wdCk')">
+          <div class="video-thumb-wrap">
+            <img class="video-thumb" src="https://img.youtube.com/vi/TuEQ0S-wdCk/hqdefault.jpg" alt="Ylopo client testimonial" loading="lazy">
+            <div class="video-overlay">
+              <div class="video-play-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 3l14 9-14 9V3z" fill="#172F44"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 5 — Short -->
+        <div class="video-card" onclick="playVideo(this, 'bj8-wj9V7fI')">
+          <div class="video-thumb-wrap">
+            <img class="video-thumb" src="https://img.youtube.com/vi/bj8-wj9V7fI/hqdefault.jpg" alt="Ylopo client testimonial" loading="lazy">
+            <div class="video-overlay">
+              <div class="video-play-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 3l14 9-14 9V3z" fill="#172F44"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 6 — Short -->
+        <div class="video-card" onclick="playVideo(this, '7hilEb9Yhc4')">
+          <div class="video-thumb-wrap">
+            <img class="video-thumb" src="https://img.youtube.com/vi/7hilEb9Yhc4/hqdefault.jpg" alt="Ylopo client testimonial" loading="lazy">
+            <div class="video-overlay">
+              <div class="video-play-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 3l14 9-14 9V3z" fill="#172F44"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="carousel-btn carousel-next" onclick="scrollCarousel(1)" aria-label="Next">&#8250;</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
      QUIZ — WHICH IS RIGHT FOR YOU
 ══════════════════════════════════════════ -->
 <section class="quiz-section">
@@ -1200,6 +1376,20 @@ function toggleFaq(el) {
   const wasOpen = item.classList.contains('open');
   document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
   if (!wasOpen) item.classList.add('open');
+}
+
+// ── VIDEO CAROUSEL ──
+function playVideo(card, videoId) {
+  const thumbWrap = card.querySelector('.video-thumb-wrap');
+  thumbWrap.innerHTML = `<div class="video-iframe-wrap"><iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe></div>`;
+  card.style.cursor = 'default';
+  card.onclick = null;
+}
+
+function scrollCarousel(dir) {
+  const carousel = document.getElementById('videoCarousel');
+  const cardWidth = carousel.querySelector('.video-card').offsetWidth + 14;
+  carousel.scrollBy({ left: dir * cardWidth * 2, behavior: 'smooth' });
 }
 
 // ── QUIZ ──
