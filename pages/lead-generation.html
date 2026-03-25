@@ -532,31 +532,6 @@ section { padding: 88px 0; }
   color: rgba(255,255,255,0.45); font-size: 13px; font-weight: 600;
 }
 
-/* ══════════════════════════════════════════
-   NAV BAR
-══════════════════════════════════════════ */
-.site-nav {
-  background: var(--navy); padding: 16px 40px;
-  display: flex; align-items: center; justify-content: space-between;
-  position: sticky; top: 0; z-index: 100;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-.nav-logo {
-  font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 20px;
-  color: var(--white); letter-spacing: 0.05em;
-  display: flex; align-items: center; gap: 10px; text-decoration: none;
-}
-.nav-logo-mark {
-  background: var(--green); color: var(--navy);
-  padding: 3px 9px; border-radius: 4px; font-size: 14px;
-}
-.nav-links { display: flex; align-items: center; gap: 28px; }
-.nav-links a {
-  color: rgba(255,255,255,0.65); font-size: 14px; font-weight: 600;
-  text-decoration: none; transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--white); }
-.nav-links a.active { color: var(--green); }
 
 /* ══════════════════════════════════════════
    RESPONSIVE
@@ -590,19 +565,6 @@ section { padding: 88px 0; }
 <body>
 
 <!-- ── NAV ── -->
-<nav class="site-nav">
-  <a href="#" class="nav-logo">
-    <span class="nav-logo-mark">Y</span>
-    Ylopo
-  </a>
-  <div class="nav-links">
-    <a href="#" class="active">Lead Generation</a>
-    <a href="#">How It Works</a>
-    <a href="#">Pricing</a>
-    <a href="#">Case Studies</a>
-    <a href="#" style="color:rgba(255,255,255,0.9); background:var(--green); padding:8px 18px; border-radius:6px; color:var(--navy);">Book a Demo</a>
-  </div>
-</nav>
 
 <!-- ══════════════════════════════════════════
      HERO
@@ -618,7 +580,7 @@ section { padding: 88px 0; }
         <h1>More leads.<br><span>Better follow-up.</span><br>Proven results.</h1>
         <p class="hero-desc">Ylopo powers high-producing real estate teams with a full suite of lead generation products — and the AI follow-up that actually converts them.</p>
         <div class="hero-actions">
-          <a href="#" class="btn btn-primary btn-lg">Book a Free Demo</a>
+          <a href="https://demo.ylopo.com/free-demo-step-1" class="btn btn-primary btn-lg">Book a Free Demo</a>
           <a href="#products" class="btn btn-outline btn-lg" style="color:rgba(255,255,255,0.8); border-color:rgba(255,255,255,0.2);">See All Products ↓</a>
         </div>
         <div class="hero-stats">
@@ -774,7 +736,7 @@ section { padding: 88px 0; }
         </div>
 
         <div class="card-footer" style="margin-top:28px;">
-          <a href="#" class="btn btn-primary">Book a Demo →</a>
+          <a href="https://demo.ylopo.com/free-demo-step-1" class="btn btn-primary">Book a Demo →</a>
           <span class="card-note">Custom pricing based on market &amp; volume</span>
         </div>
       </div>
@@ -988,8 +950,8 @@ section { padding: 88px 0; }
         <h2>Not a tweak. A step-change in how demand is captured.</h2>
         <p>We analyzed 1,000+ teams to find what the top 1% all have in common. It's the same infrastructure, every time. PPC+ is that bundle — AI optimization, vetted live calls, and Voice AI, all working together.</p>
         <div style="margin-top:28px;">
-          <a href="#" class="btn btn-primary" style="margin-right:12px;">Book a Demo</a>
-          <a href="#" class="btn btn-outline">Watch the Webinar →</a>
+          <a href="https://demo.ylopo.com/free-demo-step-1" class="btn btn-primary" style="margin-right:12px;">Book a Demo</a>
+          <a href="https://youtu.be/7GGRqLYIHA8?si=CvztkTS39jre328R" target="_blank" class="btn btn-outline">Watch the Webinar →</a>
         </div>
       </div>
 
@@ -1191,7 +1153,7 @@ section { padding: 88px 0; }
     <h2>Ready to find the right lead source for your team?</h2>
     <p>Book a 30-minute demo. A Ylopo strategist will review your market, team size, and budget — and tell you exactly what makes sense.</p>
     <div class="cta-actions">
-      <a href="#" class="btn btn-primary btn-lg">Book a Free Demo</a>
+      <a href="https://demo.ylopo.com/free-demo-step-1" class="btn btn-primary btn-lg">Book a Free Demo</a>
       <a href="#products" class="btn btn-outline btn-lg" style="color:rgba(255,255,255,0.8); border-color:rgba(255,255,255,0.25);">Compare Products ↑</a>
     </div>
     <div class="cta-trust">
@@ -1248,7 +1210,7 @@ const quizResults = {
     desc: 'You\'re already spending on Google and ready to maximize every dollar. PPC+ gives you lower CPL, vetted live transfers, and bundled AI Voice — the same stack the top 1% of teams run.',
     products: ['PPC+'],
     cta: 'Book a Demo',
-    ctaLink: '#'
+    ctaLink: 'https://demo.ylopo.com/free-demo-step-1'
   },
   'ppc-basic': {
     label: 'Recommended for you',
@@ -1256,7 +1218,7 @@ const quizResults = {
     desc: 'PPC Buy/Sell is Ylopo\'s most popular product for a reason. High-intent Google search leads, AI behavioral texting on every contact, and real-time routing to your CRM. A proven foundation to build on.',
     products: ['PPC Buy/Sell'],
     cta: 'Book a Demo',
-    ctaLink: '#'
+    ctaLink: 'https://demo.ylopo.com/free-demo-step-1'
   },
   'social': {
     label: 'Recommended for you',
@@ -1264,7 +1226,7 @@ const quizResults = {
     desc: 'If your team handles nurture well and you want to maximize lead flow, Social Ads are your best bet — typically one-third the cost of Google PPC. Many high-volume teams pair Social with PPC Buy/Sell for a full-funnel approach.',
     products: ['Dynamic Social Media Ads', 'PPC Buy/Sell (to pair with)'],
     cta: 'Book a Demo',
-    ctaLink: '#'
+    ctaLink: 'https://demo.ylopo.com/free-demo-step-1'
   },
   'seller': {
     label: 'Recommended for you',
@@ -1272,7 +1234,7 @@ const quizResults = {
     desc: 'PPC Seller targets homeowners actively searching for their home\'s estimated value — a strong seller intent signal. Note: not available in all markets. Your Ylopo rep can check availability for your area during the demo.',
     products: ['PPC Seller'],
     cta: 'Check Market Availability',
-    ctaLink: '#'
+    ctaLink: 'https://demo.ylopo.com/free-demo-step-1'
   },
   'lsa': {
     label: 'Recommended for you',
@@ -1280,7 +1242,7 @@ const quizResults = {
     desc: 'LSA puts a Google Screened badge next to your name at the top of search results — and you only pay per lead, not per click. Ideal for agents where trust and reputation are the primary conversion driver.',
     products: ['LSA (Local Service Ads)'],
     cta: 'Book a Demo',
-    ctaLink: '#'
+    ctaLink: 'https://demo.ylopo.com/free-demo-step-1'
   },
   'mixed': {
     label: 'Our recommendation',
@@ -1288,7 +1250,7 @@ const quizResults = {
     desc: 'The highest-producing teams on Ylopo usually run 2–3 lead sources together. A Ylopo rep can look at your specific market, team size, and budget and put together the exact combination that makes sense — no guessing.',
     products: ['PPC Buy/Sell', 'Dynamic Social Media Ads', 'PPC+ (if eligible)'],
     cta: 'Book a Strategy Call',
-    ctaLink: '#'
+    ctaLink: 'https://demo.ylopo.com/free-demo-step-1'
   }
 };
 
