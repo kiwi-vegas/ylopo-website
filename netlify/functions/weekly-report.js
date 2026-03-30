@@ -4,14 +4,19 @@
 
 const { getStore } = require('@netlify/blobs');
 
+const SITE_ID = 'f78ce215-68a7-4e22-9158-4fed39da0d03';
+function blobStore(name) {
+  return getStore({ name, siteID: SITE_ID, token: process.env.NETLIFY_TOKEN });
+}
+
 // Sprint start date — real work begins March 23, 2026
 const SPRINT_START = new Date('2026-03-23T00:00:00-08:00');
 
 // Phase task counts
 const PHASES = [
-  { label: 'Phase 1 — Days 1–30',  prefix: '1', total: 12, color: '#7BC109' },
-  { label: 'Phase 2 — Days 31–60', prefix: '2', total: 10, color: '#1a6da8' },
-  { label: 'Phase 3 — Days 61–90', prefix: '3', total: 8,  color: '#172F44' },
+  { label: 'Phase 1 — Days 1–30',  prefix: '1', total: 26, color: '#7BC109' },
+  { label: 'Phase 2 — Days 31–60', prefix: '2', total: 17, color: '#1a6da8' },
+  { label: 'Phase 3 — Days 61–90', prefix: '3', total: 16, color: '#172F44' },
 ];
 
 // Jojo (jerasquin@ylopo.com) can be added once ylopo.com is verified in Resend
@@ -20,7 +25,7 @@ const RECIPIENTS = ['kiwi@ylopo.com'];
 // ── SEO data helper ────────────────────────────────────────────────────────
 async function getSEOData() {
   try {
-    const store = getStore('seo-data');
+    const store = blobStore('seo-data');
     const raw   = await store.get('weekly');
     if (!raw) return null;
     const data = JSON.parse(raw);
@@ -45,7 +50,7 @@ exports.handler = async () => {
   // ── Read state from Blobs ──────────────────────────────────────────────────
   let state = {};
   try {
-    const store = getStore('plan-state');
+    const store = blobStore('plan-state');
     const raw = await store.get('current');
     if (raw) state = JSON.parse(raw);
   } catch (err) {

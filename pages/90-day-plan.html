@@ -28,6 +28,7 @@
     --jom-color: #1a6da8;
     --paul-color: #d97706;
     --mike-color: #0e7490;
+    --aaron-color: #c2410c;
     /* Pace color — updated by JS on load */
     --pace-color: #1a6da8;
     --pace-bg: rgba(26,109,168,0.10);
@@ -81,25 +82,23 @@
     max-width: 680px; line-height: 1.6;
   }
 
-  /* ── OVERALL PROGRESS ── */
+  /* ── OVERALL PROGRESS + TIMELINE ── */
   .overall-bar {
-    background: var(--white); border-bottom: 1px solid var(--border); padding: 16px 48px;
+    background: var(--white); border-bottom: 1px solid var(--border); padding: 18px 48px 20px;
   }
   .overall-inner {
     max-width: 1200px; margin: 0 auto;
-    display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .overall-top-row {
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
   }
   .overall-label {
     font-size: 12px; font-weight: 700; text-transform: uppercase;
     letter-spacing: 0.1em; color: var(--slate); white-space: nowrap;
   }
-  .progress-track {
-    flex: 1; min-width: 200px; height: 8px;
-    background: var(--slate-light); border-radius: 4px; overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%; background: var(--green);
-    border-radius: 4px; transition: width 0.4s ease;
+  .overall-right {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
   }
   .overall-pct {
     font-family: 'Raleway', sans-serif; font-weight: 800;
@@ -108,6 +107,60 @@
   .overall-count {
     font-size: 13px; color: var(--text-muted); font-weight: 600; white-space: nowrap;
   }
+
+  /* ── SPRINT TIMELINE ── */
+  .timeline-wrap { position: relative; padding-top: 4px; }
+  .timeline-phases {
+    display: flex; margin-bottom: 5px;
+  }
+  .timeline-phase-label {
+    flex: 1; font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.09em; color: var(--slate); text-align: center;
+    padding: 0 4px;
+  }
+  .timeline-track {
+    position: relative; height: 10px;
+    background: var(--slate-light); border-radius: 5px;
+  }
+  .timeline-elapsed {
+    position: absolute; top: 0; left: 0; bottom: 0;
+    background: var(--pace-color); opacity: 0.18;
+    border-radius: 5px; transition: width 0.5s ease;
+  }
+  .timeline-tasks {
+    position: absolute; top: 0; left: 0; bottom: 0;
+    background: var(--green); border-radius: 5px;
+    z-index: 2; transition: width 0.4s ease;
+  }
+  .timeline-divider {
+    position: absolute; top: -6px; bottom: -6px; width: 2px;
+    background: var(--border); transform: translateX(-50%); z-index: 3;
+  }
+  .timeline-today-pin {
+    position: absolute; top: -22px;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; z-index: 10;
+    transition: left 0.5s ease;
+  }
+  .today-chip {
+    background: var(--pace-color); color: #fff;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
+    padding: 2px 7px; border-radius: 10px; white-space: nowrap;
+    margin-bottom: 3px; transition: background 0.6s ease;
+  }
+  .today-needle {
+    width: 2px; height: 30px; background: var(--pace-color);
+    transition: background 0.6s ease;
+  }
+  .timeline-date-labels {
+    position: relative; height: 20px; margin-top: 5px;
+  }
+  .timeline-date-label {
+    position: absolute; font-size: 11px; font-weight: 600;
+    color: var(--text-muted); transform: translateX(-50%); white-space: nowrap;
+  }
+  .timeline-date-label.first { transform: none; }
+  .timeline-date-label.last  { transform: translateX(-100%); }
 
   /* ── ASSIGNEE LEGEND ── */
   .legend-bar {
@@ -131,6 +184,7 @@
   .chip-jom   { background: #e8f4fd;          color: var(--jom-color);   border: 1px solid #b8d9f5; }
   .chip-paul  { background: #fff8e1;          color: var(--paul-color); border: 1px solid #fde68a; }
   .chip-mike  { background: #e0f7fa;          color: var(--mike-color); border: 1px solid #a5d8e0; }
+  .chip-aaron { background: #fef0eb;          color: var(--aaron-color); border: 1px solid #f8c4a8; }
   .chip-dot { width: 8px; height: 8px; border-radius: 50%; }
   .dot-kiwi { background: var(--kiwi-color); }
   .dot-jojo { background: var(--green); }
@@ -138,6 +192,7 @@
   .dot-jom   { background: var(--jom-color); }
   .dot-paul { background: var(--paul-color); }
   .dot-mike { background: var(--mike-color); }
+  .dot-aaron { background: var(--aaron-color); }
 
   /* ── MAIN ── */
   .main { max-width: 1200px; margin: 0 auto; padding: 40px 48px 80px; }
@@ -251,6 +306,7 @@
   .assignee-select.val-jom   { background-color: #e8f4fd;          color: var(--jom-color);   border-color: #b8d9f5; }
   .assignee-select.val-paul  { background-color: #fff8e1;          color: var(--paul-color); border-color: #fde68a; }
   .assignee-select.val-mike  { background-color: #e0f7fa;          color: var(--mike-color); border-color: #a5d8e0; }
+  .assignee-select.val-aaron { background-color: #fef0eb;          color: var(--aaron-color); border-color: #f8c4a8; }
   .assignee-select.val-unset { background-color: var(--white);     color: var(--slate); }
 
   /* ── CONTEXT CARD ── */
@@ -388,6 +444,161 @@
     .seo-charts-row { grid-template-columns: 1fr; }
     .seo-chart-box:first-child { border-right: none; border-bottom: 1px solid var(--border); padding: 0 0 16px; }
   }
+
+  /* ── SAVE BAR ── */
+  .save-bar {
+    position: fixed; bottom: 28px; right: 28px;
+    display: flex; align-items: center; gap: 10px;
+    z-index: 1000;
+    transform: translateY(100px); opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.25s ease;
+    pointer-events: none;
+  }
+  .save-bar.visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .save-btn {
+    background: var(--green); color: var(--navy);
+    font-family: 'Raleway', sans-serif; font-weight: 800;
+    font-size: 14px; letter-spacing: 0.04em;
+    padding: 13px 26px; border-radius: 8px; border: none;
+    cursor: pointer; box-shadow: 0 4px 22px rgba(123,193,9,0.55);
+    transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
+    display: flex; align-items: center; gap: 8px; white-space: nowrap;
+  }
+  .save-btn:hover { background: var(--green-dark); box-shadow: 0 6px 28px rgba(123,193,9,0.65); transform: translateY(-1px); }
+  .save-btn:active { transform: translateY(0); }
+  .save-btn:disabled { opacity: 0.65; cursor: default; transform: none; }
+  .save-count {
+    background: var(--navy); color: var(--white);
+    font-size: 11px; font-weight: 800;
+    padding: 2px 7px; border-radius: 20px; min-width: 20px;
+    text-align: center; line-height: 1.4;
+  }
+
+  /* ── SAVE TOAST ── */
+  .save-toast {
+    position: fixed; bottom: 28px; left: 50%;
+    transform: translateX(-50%) translateY(90px);
+    background: var(--navy); color: var(--white);
+    font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 700;
+    padding: 13px 24px; border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(23,47,68,0.3);
+    z-index: 1001; opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.25s ease;
+    display: flex; align-items: center; gap: 10px; white-space: nowrap; pointer-events: none;
+  }
+  .save-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+  .save-toast.toast-error { background: #c53030; }
+  .save-toast-icon { font-size: 16px; }
+
+  /* ── MULTI-ASSIGN WIDGET ── */
+  .multi-assign { position: relative; display: inline-block; }
+  .assign-toggle-btn {
+    display: flex; align-items: center; gap: 6px; cursor: pointer;
+    background: var(--white); border: 1.5px solid var(--border); border-radius: 6px;
+    padding: 5px 10px; font-family: 'Nunito', sans-serif;
+    font-size: 12px; min-width: 115px; text-align: left;
+    transition: border-color 0.15s; white-space: nowrap; width: 100%;
+  }
+  .assign-toggle-btn:hover { border-color: var(--green); }
+  .assign-toggle-btn.has-value { border-color: var(--green); }
+  .assign-chips-preview { flex: 1; display: flex; flex-wrap: wrap; gap: 3px; align-items: center; min-width: 0; }
+  .assign-empty { color: var(--slate); font-weight: 700; font-size: 12px; }
+  .assign-caret { color: var(--slate); font-size: 10px; flex-shrink: 0; transition: transform 0.15s; }
+  .assign-toggle-btn.open .assign-caret { transform: rotate(180deg); }
+  .assign-dropdown {
+    position: absolute; top: calc(100% + 4px); right: 0; z-index: 300;
+    background: var(--white); border: 1.5px solid var(--border); border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(23,47,68,0.14); min-width: 170px; overflow: hidden;
+  }
+  .assign-option {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 12px; cursor: pointer; font-size: 13px; font-weight: 600;
+    transition: background 0.1s; user-select: none;
+  }
+  .assign-option:hover { background: var(--slate-light); }
+  .assign-option input[type=checkbox] { width: 15px; height: 15px; accent-color: var(--green); cursor: pointer; flex-shrink: 0; }
+  .assign-option-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .assign-option-role { font-size: 11px; font-weight: 400; color: var(--text-muted); margin-left: auto; padding-left: 6px; }
+  .assign-chip {
+    font-size: 11px; font-weight: 800; padding: 1px 7px; border-radius: 20px;
+    white-space: nowrap; display: inline-flex; align-items: center;
+  }
+  .chip-kiwi  { background: #e8f0f8; color: #172F44; }
+  .chip-jojo  { background: var(--green-xlight); color: var(--green-dark); }
+  .chip-lanie { background: #f5f0ff; color: #6b3fa0; }
+  .chip-jom   { background: #e8f4fd; color: #1a6da8; }
+  .chip-paul  { background: #fff8e1; color: #d97706; }
+  .chip-mike  { background: #e0f7fa; color: #0e7490; }
+  .chip-aaron { background: #fef0eb; color: #c2410c; }
+
+  /* ── DISCUSSION THREADS ── */
+  .thread-toggle {
+    display: inline-flex; align-items: center; gap: 5px;
+    margin-top: 7px; background: none; border: none;
+    padding: 2px 0; font-size: 11px; font-weight: 700;
+    color: var(--slate); cursor: pointer;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    font-family: 'Nunito', sans-serif;
+  }
+  .thread-toggle:hover { color: var(--navy); }
+  .thread-has-content .thread-toggle { color: var(--jom-color); }
+  .thread-badge {
+    background: var(--jom-color); color: white;
+    font-size: 10px; font-weight: 800; padding: 1px 6px;
+    border-radius: 20px; line-height: 1.5;
+  }
+  .thread-body { margin-top: 8px; border-top: 1px solid var(--border); padding-top: 10px; }
+  .thread-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+  .thread-comment {
+    background: #f8f9fc; border: 1px solid var(--border);
+    border-radius: 7px; padding: 8px 11px; font-size: 13px;
+  }
+  .thread-comment.is-reply { margin-left: 20px; border-left: 2px solid #c3d4e8; }
+  .thread-comment-header {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap;
+  }
+  .thread-time { font-size: 11px; color: var(--text-muted); font-weight: 400; }
+  .thread-reply-btn {
+    background: none; border: none; font-size: 11px; font-weight: 700;
+    color: var(--slate); cursor: pointer; padding: 0;
+    font-family: 'Nunito', sans-serif; margin-left: auto;
+  }
+  .thread-reply-btn:hover { color: var(--navy); }
+  .thread-in-reply-to { font-size: 11px; color: var(--text-muted); margin-bottom: 3px; }
+  .thread-comment-text { color: var(--text); line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
+  .thread-compose { display: flex; flex-direction: column; gap: 6px; }
+  .thread-who {
+    appearance: none; -webkit-appearance: none;
+    border: 1.5px solid var(--border); border-radius: 5px;
+    padding: 5px 10px; font-family: 'Nunito', sans-serif;
+    font-size: 12px; font-weight: 700; color: var(--slate);
+    background: var(--white); cursor: pointer; max-width: 160px;
+  }
+  .thread-who:focus { outline: none; border-color: var(--green); }
+  .thread-input {
+    width: 100%; min-height: 52px; resize: vertical;
+    padding: 7px 10px; font-family: 'Nunito', sans-serif;
+    font-size: 13px; color: var(--text); line-height: 1.5;
+    border: 1.5px solid var(--border); border-radius: 6px;
+    background: var(--white); transition: border-color 0.15s;
+  }
+  .thread-input:focus { outline: none; border-color: var(--green); }
+  .thread-input::placeholder { color: #c0c4d0; }
+  .thread-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .thread-reply-info { font-size: 12px; color: var(--text-muted); font-style: italic; }
+  .thread-cancel-reply {
+    background: none; border: none; font-size: 11px; font-weight: 700;
+    color: var(--slate); cursor: pointer; font-family: 'Nunito', sans-serif; padding: 0;
+  }
+  .thread-cancel-reply:hover { color: #c0392b; }
+  .thread-post {
+    background: var(--navy); color: var(--white);
+    border: none; border-radius: 5px; cursor: pointer;
+    padding: 5px 16px; font-family: 'Nunito', sans-serif;
+    font-size: 12px; font-weight: 700; margin-left: auto;
+    transition: background 0.15s;
+  }
+  .thread-post:hover { background: var(--navy-mid); }
 </style>
 </head>
 <body>
@@ -401,21 +612,55 @@
       <span class="header-label">Content &amp; SEO Plan</span>
     </div>
     <h1 class="page-title">90-Day Action Plan — Q1/Q2 2026</h1>
-    <p class="page-subtitle">Turning the 25 unanswered questions and SEO gap analysis into published content, new pages, and measurable demo lift. Check off items as you go — progress saves automatically.</p>
+    <p class="page-subtitle">The most important tasks for the next 90 days that are going to help us move the needle on organic traffic and leads for Ylopo.</p>
   </div>
 </div>
 
-<!-- OVERALL PROGRESS -->
+<!-- OVERALL PROGRESS + SPRINT TIMELINE -->
 <div class="overall-bar">
   <div class="overall-inner">
-    <span class="overall-label">Overall Progress</span>
-    <div class="progress-track"><div class="progress-fill" id="overall-fill" style="width:0%"></div></div>
-    <span class="overall-pct" id="overall-pct">0%</span>
-    <span class="overall-count" id="overall-count">0 of 0 tasks done</span>
-    <span class="pace-badge" id="pace-badge" style="display:none;">
-      <span class="pace-dot" id="pace-dot"></span>
-      <span id="pace-label">On Track</span>
-    </span>
+
+    <div class="overall-top-row">
+      <span class="overall-label">90-Day Sprint &mdash; Mar 23 &ndash; Jun 20, 2026</span>
+      <div class="overall-right">
+        <span class="overall-count" id="overall-count">0 of 0 tasks done</span>
+        <span class="overall-pct" id="overall-pct">0%</span>
+        <span class="pace-badge" id="pace-badge" style="display:none;">
+          <span class="pace-dot" id="pace-dot"></span>
+          <span id="pace-label">On Track</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="timeline-wrap">
+      <!-- Phase labels -->
+      <div class="timeline-phases">
+        <div class="timeline-phase-label">Phase 1</div>
+        <div class="timeline-phase-label">Phase 2</div>
+        <div class="timeline-phase-label">Phase 3</div>
+      </div>
+
+      <!-- Track -->
+      <div class="timeline-track">
+        <div class="timeline-elapsed" id="timeline-elapsed" style="width:0%"></div>
+        <div class="timeline-tasks" id="overall-fill" style="width:0%"></div>
+        <div class="timeline-divider" style="left:33.33%"></div>
+        <div class="timeline-divider" style="left:66.67%"></div>
+        <div class="timeline-today-pin" id="timeline-today" style="left:0%;display:none;">
+          <div class="today-chip" id="today-chip">Today</div>
+          <div class="today-needle"></div>
+        </div>
+      </div>
+
+      <!-- Date labels -->
+      <div class="timeline-date-labels">
+        <span class="timeline-date-label first" style="left:0%">Mar 23</span>
+        <span class="timeline-date-label" style="left:33.33%">Apr 22</span>
+        <span class="timeline-date-label" style="left:66.67%">May 22</span>
+        <span class="timeline-date-label last" style="left:100%">Jun 20</span>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -429,6 +674,7 @@
     <span class="assignee-chip chip-lanie"><span class="chip-dot dot-lanie"></span>Lanie — Web Dev</span>
     <span class="assignee-chip chip-paul"><span class="chip-dot dot-paul"></span>Paul — Video Editing</span>
     <span class="assignee-chip chip-mike"><span class="chip-dot dot-mike"></span>Mike — Video Editing</span>
+    <span class="assignee-chip chip-aaron"><span class="chip-dot dot-aaron"></span>Aaron — Marketing</span>
   </div>
 </div>
 
@@ -487,73 +733,158 @@
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-1"></div></td>
             <td><div class="task-text">Interview Barry Jenkins — film answers to all 25 questions</div><div class="task-note">Tuesday next week. Use the <a href="questions-spreadsheet.html" style="color:var(--green-dark)">questions spreadsheet</a> as your run-of-show. Barry covers ROI, fit &amp; qualification, onboarding, and competitor comparisons.</div></td>
             <td><span class="cat cat-interview">Interview</span></td>
-            <td><select class="assignee-select" data-id="1-1"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="1-1"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-2"></div></td>
             <td><div class="task-text">Interview Ge — film answers to all 25 questions</div><div class="task-note">Tuesday next week alongside Barry or back-to-back. Ge covers pricing, AI product, contracts, data ownership, and business decisions.</div></td>
             <td><span class="cat cat-interview">Interview</span></td>
-            <td><select class="assignee-select" data-id="1-2"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="1-2"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-3"></div></td>
             <td><div class="task-text">Send raw footage to Paul / Mike for editing</div><div class="task-note">Separate Barry and Ge footage into labeled folders by question number. Brief the editor: start with Q6 (ROI), Q19 (who it's NOT for), and Q1 (pricing) — highest engagement potential.</div></td>
             <td><span class="cat cat-content">Content</span></td>
-            <td><select class="assignee-select" data-id="1-3"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="1-3"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-4"></div></td>
             <td><div class="task-text">Fix robots.txt — allow AI crawlers (GPTBot, ClaudeBot, Gemini, Perplexity)</div><div class="task-note">Currently blocked in Disallow. Ylopo is invisible in ChatGPT, Perplexity, and Gemini search results. Easiest fix on this list — 5-minute change with major long-term impact.</div></td>
             <td><span class="cat cat-technical">Technical</span></td>
-            <td><select class="assignee-select" data-id="1-4"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="1-4"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-5"></div></td>
             <td><div class="task-text">Create /llms.txt file on ylopo.com</div><div class="task-note">New standard for AI indexing. Include: company description, product summaries for each feature, key page URLs, and a list of what Ylopo does and doesn't do. Signals to AI what to learn about Ylopo.</div></td>
             <td><span class="cat cat-technical">Technical</span></td>
-            <td><select class="assignee-select" data-id="1-5"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="1-5"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-6"></div></td>
             <td><div class="task-text">Fix broken title tags: /demo, /contact-us, /dyva, and short titles</div><div class="task-note">/demo shows "AI Behavioral Texting" · /contact-us shows "Main Contact Us Page" · /dyva has no title at all · "Pricing" is 7 chars. These are showing in Google SERPs right now.</div></td>
             <td><span class="cat cat-technical">Technical</span></td>
-            <td><select class="assignee-select" data-id="1-6"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="1-6"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-7"></div></td>
             <td><div class="task-text">Fix canonical tags — point each page to itself (not the homepage)</div><div class="task-note">Pages like /listingrocket and /buyer-lead-generation currently have canonicals pointing to https://www.ylopo.com. Google may be consolidating all page authority to the homepage. Self-referencing canonicals needed.</div></td>
             <td><span class="cat cat-technical">Technical</span></td>
-            <td><select class="assignee-select" data-id="1-7"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="1-7"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-8"></div></td>
             <td><div class="task-text">Fix H1 structure on top 4 pages</div><div class="task-note">/real-estate-lead-nurture has 9 H1s · /crm-integration has 8 · /mission-control has 6 H1s and 0 H2s · /idx-home-search has 6. Feature section titles should be H2, not H1. Likely a Squarespace component default.</div></td>
             <td><span class="cat cat-technical">Technical</span></td>
-            <td><select class="assignee-select" data-id="1-8"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="1-8"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-9"></div></td>
             <td><div class="task-text">Write unique meta descriptions for all core pages (0 exist currently)</div><div class="task-note">Every page uses the same meta description right now — Google ignores them and auto-generates its own. Write 120–155 char unique descriptions for the 15 highest-traffic pages first.</div></td>
             <td><span class="cat cat-technical">Technical</span></td>
-            <td><select class="assignee-select" data-id="1-9"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="1-9"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-10"></div></td>
             <td><div class="task-text">Build /faq page on ylopo.com with FAQPage schema markup</div><div class="task-note">8 Critical questions minimum (Q1–4, 11, 12, 24, 25). Pull copy from interview transcripts once available — or draft from the questions spreadsheet first and refine after interviews.</div></td>
             <td><span class="cat cat-web">Web Page</span></td>
-            <td><select class="assignee-select" data-id="1-10"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="1-10"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-11"></div></td>
             <td><div class="task-text">Build /pricing page — explain lead tiers and why a demo is required</div><div class="task-note">Lead with the 3 tiers: Social (lower cost) → PPC (mid) → Live Transfer / Direct Connect (premium). Explain what drives cost: lead volume needed, team size, lead type. CTA = Book a Demo to get your exact quote.</div></td>
             <td><span class="cat cat-web">Web Page</span></td>
-            <td><select class="assignee-select" data-id="1-11"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="1-11"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-12"></div></td>
             <td><div class="task-text">Kiwi reviews and approves /faq + /pricing before they go live</div><div class="task-note">Check for accurate pricing language (no false specifics), correct attribution (Ge for pricing, Barry for experience), brand voice, and legal-safe claims.</div></td>
             <td><span class="cat cat-review">Review</span></td>
-            <td><select class="assignee-select" data-id="1-12"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="1-12"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-16"></div></td>
+            <td><div class="task-text">Facebook Group — Week 1 (Mar 23–29): post daily &amp; grow Real Estate Vibe Code</div><div class="task-note">Goal: 100 members by Jun 20. Check this off at end of week only if you posted every day. Track current member count in the notes. Suggested content: introduce the group's purpose, share one tactical tip, ask one engagement question.</div></td>
+            <td><span class="cat cat-content">Social</span></td>
+            <td><select class="assignee-select" data-id="1-16"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-17"></div></td>
+            <td><div class="task-text">Facebook Group — Week 2 (Mar 30–Apr 5): post daily &amp; grow Real Estate Vibe Code</div><div class="task-note">Track member count. Try inviting at least 5 people this week from your network. Repurpose one piece of content from the 90-day sprint (a tip from the FAQ, a short from a testimonial video, etc.).</div></td>
+            <td><span class="cat cat-content">Social</span></td>
+            <td><select class="assignee-select" data-id="1-17"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-18"></div></td>
+            <td><div class="task-text">Facebook Group — Week 3 (Apr 6–12): post daily &amp; grow Real Estate Vibe Code</div><div class="task-note">Track member count. Mid-month pulse: are you on pace for 100 by Jun 20? If under ~25 members, increase invite activity. Try one post that directly asks members to invite a colleague.</div></td>
+            <td><span class="cat cat-content">Social</span></td>
+            <td><select class="assignee-select" data-id="1-18"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-19"></div></td>
+            <td><div class="task-text">Facebook Group — Week 4 (Apr 13–19): post daily &amp; grow Real Estate Vibe Code</div><div class="task-note">End of Phase 1. Track member count — target ~33 members by now (⅓ of the way to 100). Note what post types got the most engagement this month and double down on those in Phase 2.</div></td>
+            <td><span class="cat cat-content">Social</span></td>
+            <td><select class="assignee-select" data-id="1-19"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-13"></div></td>
+            <td><div class="task-text">Film + publish Client Testimonial Video #1</div><div class="task-note">Choose a client with a strong ROI story (e.g. closings within 90 days, cost recovered quickly). 2–3 minutes on camera. Paul or Mike edits. Publish to YouTube + embed on /case-studies or homepage.</div></td>
+            <td><span class="cat cat-interview">Video</span></td>
+            <td><select class="assignee-select" data-id="1-13"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-14"></div></td>
+            <td><div class="task-text">Film + publish Client Testimonial Video #2</div><div class="task-note">Ideal angle: a solo agent or small team who was skeptical before signing up. Addresses the "is this right for me?" objection. Edit for YouTube + repurpose as a short clip for social.</div></td>
+            <td><span class="cat cat-interview">Video</span></td>
+            <td><select class="assignee-select" data-id="1-14"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-15"></div></td>
+            <td><div class="task-text">Film + publish Client Testimonial Video #3</div><div class="task-note">Focus on a team leader or broker who runs multiple agents on Ylopo. Best for addressing the "team vs solo" question. Embed on /how-it-works or /case-studies page.</div></td>
+            <td><span class="cat cat-interview">Video</span></td>
+            <td><select class="assignee-select" data-id="1-15"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <!-- ── "THEY ASK, YOU ANSWER" VIDEO SEO SPRINT (added Mar 30, 2026) ── -->
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-20"></div></td>
+            <td><div class="task-text">Publish "They Ask, You Answer" playlist on Ylopo YouTube</div><div class="task-note">Upload all 25 Barry + Ge Q&amp;A videos. Title each video as the exact question (e.g. "How Does Ylopo Pricing Work?"). Add the full spoken transcript to each description, plus a link to ylopo.com/faq. Create a playlist named "They Ask, You Answer" and make it public. Aaron owns upload + titling; Jojo provides transcript text once FAQ pages are built.</div></td>
+            <td><span class="cat cat-interview">Video</span></td>
+            <td><select class="assignee-select" data-id="1-20"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-21"></div></td>
+            <td><div class="task-text">Add llms.txt to ylopo.com root</div><div class="task-note">Create /llms.txt listing all 25 FAQ page URLs with the question as the description. This is the AI-crawler equivalent of a sitemap — lets ChatGPT, Perplexity, and Claude discover and index Ylopo's authoritative answers. Format: one URL per line with a comment above it starting with #. Add a brief intro paragraph at the top describing what Ylopo is. Target: live by Apr 6.</div></td>
+            <td><span class="cat cat-seo">SEO</span></td>
+            <td><select class="assignee-select" data-id="1-21"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-22"></div></td>
+            <td><div class="task-text">Build 25 individual FAQ pages on ylopo.com (one per question)</div><div class="task-note">Each page at /faq/[question-slug]. Structure: (1) question as H1, (2) direct 2–3 sentence text answer above the fold — this is what LLMs and featured snippets pull from, so make it a clean declarative statement, not "it depends…", (3) embedded YouTube video below the answer, (4) full transcript as body text. These pages are the highest-leverage AI SEO and Google SEO asset in the entire sprint. Target: all 25 live by Apr 13.</div></td>
+            <td><span class="cat cat-seo">SEO</span></td>
+            <td><select class="assignee-select" data-id="1-22"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-23"></div></td>
+            <td><div class="task-text">Add FAQPage + VideoObject schema to all 25 FAQ pages</div><div class="task-note">FAQPage schema enables the accordion Q&amp;A feature in Google SERPs (highest-impact schema for lead gen pages). VideoObject schema tells AI crawlers the video title, description, speaker, and what question it answers. Add author markup on each page: "Answered by Barry Jenkins, Realtor-in-Residence" or "Answered by Ge, President &amp; Co-Founder." Validate all schema in Google's Rich Results Test before marking done.</div></td>
+            <td><span class="cat cat-seo">SEO</span></td>
+            <td><select class="assignee-select" data-id="1-23"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-24"></div></td>
+            <td><div class="task-text">Create "They Ask, You Answer" hub page on ylopo.com</div><div class="task-note">A single index page (e.g. /faq or /they-ask-you-answer) listing all 25 questions with links to their individual pages. Intro from Ge or Kiwi: "The most honest look at how Ylopo actually works — real questions, answered on camera." This hub page earns backlinks because it's a genuinely useful resource, not a sales page. Share it with real estate coaches and brokerage owners once live. Target: live by Apr 15.</div></td>
+            <td><span class="cat cat-seo">SEO</span></td>
+            <td><select class="assignee-select" data-id="1-24"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-25"></div></td>
+            <td><div class="task-text">Submit all new FAQ pages to Google Search Console for indexing</div><div class="task-note">Use the URL Inspection tool in GSC to request indexing for each of the 25 FAQ pages + the hub page. Prioritize the 8 critical questions first (pricing, lead exclusivity, AI behavior, contracts, data ownership). Check back after 48–72 hrs to confirm indexed. Also add all new pages to sitemap.xml if not auto-generated.</div></td>
+            <td><span class="cat cat-seo">SEO</span></td>
+            <td><select class="assignee-select" data-id="1-25"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="1-26"></div></td>
+            <td><div class="task-text">Upload Q&amp;A video clips natively to LinkedIn</div><div class="task-note">Native video on LinkedIn gets 3–5× more reach than a YouTube link. Upload each clip directly to the Ylopo company page and to Barry's personal profile. Best candidates to start: pricing, lead exclusivity, AI behavior (the 3 questions prospects ask most during eval). Post 2–3 per week through Phase 1. Caption each post with the question as the hook, a 2-sentence answer teaser, and a CTA to the full FAQ page.</div></td>
+            <td><span class="cat cat-content">Social</span></td>
+            <td><select class="assignee-select" data-id="1-26"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
         </tbody>
       </table>
@@ -581,61 +912,103 @@
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-1"></div></td>
             <td><div class="task-text">Transcribe both interviews (Barry + Ge, all 25 questions each)</div><div class="task-note">Use Otter.ai, Descript, or Rev. Clean up filler words. Flag Q1–5 (pricing), Q11 (AI), Q13 (comparisons), and Q24–25 (contracts) as priority sections for the web team.</div></td>
             <td><span class="cat cat-content">Content</span></td>
-            <td><select class="assignee-select" data-id="2-1"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="2-1"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-2"></div></td>
             <td><div class="task-text">Edit + publish first 3 YouTube videos from Barry interview</div><div class="task-note">Prioritize: Q6 (what ROI can I expect?), Q19 (who Ylopo is NOT a good fit for), Q9 (the math — 1–2 listings breaks even). These are the highest-engagement topics based on Reddit/YouTube demand.</div></td>
             <td><span class="cat cat-content">Content</span></td>
-            <td><select class="assignee-select" data-id="2-2"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="2-2"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-3"></div></td>
             <td><div class="task-text">Build /compare pages: Ylopo vs CINC, vs BoomTown, vs Sierra Interactive</div><div class="task-note">Sierra already runs a "vs Ylopo" page. These are defensive must-haves. Use Barry's Q13 transcript for firsthand comparison. Each needs its own meta description and schema.</div></td>
             <td><span class="cat cat-web">Web Page</span></td>
-            <td><select class="assignee-select" data-id="2-3"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="2-3"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-4"></div></td>
             <td><div class="task-text">Build /how-it-works page — onboarding timeline days 1, 30, 60, 90</div><div class="task-note">Pull from Q20 and Q21 transcripts (Barry on onboarding, time to first lead). Visual timeline format. Barry's voice as the narrator. Answers the "what happens after I sign up?" anxiety.</div></td>
             <td><span class="cat cat-web">Web Page</span></td>
-            <td><select class="assignee-select" data-id="2-4"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="2-4"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-5"></div></td>
             <td><div class="task-text">Build /case-studies page with 3 client stories and real ROI numbers</div><div class="task-note">Kiwi to source clients willing to go on record (ask Ge or client success team). Need: agent name, team size, market, lead volume before/after, GCI impact. Jom/Lanie to build the page.</div></td>
             <td><span class="cat cat-web">Web Page</span></td>
-            <td><select class="assignee-select" data-id="2-5"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="2-5"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-6"></div></td>
             <td><div class="task-text">Add Organization schema + AggregateRating schema sitewide</div><div class="task-note">Organization schema with sameAs links (LinkedIn, G2, Crunchbase) improves AI/knowledge graph visibility. AggregateRating on /reviews enables star ratings in Google branded search results.</div></td>
             <td><span class="cat cat-seo">SEO</span></td>
-            <td><select class="assignee-select" data-id="2-6"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="2-6"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-7"></div></td>
             <td><div class="task-text">Add /faq, /reviews, /testimonials to sitemap + submit updated sitemap to Search Console</div><div class="task-note">These 3 pages exist on ylopo.com but are invisible to Google because they're not in sitemap.xml. Also remove tag/filter pages (e.g. /webinars/tag/Webinar) that dilute crawl budget.</div></td>
             <td><span class="cat cat-seo">SEO</span></td>
-            <td><select class="assignee-select" data-id="2-7"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="2-7"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-8"></div></td>
             <td><div class="task-text">Embed YouTube clips on /faq, /pricing, and /how-it-works</div><div class="task-note">Match the right Barry/Ge clip to each page section. Video on page = longer dwell time = better rankings. e.g. Ge's pricing explanation on /pricing, Barry's ROI breakdown on /faq.</div></td>
             <td><span class="cat cat-web">Web Page</span></td>
-            <td><select class="assignee-select" data-id="2-8"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="2-8"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-9"></div></td>
             <td><div class="task-text">Edit + publish 5 more YouTube videos from interview footage</div><div class="task-note">Cover: Q13 (vs competitors — Barry), Q20 (first 90 days — Barry), Q1 (how pricing works — Ge), Q11 (how the AI works — Ge), Q16 (solo agent vs team — Barry).</div></td>
             <td><span class="cat cat-content">Content</span></td>
-            <td><select class="assignee-select" data-id="2-9"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="2-9"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-10"></div></td>
             <td><div class="task-text">Kiwi final review and approval of all Phase 2 pages before they go live</div><div class="task-note">Check: accurate quotes from Barry/Ge, no false competitive claims, consistent brand voice, CTAs all point to demo booking, no broken links.</div></td>
             <td><span class="cat cat-review">Review</span></td>
-            <td><select class="assignee-select" data-id="2-10"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="2-10"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-14"></div></td>
+            <td><div class="task-text">Facebook Group — Week 5 (Apr 20–26): post daily &amp; grow Real Estate Vibe Code</div><div class="task-note">Track member count — target ~42 by now. Phase 2 starts: introduce any new content themes. Try sharing a clip from one of the testimonial videos published this phase to drive new members in.</div></td>
+            <td><span class="cat cat-content">Social</span></td>
+            <td><select class="assignee-select" data-id="2-14"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-15"></div></td>
+            <td><div class="task-text">Facebook Group — Week 6 (Apr 27–May 3): post daily &amp; grow Real Estate Vibe Code</div><div class="task-note">Track member count. Try one "engagement bait" post this week — a poll, a question, or a "what would you do?" scenario. These tend to surface the group to non-members via Facebook's algorithm.</div></td>
+            <td><span class="cat cat-content">Social</span></td>
+            <td><select class="assignee-select" data-id="2-15"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-16"></div></td>
+            <td><div class="task-text">Facebook Group — Week 7 (May 4–10): post daily &amp; grow Real Estate Vibe Code</div><div class="task-note">Track member count — target ~58 by now. Halfway point. If behind pace, consider a direct push: post about the group on your personal profile or LinkedIn, or invite people from recent demo calls.</div></td>
+            <td><span class="cat cat-content">Social</span></td>
+            <td><select class="assignee-select" data-id="2-16"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-17"></div></td>
+            <td><div class="task-text">Facebook Group — Week 8 (May 11–17): post daily &amp; grow Real Estate Vibe Code</div><div class="task-note">Track member count. End of Phase 2 — target ~67 members. Review which content pillars are driving the most joins and engagement. Adjust Phase 3 content mix accordingly.</div></td>
+            <td><span class="cat cat-content">Social</span></td>
+            <td><select class="assignee-select" data-id="2-17"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-11"></div></td>
+            <td><div class="task-text">Film + publish Client Testimonial Video #4</div><div class="task-note">Angle: a client who came from a competitor (BoomTown, CINC, kvCORE) and switched to Ylopo. Authentic comparison without scripted talking points. Publish to YouTube + embed on relevant /compare page.</div></td>
+            <td><span class="cat cat-interview">Video</span></td>
+            <td><select class="assignee-select" data-id="2-11"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-12"></div></td>
+            <td><div class="task-text">Film + publish Client Testimonial Video #5</div><div class="task-note">Focus on lead quality and follow-up experience — how does Ylopo's AI nurture feel from the agent's perspective? Addresses the "what happens after a lead comes in?" question. Embed on /how-it-works.</div></td>
+            <td><span class="cat cat-interview">Video</span></td>
+            <td><select class="assignee-select" data-id="2-12"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="2-13"></div></td>
+            <td><div class="task-text">Film + publish Client Testimonial Video #6</div><div class="task-note">Best for: a high-volume team that scaled up ad spend and saw compounding results. Numbers-driven story (cost per lead, conversion rate, closings). Strong fit for the /pricing or /case-studies page.</div></td>
+            <td><span class="cat cat-interview">Video</span></td>
+            <td><select class="assignee-select" data-id="2-13"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
         </tbody>
       </table>
@@ -663,49 +1036,97 @@
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-1"></div></td>
             <td><div class="task-text">Build ROI calculator — "How many closings does it take to break even?"</div><div class="task-note">Inputs: avg commission, avg home price, lead type selected. Output: break-even lead count and estimated GCI at 3 realistic conversion rates. Ties directly to the pricing conversation.</div></td>
             <td><span class="cat cat-web">Web Page</span></td>
-            <td><select class="assignee-select" data-id="3-1"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="3-1"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-2"></div></td>
             <td><div class="task-text">Build /integrations page — CRM list, sync depth, setup links</div><div class="task-note">Pull from Q14 transcript (Ge on CRM integrations). List all supported CRMs, describe what syncs (contacts + activities), and link to relevant setup documentation.</div></td>
             <td><span class="cat cat-web">Web Page</span></td>
-            <td><select class="assignee-select" data-id="3-2"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="3-2"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-3"></div></td>
             <td><div class="task-text">Internal link audit — every new page links to at least 2 others</div><div class="task-note">Key links to add: /pricing ↔ /faq ↔ /how-it-works ↔ /case-studies ↔ /compare. Internal links pass authority and improve crawl depth. Use the SEO report's content gap map as a guide.</div></td>
             <td><span class="cat cat-seo">SEO</span></td>
-            <td><select class="assignee-select" data-id="3-3"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="3-3"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-4"></div></td>
             <td><div class="task-text">Google Search Console check — confirm all new pages are indexed</div><div class="task-note">Check Coverage report for errors. Fix any 4xx or redirect issues. Request manual indexing for any pages stuck in "Discovered — currently not indexed." Target: all pages indexed within 2 weeks of launch.</div></td>
             <td><span class="cat cat-seo">SEO</span></td>
-            <td><select class="assignee-select" data-id="3-4"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="3-4"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-5"></div></td>
             <td><div class="task-text">Publish remaining YouTube videos — complete the full 25-question series</div><div class="task-note">All 25 questions should be live on YouTube by day 90. Cover any remaining Critical or High priority questions not yet published. Batching 4–5 videos per upload session is most efficient.</div></td>
             <td><span class="cat cat-content">Content</span></td>
-            <td><select class="assignee-select" data-id="3-5"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="3-5"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-6"></div></td>
             <td><div class="task-text">Analytics review — measure demo conversions from new pages vs. pre-launch baseline</div><div class="task-note">Pull 30-day window: demo form submissions and "Book a Demo" clicks before vs. after new pages launched. Which pages are driving the most demo intent? Feed that into the Q3 calendar.</div></td>
             <td><span class="cat cat-analytics">Analytics</span></td>
-            <td><select class="assignee-select" data-id="3-6"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="3-6"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-7"></div></td>
             <td><div class="task-text">Final brand + copy review of all 90-day published content</div><div class="task-note">Scan everything published for: off-brand language, outdated claims, inconsistent spokesperson attribution, broken links, and missing CTAs. One pass before handing off to ongoing maintenance.</div></td>
             <td><span class="cat cat-review">Review</span></td>
-            <td><select class="assignee-select" data-id="3-7"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="3-7"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
           <tr>
             <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-8"></div></td>
             <td><div class="task-text">Plan Q3 content calendar from analytics data, YouTube comments &amp; sales feedback</div><div class="task-note">What questions are still coming up in demos? What are YouTube comments asking as follow-ups? What did the data show? This session feeds the next 90-day sprint.</div></td>
             <td><span class="cat cat-analytics">Analytics</span></td>
-            <td><select class="assignee-select" data-id="3-8"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+            <td><select class="assignee-select" data-id="3-8"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-12"></div></td>
+            <td><div class="task-text">Facebook Group — Week 9 (May 18–24): post daily &amp; grow Real Estate Vibe Code</div><div class="task-note">Track member count — target ~75 by now. Final phase: 25 members to go in ~4 weeks. If behind, this is the week to do a focused push — share in other groups you're a member of, or do a short video inviting people in.</div></td>
+            <td><span class="cat cat-content">Social</span></td>
+            <td><select class="assignee-select" data-id="3-12"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-13"></div></td>
+            <td><div class="task-text">Facebook Group — Week 10 (May 25–31): post daily &amp; grow Real Estate Vibe Code</div><div class="task-note">Track member count. Share a "milestone" post inside the group celebrating growth — members love seeing the group grow and often share those posts. Aim to get at least 3 existing members to invite someone this week.</div></td>
+            <td><span class="cat cat-content">Social</span></td>
+            <td><select class="assignee-select" data-id="3-13"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-14"></div></td>
+            <td><div class="task-text">Facebook Group — Week 11 (Jun 1–7): post daily &amp; grow Real Estate Vibe Code</div><div class="task-note">Track member count — target ~88 by now. Two weeks left to hit 100. Personal outreach mode: go through your contacts and personally message anyone you haven't invited yet who fits the group's audience.</div></td>
+            <td><span class="cat cat-content">Social</span></td>
+            <td><select class="assignee-select" data-id="3-14"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-15"></div></td>
+            <td><div class="task-text">Facebook Group — Week 12 (Jun 8–14): post daily &amp; grow Real Estate Vibe Code</div><div class="task-note">Track member count — target ~95 by now. Final stretch. Cross-promote in your YouTube video descriptions and any new pages going live this week. One post this week should specifically celebrate being close to 100.</div></td>
+            <td><span class="cat cat-content">Social</span></td>
+            <td><select class="assignee-select" data-id="3-15"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-16"></div></td>
+            <td><div class="task-text">Facebook Group — Week 13 (Jun 15–20): post daily &amp; hit 100 members 🎯</div><div class="task-note">Final week of the sprint. Goal: 100 members by Jun 20. Celebrate the milestone publicly in the group — a post thanking the community goes a long way and often drives a last wave of shares and joins.</div></td>
+            <td><span class="cat cat-content">Social</span></td>
+            <td><select class="assignee-select" data-id="3-16"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-9"></div></td>
+            <td><div class="task-text">Film + publish Client Testimonial Video #7</div><div class="task-note">Angle: a client at the 6–12 month mark sharing long-term results — not just early wins, but sustained lead flow and ROI over time. Counters churn objections and builds trust for prospects close to signing.</div></td>
+            <td><span class="cat cat-interview">Video</span></td>
+            <td><select class="assignee-select" data-id="3-9"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-10"></div></td>
+            <td><div class="task-text">Film + publish Client Testimonial Video #8</div><div class="task-note">Focus on onboarding and support experience — how easy was setup, how responsive is the team? Addresses the "what if I need help?" anxiety. Pairs well with /how-it-works and /faq pages.</div></td>
+            <td><span class="cat cat-interview">Video</span></td>
+            <td><select class="assignee-select" data-id="3-10"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
+          </tr>
+          <tr>
+            <td><div class="cb-wrap"><input type="checkbox" class="cb" data-id="3-11"></div></td>
+            <td><div class="task-text">Film + publish Client Testimonial Video #9</div><div class="task-note">Capstone testimonial: a top-performing Ylopo client (ideally a recognizable name in the real estate space) giving an overall endorsement. This becomes the hero social proof asset — use on homepage, /pricing, and in paid ads.</div></td>
+            <td><span class="cat cat-interview">Video</span></td>
+            <td><select class="assignee-select" data-id="3-11"><option value="">— Assign —</option><option value="kiwi">Kiwi</option><optgroup label="Marketing"><option value="aaron">Aaron</option></optgroup><optgroup label="SEO"><option value="jojo">Jojo</option></optgroup><optgroup label="Web Dev"><option value="jom">Jom</option><option value="lanie">Lanie</option></optgroup><optgroup label="Video Editing"><option value="paul">Paul</option><option value="mike">Mike</option></optgroup></select></td>
           </tr>
         </tbody>
       </table>
@@ -715,7 +1136,7 @@
 
     <!-- FOOTER -->
   <div class="footer-note">
-    <strong>Progress auto-saves to this browser.</strong> &nbsp;·&nbsp;
+    <strong>Progress syncs across all team members.</strong> &nbsp;·&nbsp;
     Source: <a href="questions-spreadsheet.html" style="color:var(--green-dark);font-weight:700;">25 Questions Spreadsheet</a> &nbsp;·&nbsp;
     <a href="seo-opportunity-report.html" style="color:var(--green-dark);font-weight:700;">SEO Opportunity Report</a> &nbsp;·&nbsp;
     Last updated March 2026
@@ -724,39 +1145,139 @@
 </div><!-- /main -->
 
 <script>
-  const STORAGE_KEY = 'ylopo-90day-v3';
+  const STORAGE_KEY = 'ylopo-90day-v4';
+
+  const TEAM = [
+    { value: 'kiwi',  label: 'Kiwi',   role: 'Strategy', color: '#172F44' },
+    { value: 'jojo',  label: 'Jojo',   role: 'SEO',      color: '#7BC109' },
+    { value: 'jom',   label: 'Jom',    role: 'Web Dev',  color: '#1a6da8' },
+    { value: 'lanie', label: 'Lanie',  role: 'Web Dev',  color: '#6b3fa0' },
+    { value: 'paul',  label: 'Paul',   role: 'Video',    color: '#d97706' },
+    { value: 'mike',  label: 'Mike',   role: 'Video',    color: '#0e7490' },
+    { value: 'aaron', label: 'Aaron',  role: 'Marketing', color: '#c2410c' },
+  ];
+
+  // Global thread store: taskId → [{id, author, text, ts, replyTo?}]
+  const allThreads = {};
   // Sprint start — real work begins March 23, 2026
   const SPRINT_START = new Date('2026-03-23T00:00:00-08:00');
 
   // ── STATE ─────────────────────────────────────────────────────────────────
-  function saveState() {
+  let hasUnsaved = false;
+  let changeCount = 0;
+  let pendingNotifications = [];
+
+  function collectState() {
     const state = {};
     document.querySelectorAll('.cb').forEach(cb => {
       state['cb-' + cb.dataset.id] = cb.checked;
     });
-    document.querySelectorAll('.assignee-select').forEach(sel => {
-      state['sel-' + sel.dataset.id] = sel.value;
+    document.querySelectorAll('.multi-assign').forEach(widget => {
+      const id = widget.dataset.id;
+      const checked = Array.from(widget.querySelectorAll('input[type=checkbox]:checked')).map(cb => cb.value);
+      state['sel-' + id] = checked;
     });
     document.querySelectorAll('.task-notes-input').forEach(ta => {
       if (ta.value) state['note-' + ta.dataset.id] = ta.value;
     });
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    fetch('/.netlify/functions/update-state', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ state }),
-    }).catch(() => {});
+    Object.entries(allThreads).forEach(([id, comments]) => {
+      if (comments.length > 0) state['thread-' + id] = comments;
+    });
+    return state;
   }
 
-  function loadState() {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return;
-    const state = JSON.parse(raw);
+  function markDirty() {
+    changeCount++;
+    hasUnsaved = true;
+    const bar = document.getElementById('save-bar');
+    const cnt = document.getElementById('save-count');
+    if (bar) bar.classList.add('visible');
+    if (cnt) cnt.textContent = changeCount;
+    // Always keep localStorage in sync so work isn't lost on accidental close
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(collectState()));
+  }
+
+  function showToast(msg, isError) {
+    const toast = document.getElementById('save-toast');
+    if (!toast) return;
+    toast.querySelector('.save-toast-icon').textContent = isError ? '✕' : '✓';
+    toast.querySelector('.save-toast-text').textContent = msg;
+    toast.classList.toggle('toast-error', isError);
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3500);
+  }
+
+  async function submitChanges() {
+    const btn = document.getElementById('save-btn');
+    const lbl = btn ? btn.querySelector('.save-btn-label') : null;
+    if (btn) btn.disabled = true;
+    if (lbl) lbl.textContent = 'Saving…';
+
+    const state = collectState();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+
+    try {
+      const res = await fetch('/.netlify/functions/update-state', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ state }),
+      });
+      if (!res.ok) throw new Error('Server returned ' + res.status);
+
+      // Fire queued notifications now that save succeeded
+      pendingNotifications.forEach(n =>
+        sendNotification(n.type, n.taskId, n.taskText, n.assignee, n.completedBy)
+      );
+      pendingNotifications = [];
+      changeCount = 0;
+      hasUnsaved = false;
+
+      const bar = document.getElementById('save-bar');
+      if (bar) bar.classList.remove('visible');
+      showToast('Saved — all team members will see your updates', false);
+    } catch (err) {
+      showToast('Save failed — check your connection and try again', true);
+    } finally {
+      if (btn) btn.disabled = false;
+      if (lbl) lbl.textContent = 'Save Changes';
+    }
+  }
+
+  async function loadState() {
+    let state = {};
+
+    // Try server first — this is the shared canonical source
+    try {
+      const res = await fetch('/.netlify/functions/get-state');
+      if (res.ok) {
+        const data = await res.json();
+        if (data.state && Object.keys(data.state).length > 0) {
+          state = data.state;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        }
+      }
+    } catch (e) {}
+
+    // Fall back to localStorage if server returned nothing
+    if (Object.keys(state).length === 0) {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) { try { state = JSON.parse(raw); } catch (e) {} }
+    }
+
     document.querySelectorAll('.cb').forEach(cb => {
       if (state['cb-' + cb.dataset.id]) cb.checked = true;
     });
-    document.querySelectorAll('.assignee-select').forEach(sel => {
-      if (state['sel-' + sel.dataset.id]) sel.value = state['sel-' + sel.dataset.id];
+    document.querySelectorAll('.multi-assign').forEach(widget => {
+      const id = widget.dataset.id;
+      let val = state['sel-' + id];
+      if (!val) return;
+      // backwards compat: old state stored a single string
+      if (typeof val === 'string') val = val ? [val] : [];
+      val.forEach(v => {
+        const cb = widget.querySelector('input[value="' + v + '"]');
+        if (cb) cb.checked = true;
+      });
+      updateMultiAssignUI(widget);
     });
     document.querySelectorAll('.task-notes-input').forEach(ta => {
       const saved = state['note-' + ta.dataset.id];
@@ -767,6 +1288,14 @@
         if (wrap) wrap.classList.add('open');
         if (toggle) toggle.classList.add('open');
         ta.closest('td').classList.add('notes-has-content');
+      }
+    });
+    // Restore thread data
+    Object.keys(state).forEach(key => {
+      if (key.startsWith('thread-')) {
+        const taskId = key.slice(7);
+        allThreads[taskId] = state[key];
+        renderThread(taskId);
       }
     });
   }
@@ -803,7 +1332,7 @@
 
       ta.addEventListener('input', () => {
         taskTd.classList.toggle('notes-has-content', ta.value.length > 0);
-        saveState();
+        markDirty();
       });
     });
   }
@@ -815,10 +1344,189 @@
     else row.classList.remove('done');
   }
 
-  function styleSelect(sel) {
-    sel.classList.remove('val-kiwi', 'val-jojo', 'val-jom', 'val-lanie', 'val-paul', 'val-mike', 'val-unset');
-    const map = { kiwi: 'val-kiwi', jojo: 'val-jojo', jom: 'val-jom', lanie: 'val-lanie', paul: 'val-paul', mike: 'val-mike' };
-    sel.classList.add(map[sel.value] || 'val-unset');
+  function updateMultiAssignUI(widget) {
+    const checked = Array.from(widget.querySelectorAll('input[type=checkbox]:checked')).map(cb => cb.value);
+    const preview = widget.querySelector('.assign-chips-preview');
+    const toggleBtn = widget.querySelector('.assign-toggle-btn');
+    if (checked.length === 0) {
+      preview.innerHTML = '<span class="assign-empty">— Assign —</span>';
+      toggleBtn.classList.remove('has-value');
+    } else {
+      preview.innerHTML = checked.map(v => {
+        const person = TEAM.find(t => t.value === v);
+        return `<span class="assign-chip chip-${v}">${person ? person.label : v}</span>`;
+      }).join('');
+      toggleBtn.classList.add('has-value');
+    }
+  }
+
+  function initMultiAssign() {
+    document.querySelectorAll('.assignee-select').forEach(origSelect => {
+      const id = origSelect.dataset.id;
+      const widget = document.createElement('div');
+      widget.className = 'multi-assign';
+      widget.dataset.id = id;
+
+      const toggleBtn = document.createElement('button');
+      toggleBtn.type = 'button';
+      toggleBtn.className = 'assign-toggle-btn';
+      toggleBtn.innerHTML = `<span class="assign-chips-preview"><span class="assign-empty">— Assign —</span></span><span class="assign-caret">▾</span>`;
+
+      const dropdown = document.createElement('div');
+      dropdown.className = 'assign-dropdown';
+      dropdown.hidden = true;
+
+      TEAM.forEach(person => {
+        const lbl = document.createElement('label');
+        lbl.className = 'assign-option';
+        lbl.innerHTML = `<input type="checkbox" value="${person.value}">
+          <span class="assign-option-dot" style="background:${person.color}"></span>
+          ${person.label}<span class="assign-option-role">${person.role}</span>`;
+        lbl.querySelector('input').addEventListener('change', () => {
+          updateMultiAssignUI(widget);
+          markDirty();
+          const assignees = Array.from(widget.querySelectorAll('input:checked')).map(c => c.value);
+          pendingNotifications.push({
+            type: 'assigned', taskId: id,
+            taskText: getTaskText(id), assignee: assignees.join(', '),
+          });
+        });
+        dropdown.appendChild(lbl);
+      });
+
+      toggleBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        const isOpen = !dropdown.hidden;
+        document.querySelectorAll('.assign-dropdown').forEach(d => d.hidden = true);
+        document.querySelectorAll('.assign-toggle-btn').forEach(b => b.classList.remove('open'));
+        if (!isOpen) { dropdown.hidden = false; toggleBtn.classList.add('open'); }
+      });
+
+      widget.appendChild(toggleBtn);
+      widget.appendChild(dropdown);
+      origSelect.replaceWith(widget);
+    });
+
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.assign-dropdown').forEach(d => d.hidden = true);
+      document.querySelectorAll('.assign-toggle-btn').forEach(b => b.classList.remove('open'));
+    });
+  }
+
+  function initThreads() {
+    document.querySelectorAll('tbody tr').forEach(row => {
+      const cb = row.querySelector('.cb');
+      if (!cb) return;
+      const id = cb.dataset.id;
+      const taskTd = row.cells[1];
+      if (!allThreads[id]) allThreads[id] = [];
+
+      const toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'thread-toggle';
+      toggle.dataset.id = id;
+      toggle.innerHTML = `💬 <span class="thread-toggle-label">Discussion</span> <span class="thread-badge" hidden>0</span>`;
+      taskTd.appendChild(toggle);
+
+      const body = document.createElement('div');
+      body.className = 'thread-body';
+      body.dataset.id = id;
+      body.hidden = true;
+      body.innerHTML = `<div class="thread-list" data-id="${id}"></div>
+        <div class="thread-compose">
+          <select class="thread-who">
+            <option value="">You are…</option>
+            ${TEAM.map(p => `<option value="${p.value}">${p.label}</option>`).join('')}
+          </select>
+          <textarea class="thread-input" placeholder="Add a comment or update…"></textarea>
+          <div class="thread-actions">
+            <span class="thread-reply-info" hidden></span>
+            <button type="button" class="thread-cancel-reply" hidden>✕ cancel reply</button>
+            <button type="button" class="thread-post">Post</button>
+          </div>
+        </div>`;
+      taskTd.appendChild(body);
+
+      let replyToId = null;
+
+      toggle.addEventListener('click', () => {
+        body.hidden = !body.hidden;
+        if (!body.hidden) body.querySelector('.thread-input').focus();
+      });
+
+      body.querySelector('.thread-list').addEventListener('click', e => {
+        const btn = e.target.closest('.thread-reply-btn');
+        if (!btn) return;
+        replyToId = btn.dataset.replyTo;
+        body.querySelector('.thread-reply-info').textContent = `↩ replying to ${btn.dataset.replyAuthor}`;
+        body.querySelector('.thread-reply-info').hidden = false;
+        body.querySelector('.thread-cancel-reply').hidden = false;
+        body.querySelector('.thread-input').focus();
+      });
+
+      body.querySelector('.thread-cancel-reply').addEventListener('click', () => {
+        replyToId = null;
+        body.querySelector('.thread-reply-info').hidden = true;
+        body.querySelector('.thread-cancel-reply').hidden = true;
+      });
+
+      body.querySelector('.thread-post').addEventListener('click', () => {
+        const who = body.querySelector('.thread-who').value;
+        const text = body.querySelector('.thread-input').value.trim();
+        if (!who) { alert('Select who you are before posting.'); return; }
+        if (!text) { alert('Type a comment before posting.'); return; }
+        const comment = { id: 'c' + Date.now(), author: who, text, ts: Date.now() };
+        if (replyToId) comment.replyTo = replyToId;
+        allThreads[id].push(comment);
+        renderThread(id);
+        markDirty();
+        body.querySelector('.thread-input').value = '';
+        replyToId = null;
+        body.querySelector('.thread-reply-info').hidden = true;
+        body.querySelector('.thread-cancel-reply').hidden = true;
+      });
+    });
+  }
+
+  function renderThread(taskId) {
+    const list = document.querySelector('.thread-list[data-id="' + taskId + '"]');
+    const toggle = document.querySelector('.thread-toggle[data-id="' + taskId + '"]');
+    const comments = allThreads[taskId] || [];
+    if (!list) return;
+    const badge = toggle ? toggle.querySelector('.thread-badge') : null;
+    const taskTd = toggle ? toggle.closest('td') : null;
+    if (comments.length === 0) {
+      list.innerHTML = '';
+      if (badge) badge.hidden = true;
+      if (taskTd) taskTd.classList.remove('thread-has-content');
+      return;
+    }
+    if (badge) { badge.hidden = false; badge.textContent = comments.length; }
+    if (taskTd) taskTd.classList.add('thread-has-content');
+    const commentMap = {};
+    comments.forEach(c => commentMap[c.id] = c);
+    list.innerHTML = comments.map(c => {
+      const person = TEAM.find(t => t.value === c.author);
+      const label = person ? person.label : c.author;
+      const d = new Date(c.ts);
+      const time = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' · ' +
+                   d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+      const replyToComment = c.replyTo ? commentMap[c.replyTo] : null;
+      const replyToLabel = replyToComment ? (TEAM.find(t => t.value === replyToComment.author) || { label: replyToComment.author }).label : '';
+      return `<div class="thread-comment${c.replyTo ? ' is-reply' : ''}" data-comment-id="${c.id}">
+        ${replyToLabel ? `<div class="thread-in-reply-to">↩ replying to <strong>${replyToLabel}</strong></div>` : ''}
+        <div class="thread-comment-header">
+          <span class="assign-chip chip-${c.author}">${label}</span>
+          <span class="thread-time">${time}</span>
+          <button class="thread-reply-btn" data-reply-to="${c.id}" data-reply-author="${label}">Reply</button>
+        </div>
+        <div class="thread-comment-text">${escapeHtml(c.text)}</div>
+      </div>`;
+    }).join('');
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
   function updateProgress() {
@@ -851,9 +1559,9 @@
     if (daysSinceStart < 0) return; // sprint hasn't started yet
 
     const phaseData = [
-      { tableId: 'phase1', total: 12 },
-      { tableId: 'phase2', total: 10 },
-      { tableId: 'phase3', total: 8 },
+      { tableId: 'phase1', total: 26 },
+      { tableId: 'phase2', total: 17 },
+      { tableId: 'phase3', total: 16 },
     ];
     const phaseIdx = daysSinceStart >= 60 ? 2 : daysSinceStart >= 30 ? 1 : 0;
     const p = phaseData[phaseIdx];
@@ -887,6 +1595,23 @@
     if (lbl) lbl.textContent = label;
 
     document.querySelector('.page-header').style.boxShadow = '0 8px 40px ' + color + '44';
+
+    // ── Update sprint timeline ─────────────────────────────────────────────
+    const sprintDays = 90;
+    const elapsedPct = Math.min(100, Math.max(0, (daysSinceStart / sprintDays) * 100));
+
+    const elapsedEl = document.getElementById('timeline-elapsed');
+    if (elapsedEl) elapsedEl.style.width = elapsedPct + '%';
+
+    const pin = document.getElementById('timeline-today');
+    const chip = document.getElementById('today-chip');
+    if (pin) {
+      pin.style.display = 'flex';
+      pin.style.left = elapsedPct + '%';
+      // Format today's date for the chip label
+      const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      if (chip) chip.textContent = dateStr;
+    }
   }
 
   // ── NOTIFICATIONS ─────────────────────────────────────────────────────────
@@ -899,8 +1624,9 @@
   }
 
   function getAssignee(id) {
-    const sel = document.querySelector('.assignee-select[data-id="' + id + '"]');
-    return sel ? sel.value : '';
+    const widget = document.querySelector('.multi-assign[data-id="' + id + '"]');
+    if (!widget) return '';
+    return Array.from(widget.querySelectorAll('input:checked')).map(cb => cb.value).join(', ');
   }
 
   function sendNotification(type, taskId, taskText, assignee, completedBy) {
@@ -1026,31 +1752,52 @@
   }
 
   // ── INIT ──────────────────────────────────────────────────────────────────
+
+  // Inject save bar and toast into DOM
+  (function injectSaveUI() {
+    const bar = document.createElement('div');
+    bar.id = 'save-bar';
+    bar.className = 'save-bar';
+    bar.innerHTML = `
+      <button id="save-btn" class="save-btn" onclick="submitChanges()">
+        <span class="save-btn-label">Save Changes</span>
+        <span id="save-count" class="save-count">0</span>
+      </button>`;
+    document.body.appendChild(bar);
+
+    const toast = document.createElement('div');
+    toast.id = 'save-toast';
+    toast.className = 'save-toast';
+    toast.innerHTML = `<span class="save-toast-icon">✓</span><span class="save-toast-text"></span>`;
+    document.body.appendChild(toast);
+  })();
+
   initNotes();
-  loadState();
+  initMultiAssign();  // replaces <select> with multi-checkbox widgets
+  initThreads();      // adds discussion thread UI to each task row
+
+  // Register checkbox event listeners (after initMultiAssign replaces selects)
   document.querySelectorAll('.cb').forEach(cb => {
-    styleRow(cb);
     cb.addEventListener('change', () => {
       styleRow(cb);
       updateProgress();
-      saveState();
+      markDirty();
       if (cb.checked) {
-        const assignee = getAssignee(cb.dataset.id);
-        sendNotification('completed', cb.dataset.id, getTaskText(cb.dataset.id), assignee, 'kiwi');
+        pendingNotifications.push({
+          type: 'completed', taskId: cb.dataset.id,
+          taskText: getTaskText(cb.dataset.id),
+          assignee: getAssignee(cb.dataset.id), completedBy: 'kiwi',
+        });
       }
     });
   });
-  document.querySelectorAll('.assignee-select').forEach(sel => {
-    styleSelect(sel);
-    sel.addEventListener('change', () => {
-      styleSelect(sel);
-      saveState();
-      if (sel.value) {
-        sendNotification('assigned', sel.dataset.id, getTaskText(sel.dataset.id), sel.value);
-      }
-    });
+
+  // Load shared state from server (falls back to localStorage), then apply styles
+  loadState().then(() => {
+    document.querySelectorAll('.cb').forEach(cb => styleRow(cb));
+    updateProgress();
   });
-  updateProgress();
+
   fetchSEOData(false);
 </script>
 
