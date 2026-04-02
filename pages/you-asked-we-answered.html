@@ -216,11 +216,16 @@ h1, h2, h3, h4 { font-family: 'Raleway', sans-serif; }
 .section-desc { font-size: 15px; color: var(--text-muted); max-width: 560px; }
 
 /* ══ QUESTION CARDS ══ */
+/* ── video cards: 2-col; text-only cards: 3-col ── */
 .q-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
+.q-grid.has-videos {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .q-card {
   background: var(--white);
   border: 1.5px solid var(--border);
@@ -248,12 +253,53 @@ h1, h2, h3, h4 { font-family: 'Raleway', sans-serif; }
   width: 100%;
 }
 .q-card-body {
-  padding: 22px 22px 18px;
-  flex: 1; display: flex; flex-direction: column;
+  padding: 20px 20px 16px;
+  display: flex; flex-direction: column;
 }
+
+/* ── video thumbnail area ── */
+.q-thumb-wrap {
+  position: relative;
+  width: 100%;
+  /* 16:9 crop of the portrait thumbnail — shows the face region */
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #0a1929;
+  flex-shrink: 0;
+}
+.q-thumb-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.q-card:hover .q-thumb-wrap img { transform: scale(1.04); }
+.q-thumb-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(23,47,68,0.7) 0%, rgba(0,0,0,0.1) 50%);
+  display: flex; align-items: center; justify-content: center;
+}
+.q-play-btn {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+  transition: transform 0.2s, background 0.2s;
+}
+.q-play-btn svg { margin-left: 4px; }
+.q-card:hover .q-play-btn { transform: scale(1.1); background: var(--green); }
+.q-card:hover .q-play-btn svg path { fill: var(--navy); }
+.q-thumb-label {
+  position: absolute; bottom: 10px; right: 10px;
+  font-size: 10px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+  background: rgba(0,0,0,0.5); border-radius: 4px; padding: 3px 7px;
+}
+
 .q-card-top {
   display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 .q-number {
   font-size: 11px; font-weight: 800; color: var(--slate);
@@ -268,11 +314,11 @@ h1, h2, h3, h4 { font-family: 'Raleway', sans-serif; }
 .q-text {
   font-family: 'Raleway', sans-serif;
   font-weight: 700; font-size: 15px; color: var(--navy);
-  line-height: 1.45; margin-bottom: 20px; flex: 1;
+  line-height: 1.45; margin-bottom: 16px; flex: 1;
 }
 .q-card-footer {
   display: flex; align-items: center; justify-content: space-between;
-  padding-top: 14px;
+  padding-top: 12px;
   border-top: 1px solid var(--border);
   gap: 10px;
 }
@@ -347,54 +393,19 @@ h1, h2, h3, h4 { font-family: 'Raleway', sans-serif; }
   color: rgba(255,255,255,0.4); font-size: 13px; font-weight: 600;
 }
 
-/* ══ VIDEO MODAL ══ */
-.modal-overlay {
-  display: none; position: fixed; inset: 0; z-index: 2000;
-  background: rgba(0,0,0,0.88);
-  align-items: center; justify-content: center;
-  padding: 20px;
-}
-.modal-overlay.open { display: flex; }
-.modal-close {
-  position: fixed; top: 18px; right: 18px;
-  width: 44px; height: 44px; border-radius: 50%;
-  background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.22);
-  color: var(--white); font-size: 18px; cursor: pointer; z-index: 2001;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.2s;
-  font-family: sans-serif; line-height: 1;
-}
-.modal-close:hover { background: rgba(255,255,255,0.22); }
-.modal-box { width: 100%; max-width: 340px; }
-.modal-video-wrap {
-  aspect-ratio: 9 / 16;
-  border-radius: 14px; overflow: hidden; background: #000;
-  box-shadow: 0 20px 80px rgba(0,0,0,0.6);
-}
-.modal-video-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
-
-/* ── play indicator on cards with video ── */
-.q-card.has-video { cursor: pointer; }
-.q-card.has-video .q-cta-link { color: var(--green-dark); }
-.q-card.has-video:hover .q-cta-link { color: var(--green); }
-.play-badge {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 22px; height: 22px; border-radius: 50%;
-  background: var(--green); flex-shrink: 0;
-}
-.play-badge svg { margin-left: 1px; }
-
 /* ══ RESPONSIVE ══ */
 @media (max-width: 960px) {
   .container { padding: 0 24px; }
   .yawa-hero { padding: 60px 0 68px; }
   .sp-grid { grid-template-columns: 1fr; }
   .q-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .q-grid.has-videos { grid-template-columns: 1fr; }
   .jump-nav-inner { padding: 0 24px; }
 }
 @media (max-width: 640px) {
   .yawa-hero { padding: 48px 0 56px; }
   .q-grid { grid-template-columns: 1fr; }
+  .q-grid.has-videos { grid-template-columns: 1fr; }
   .hero-meta { flex-direction: column; gap: 10px; }
 }
 
@@ -538,7 +549,7 @@ const CATEGORIES = [
     title: 'Pricing',
     desc: 'The questions every prospect asks before booking a demo — answered honestly by Ge, who makes every pricing decision.',
     questions: [
-      { n: 1, q: 'How does Ylopo pricing work — and why do you need a demo to get a real number?', sp: 'ge', featured: true, videoId: 'lk14REcY1hg', detailUrl: '#' },
+      { n: 1, q: 'How does Ylopo pricing work — and why do you need a demo to get a real number?', sp: 'ge', featured: true, videoId: 'lk14REcY1hg', detailUrl: '/you-asked-we-answered/how-does-ylopo-pricing-work' },
       { n: 2, q: 'Does spending more on ads get me more leads — or does it just mean bigger audiences and more volume?', sp: 'ge', featured: true, videoId: 'qG73c4nND0o', detailUrl: '#' },
       { n: 3, q: 'What\'s the difference in cost between Social leads, PPC leads, and Live Transfer leads — and why?', sp: 'ge', featured: true, videoId: 'DHjA2dJ9aTo', detailUrl: '#' },
       { n: 4, q: 'How does Ylopo\'s total cost compare to buying 12 separate tools on my own?', sp: 'ge', featured: true, videoId: 'T7R8ayvjZ4U', detailUrl: '#' },
@@ -627,26 +638,34 @@ function renderCard(q, catColor) {
   const sp = spData(q.sp);
   const hasVideo = q.videoId && q.videoId.length > 0;
   const hasDetail = q.detailUrl && q.detailUrl !== '#';
+  const href = hasDetail ? q.detailUrl : (hasVideo ? `#q${q.n}` : null);
 
-  // Cards with video → open modal on click (div, not anchor)
-  // Cards with detail URL only → anchor to that page
-  // Cards with neither → plain div
-  const openTag = hasVideo
-    ? `<div class="q-card${q.featured ? ' featured' : ''} has-video" onclick="openVideo('${q.videoId}')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openVideo('${q.videoId}')">`
-    : hasDetail
-      ? `<a class="q-card${q.featured ? ' featured' : ''}" href="${q.detailUrl}">`
-      : `<div class="q-card${q.featured ? ' featured' : ''}">`;
-  const closeTag = (hasVideo || !hasDetail) ? '</div>' : '</a>';
+  const openTag = href
+    ? `<a class="q-card${q.featured ? ' featured' : ''}" href="${href}">`
+    : `<div class="q-card${q.featured ? ' featured' : ''}">`;
+  const closeTag = href ? '</a>' : '</div>';
 
-  const ctaContent = hasVideo
-    ? `<span class="play-badge"><svg width="9" height="10" viewBox="0 0 10 12" fill="none"><path d="M1 1l8 5-8 5V1z" fill="white"/></svg></span><span class="q-cta-link">Watch</span>`
-    : hasDetail
-      ? `<span class="q-cta-link">Read Answer →</span>`
-      : `<span class="q-cta-link" style="color:var(--border)">Coming soon</span>`;
+  const thumbHtml = hasVideo ? `
+    <a class="q-thumb-wrap" href="${hasDetail ? q.detailUrl : '#q' + q.n}">
+      <img src="https://img.youtube.com/vi/${q.videoId}/hqdefault.jpg" alt="${q.q}" loading="lazy">
+      <div class="q-thumb-overlay">
+        <div class="q-play-btn">
+          <svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1l14 8L1 17V1z" fill="#172F44"/></svg>
+        </div>
+      </div>
+      <span class="q-thumb-label">Watch Answer</span>
+    </a>` : '';
+
+  const ctaText = hasDetail
+    ? 'Full Answer + Transcript →'
+    : hasVideo
+      ? 'Watch Above'
+      : '<span style="color:var(--border)">Coming soon</span>';
 
   return `
     ${openTag}
       <div class="q-card-accent" style="background:${catColor}"></div>
+      ${thumbHtml}
       <div class="q-card-body">
         <div class="q-card-top">
           <span class="q-number">Q${q.n < 10 ? '0' + q.n : q.n}</span>
@@ -658,7 +677,7 @@ function renderCard(q, catColor) {
             <div class="sp-chip-avatar ${sp.cls}">${sp.initials}</div>
             <span>${sp.name}</span>
           </div>
-          <div style="display:flex;align-items:center;gap:6px">${ctaContent}</div>
+          <span class="q-cta-link">${ctaText}</span>
         </div>
       </div>
     ${closeTag}
@@ -670,6 +689,7 @@ function renderSections() {
   let html = '';
   CATEGORIES.forEach(cat => {
     const pillStyle = `background:${cat.bg}; color:${cat.color}; border:1px solid ${cat.color}22;`;
+    const catHasVideos = cat.questions.some(q => q.videoId && q.videoId.length > 0);
     html += `
       <section class="questions-section" id="${cat.id}">
         <div class="container">
@@ -681,7 +701,7 @@ function renderSections() {
             <h2 class="section-title">${cat.title}</h2>
             <p class="section-desc">${cat.desc}</p>
           </div>
-          <div class="q-grid">
+          <div class="q-grid${catHasVideos ? ' has-videos' : ''}">
             ${cat.questions.map(q => renderCard(q, cat.color)).join('')}
           </div>
         </div>
@@ -709,35 +729,7 @@ function initJumpNav() {
 
 renderSections();
 initJumpNav();
-
-// ── VIDEO MODAL ──
-function openVideo(videoId) {
-  const modal = document.getElementById('video-modal');
-  document.getElementById('modal-iframe').src =
-    `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`;
-  modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeVideoModal() {
-  const modal = document.getElementById('video-modal');
-  document.getElementById('modal-iframe').src = '';
-  modal.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal(); });
 </script>
-
-<!-- ══ VIDEO MODAL ══ -->
-<div id="video-modal" class="modal-overlay" onclick="if(event.target===this)closeVideoModal()">
-  <button class="modal-close" onclick="closeVideoModal()" aria-label="Close video">✕</button>
-  <div class="modal-box">
-    <div class="modal-video-wrap">
-      <iframe id="modal-iframe" src="" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
-    </div>
-  </div>
-</div>
 
 </body>
 </html>

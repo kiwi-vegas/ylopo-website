@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How does Ylopo pricing work? — You Asked, We Answered</title>
+<meta name="description" content="Ge, Ylopo's co-founder and president, explains exactly how pricing works, why it varies by lead type and market, and what to expect on a demo call.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- FAQPage + VideoObject schema for Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "How does Ylopo pricing work?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Ylopo pricing is based on three variables: the type of leads you want (Social, PPC, or Live Transfer), how many agents you have, and your target market. Because all three vary per client, there is no public rate card. A demo call is how Ylopo builds your actual quote — typically within a single 30-minute conversation."
+    }
+  }]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "How does Ylopo pricing work?",
+  "description": "Ge, co-founder and president of Ylopo, explains how pricing is determined by lead type, team size, and market — and why a demo is needed to give an accurate quote.",
+  "thumbnailUrl": "https://img.youtube.com/vi/lk14REcY1hg/hqdefault.jpg",
+  "uploadDate": "2026-04-01",
+  "contentUrl": "https://www.youtube.com/shorts/lk14REcY1hg",
+  "embedUrl": "https://www.youtube.com/embed/lk14REcY1hg",
+  "author": {
+    "@type": "Person",
+    "name": "Ge",
+    "jobTitle": "Co-Founder, President & CMO",
+    "worksFor": { "@type": "Organization", "name": "Ylopo" }
+  }
+}
+</script>
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --green: #7BC109;
+  --green-dark: #508200;
+  --green-xlight: #f0fad8;
+  --navy: #172F44;
+  --navy-mid: #1e3d57;
+  --slate: #696F8B;
+  --slate-light: #f0f1f5;
+  --white: #FFFFFF;
+  --text: #1a1a2e;
+  --text-muted: #5a6070;
+  --border: #e2e4ed;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 2px 12px rgba(23,47,68,0.07);
+  --shadow-md: 0 6px 28px rgba(23,47,68,0.13);
+  --cat-color: #1a6da8;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #f5f6fa;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { font-family: 'Raleway', sans-serif; }
+
+/* ══ LAYOUT ══ */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+.container-narrow { max-width: 820px; margin: 0 auto; padding: 0 48px; }
+
+/* ══ BREADCRUMB ══ */
+.breadcrumb-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; color: var(--slate);
+  flex-wrap: wrap;
+}
+.breadcrumb a {
+  color: var(--slate); text-decoration: none; transition: color 0.2s;
+}
+.breadcrumb a:hover { color: var(--navy); }
+.breadcrumb-sep { color: var(--border); }
+.breadcrumb-current { color: var(--navy); }
+
+/* ══ HERO ══ */
+.detail-hero {
+  background: linear-gradient(135deg, var(--navy) 0%, #1e3d57 100%);
+  padding: 60px 0 0;
+  position: relative; overflow: hidden;
+}
+.detail-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 75% 0%, rgba(123,193,9,0.15) 0%, transparent 55%);
+}
+.detail-hero::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--cat-color), #7BC109);
+}
+.hero-inner { position: relative; z-index: 1; padding-bottom: 48px; }
+
+.hero-top-row {
+  display: flex; align-items: center; gap: 12px;
+  flex-wrap: wrap; margin-bottom: 20px;
+}
+.cat-pill {
+  display: inline-flex; align-items: center;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 5px 13px; border-radius: 100px;
+  background: rgba(26,109,168,0.22); color: #7ec8f8;
+  border: 1px solid rgba(26,109,168,0.35);
+}
+.q-num-label {
+  font-size: 12px; font-weight: 700;
+  color: rgba(255,255,255,0.35); letter-spacing: 0.07em;
+}
+.detail-hero h1 {
+  font-size: clamp(24px, 3.5vw, 40px);
+  font-weight: 800; color: var(--white);
+  line-height: 1.2; margin-bottom: 28px;
+  max-width: 720px;
+}
+.sp-block {
+  display: flex; align-items: center; gap: 14px;
+}
+.sp-avatar {
+  width: 50px; height: 50px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 16px;
+  background: linear-gradient(135deg, #1e3d57, #2d5575);
+  color: var(--green); border: 2px solid rgba(123,193,9,0.35);
+}
+.sp-name { font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 15px; color: var(--white); margin-bottom: 2px; }
+.sp-role { font-size: 12px; color: rgba(255,255,255,0.5); }
+
+/* ══ VIDEO STRIP ══ */
+.video-strip {
+  background: var(--navy);
+  padding: 0 0 52px;
+}
+.video-outer {
+  display: flex; justify-content: center;
+  padding-top: 4px;
+}
+.video-frame {
+  /* 9:16 portrait, capped so it doesn't fill the whole screen */
+  width: 360px;
+  max-width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 16px 64px rgba(0,0,0,0.5);
+  background: #000;
+}
+.video-frame iframe {
+  width: 100%; height: 100%; border: none; display: block;
+}
+
+/* ══ SUMMARY CARD ══ */
+.summary-section {
+  background: var(--white);
+  padding: 56px 0 0;
+}
+.summary-card {
+  background: var(--green-xlight);
+  border: 1.5px solid rgba(123,193,9,0.3);
+  border-left: 5px solid var(--green);
+  border-radius: var(--radius-sm);
+  padding: 28px 32px;
+  margin-bottom: 48px;
+}
+.summary-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--green-dark); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.summary-label svg { opacity: 0.7; }
+.summary-headline {
+  font-family: 'Raleway', sans-serif; font-weight: 800;
+  font-size: 17px; color: var(--navy);
+  line-height: 1.45; margin-bottom: 14px;
+}
+.summary-body {
+  font-size: 15px; color: #2a3045; line-height: 1.7;
+}
+.summary-body p { margin-bottom: 10px; }
+.summary-body p:last-child { margin-bottom: 0; }
+
+/* ══ KEY POINTS ══ */
+.key-points {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px; margin-bottom: 52px;
+}
+.kp-card {
+  background: var(--slate-light);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+}
+.kp-icon { font-size: 22px; margin-bottom: 10px; }
+.kp-title { font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 14px; color: var(--navy); margin-bottom: 6px; }
+.kp-text { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+
+/* ══ TRANSCRIPT ══ */
+.transcript-section { background: var(--white); padding-bottom: 60px; }
+.transcript-divider {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 28px;
+}
+.transcript-divider-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--slate); white-space: nowrap;
+}
+.transcript-divider-line { flex: 1; height: 1px; background: var(--border); }
+.transcript-body {
+  font-size: 16px; line-height: 1.85; color: #2a2d3e;
+}
+.transcript-body p { margin-bottom: 22px; }
+.transcript-body p:last-child { margin-bottom: 0; }
+.transcript-body strong { color: var(--navy); font-weight: 700; }
+
+/* ══ CTA SIDEBAR STRIP ══ */
+.cta-strip {
+  background: var(--navy);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  margin-bottom: 52px;
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+}
+.cta-strip-text h3 {
+  font-size: 18px; font-weight: 800; color: var(--white); margin-bottom: 6px;
+}
+.cta-strip-text p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+.cta-strip-actions { display: flex; gap: 10px; flex-wrap: wrap; flex-shrink: 0; margin-left: auto; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Raleway', sans-serif; font-weight: 700;
+  font-size: 14px; padding: 12px 24px;
+  border-radius: 10px; text-decoration: none;
+  border: none; cursor: pointer; transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--green); color: var(--navy); }
+.btn-primary:hover { background: #8cd40a; transform: translateY(-1px); }
+.btn-ghost {
+  background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85);
+  border: 1.5px solid rgba(255,255,255,0.2);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.16); color: var(--white); }
+
+/* ══ RELATED ══ */
+.related-section { background: #f5f6fa; padding: 52px 0; border-top: 1px solid var(--border); }
+.related-section h3 { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 20px; }
+.related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.related-card {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 18px;
+  text-decoration: none; color: inherit;
+  display: flex; flex-direction: column; gap: 10px;
+  transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+}
+.related-card:hover { box-shadow: var(--shadow-md); border-color: #c8d0e0; transform: translateY(-2px); }
+.related-cat { font-size: 11px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; color: var(--slate); }
+.related-q { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 14px; color: var(--navy); line-height: 1.45; flex: 1; }
+.related-sp { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--slate); }
+.related-sp-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+/* ══ BOTTOM CTA ══ */
+.bottom-cta {
+  background: var(--navy); padding: 64px 0; text-align: center;
+  position: relative; overflow: hidden;
+}
+.bottom-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(123,193,9,0.13) 0%, transparent 60%);
+}
+.bottom-cta .container { position: relative; z-index: 1; }
+.bottom-cta h2 { font-size: clamp(22px, 3vw, 34px); font-weight: 800; color: var(--white); margin-bottom: 12px; }
+.bottom-cta p { font-size: 16px; color: rgba(255,255,255,0.6); max-width: 460px; margin: 0 auto 28px; line-height: 1.6; }
+.bottom-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-lg { padding: 14px 30px; font-size: 15px; }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 860px) {
+  .container, .container-narrow { padding: 0 24px; }
+  .key-points { grid-template-columns: 1fr 1fr; }
+  .related-grid { grid-template-columns: 1fr; }
+  .cta-strip { flex-direction: column; }
+  .cta-strip-actions { margin-left: 0; }
+  .video-frame { width: 300px; }
+}
+@media (max-width: 540px) {
+  .key-points { grid-template-columns: 1fr; }
+  .video-frame { width: 100%; max-width: 300px; }
+  .detail-hero h1 { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ BREADCRUMB ══ -->
+<div class="breadcrumb-bar">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/you-asked-we-answered">You Asked, We Answered</a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current">How does Ylopo pricing work?</span>
+    </nav>
+  </div>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="detail-hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-top-row">
+        <span class="cat-pill">Pricing</span>
+        <span class="q-num-label">Question 01 · Answered by Ge</span>
+      </div>
+      <h1>How does Ylopo pricing work — and why do you need a demo to get a real number?</h1>
+      <div class="sp-block">
+        <div class="sp-avatar">GE</div>
+        <div>
+          <div class="sp-name">Ge</div>
+          <div class="sp-role">Co-Founder, President &amp; CMO — owns every pricing decision at Ylopo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VIDEO ══ -->
+<div class="video-strip">
+  <div class="container">
+    <div class="video-outer">
+      <div class="video-frame">
+        <iframe
+          src="https://www.youtube.com/embed/lk14REcY1hg?rel=0&playsinline=1"
+          title="How does Ylopo pricing work? — Answered by Ge, Co-Founder"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SUMMARY + KEY POINTS ══ -->
+<section class="summary-section">
+  <div class="container-narrow">
+
+    <div class="summary-card">
+      <div class="summary-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        AI Summary — what Ge covers in this video
+      </div>
+      <div class="summary-headline">Ylopo doesn't have a single price — and there's a real reason for that.</div>
+      <div class="summary-body">
+        <p>Ge explains that Ylopo pricing is determined by three variables: the <strong>type of leads</strong> you want (Social, PPC, or Live Transfer), the <strong>size of your team</strong> (more agents means more leads needed), and your <strong>specific market</strong> (ad costs vary significantly by geography). Because all three inputs are different for every client, there's no public rate card — and giving one would actually be misleading.</p>
+        <p>The demo call isn't a sales pitch dressed up as a consultation. It's the only way to gather those three variables and run your actual numbers. Ge says most clients get a full quote within a single 30-minute call. The most common reaction after seeing the number: <em>one or two closed deals covers the annual cost</em>.</p>
+      </div>
+    </div>
+
+    <div class="key-points">
+      <div class="kp-card">
+        <div class="kp-icon">🎯</div>
+        <div class="kp-title">Lead type is the biggest driver</div>
+        <div class="kp-text">Social leads cost the least. PPC is mid-range. Live Transfer (our call center vets and connects) is the highest cost — and highest intent.</div>
+      </div>
+      <div class="kp-card">
+        <div class="kp-icon">👥</div>
+        <div class="kp-title">Team size scales the volume</div>
+        <div class="kp-text">A solo agent and a 15-agent team need very different lead volumes. Your quote is built around how many agents you're feeding.</div>
+      </div>
+      <div class="kp-card">
+        <div class="kp-icon">📍</div>
+        <div class="kp-title">Market sets the ad cost floor</div>
+        <div class="kp-text">Google cost-per-click in Miami is not the same as in a mid-size metro. Your market determines what the underlying ad spend actually costs.</div>
+      </div>
+    </div>
+
+    <!-- CTA strip -->
+    <div class="cta-strip">
+      <div class="cta-strip-text">
+        <h3>Ready to get your actual number?</h3>
+        <p>30 minutes on a demo call and you'll have a real quote built for your market, team size, and lead goals.</p>
+      </div>
+      <div class="cta-strip-actions">
+        <a href="https://demo.ylopo.com/free-demo-step-1" class="btn btn-primary">Book a Free Demo</a>
+        <a href="/you-asked-we-answered" class="btn btn-ghost">← All Questions</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ TRANSCRIPT ══ -->
+<section class="transcript-section">
+  <div class="container-narrow">
+
+    <div class="transcript-divider">
+      <span class="transcript-divider-label">Full Transcript</span>
+      <div class="transcript-divider-line"></div>
+    </div>
+
+    <div class="transcript-body">
+      <p>"The pricing question is the number one thing I get asked, and I completely understand why. If you're evaluating a tool for your business, you want to know what it costs. So let me be straight with you about why we don't have a public price — and it's not because we're hiding anything."</p>
+
+      <p>"<strong>Ylopo pricing has three variables.</strong> The first is lead type. We have Social leads — people who saw an ad on Facebook or Instagram and clicked. We have PPC leads — people who typed something into Google and found you. And we have Live Transfer leads, which means our call center has already spoken with the person, verified they're a real buyer or seller, and is putting them on the phone with you in real time. Those three lead types have very different costs, because they represent very different levels of intent and different ad platform economics."</p>
+
+      <p>"The second variable is <strong>how many agents you have</strong>. If you're running a team of 15 agents, you need a lot more leads than a solo agent. The ad spend scales with your capacity to work leads. We want to make sure you're generating enough volume to keep your team busy — but not so much that leads go cold because you don't have the bandwidth."</p>
+
+      <p>"The third variable is your <strong>specific market</strong>. The cost to buy a Google click in Miami Beach is not the same as the cost in Tulsa, Oklahoma. Real estate markets have wildly different advertising costs depending on competition, population, and inventory levels. We have to know your market before we can quote you anything honest."</p>
+
+      <p>"So when you come to a demo, here's what actually happens: we ask you three things — what lead types are you interested in, how many agents are you feeding, and where are you operating. From those three answers, we can build your actual number in that same conversation. We are not holding the price back to create leverage in a negotiation. We genuinely cannot calculate it without your inputs."</p>
+
+      <p>"What I'll tell you is this: the most common thing we hear from agents after they've been with us for six months is that <strong>one or two closed deals has covered their entire annual cost</strong>. That's the ROI math most people are working with. And that's why we think once you see your real number, the conversation usually becomes about how to get started — not whether to start."</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ RELATED QUESTIONS ══ -->
+<section class="related-section">
+  <div class="container">
+    <h3>Related questions</h3>
+    <div class="related-grid">
+      <a class="related-card" href="/you-asked-we-answered#pricing">
+        <div class="related-cat">Pricing</div>
+        <div class="related-q">Does spending more on ads get me more leads — or does it just mean bigger audiences and more volume?</div>
+        <div class="related-sp">
+          <div class="related-sp-dot" style="background:#1e3d57"></div>Ge
+        </div>
+      </a>
+      <a class="related-card" href="/you-asked-we-answered#pricing">
+        <div class="related-cat">Pricing</div>
+        <div class="related-q">What's the difference in cost between Social leads, PPC leads, and Live Transfer leads — and why?</div>
+        <div class="related-sp">
+          <div class="related-sp-dot" style="background:#1e3d57"></div>Ge
+        </div>
+      </a>
+      <a class="related-card" href="/you-asked-we-answered#pricing">
+        <div class="related-cat">Pricing</div>
+        <div class="related-q">Why does Ylopo require a demo before quoting a price — what happens in that call?</div>
+        <div class="related-sp">
+          <div class="related-sp-dot" style="background:#1e3d57"></div>Ge
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BOTTOM CTA ══ -->
+<section class="bottom-cta">
+  <div class="container">
+    <h2>See all 25 questions</h2>
+    <p>Every question your prospects ask — answered on camera, no scripts, no spin.</p>
+    <div class="bottom-btns">
+      <a href="/you-asked-we-answered" class="btn btn-ghost btn-lg">← Back to All Questions</a>
+      <a href="https://demo.ylopo.com/free-demo-step-1" class="btn btn-primary btn-lg">Book a Free Demo</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
