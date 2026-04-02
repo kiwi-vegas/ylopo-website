@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You Asked, We Answered — Ylopo</title>
+<meta name="description" content="25 of the most common questions about Ylopo — answered on camera by co-founder Ge and Realtor-in-Residence Barry Jenkins. Real answers, no fluff.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --green: #7BC109;
+  --green-dark: #508200;
+  --green-xlight: #f0fad8;
+  --navy: #172F44;
+  --navy-mid: #1e3d57;
+  --slate: #696F8B;
+  --slate-light: #f0f1f5;
+  --white: #FFFFFF;
+  --text: #1a1a2e;
+  --text-muted: #5a6070;
+  --border: #e2e4ed;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 2px 12px rgba(23,47,68,0.07);
+  --shadow-md: 0 6px 24px rgba(23,47,68,0.12);
+
+  /* Category colors */
+  --cat-pricing: #1a6da8;
+  --cat-roi: #508200;
+  --cat-product: #6b3fa0;
+  --cat-fit: #b45309;
+  --cat-onboarding: #0e7490;
+  --cat-contracts: #b91c1c;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #f5f6fa;
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { font-family: 'Raleway', sans-serif; }
+
+/* ══ CONTAINER ══ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* ══ HERO ══ */
+.yawa-hero {
+  background: linear-gradient(135deg, var(--navy) 0%, #1e3d57 100%);
+  padding: 80px 0 88px;
+  position: relative;
+  overflow: hidden;
+}
+.yawa-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 0%, rgba(123,193,9,0.18) 0%, transparent 55%);
+}
+.yawa-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--green), #a5e040, var(--green));
+}
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: 760px;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(123,193,9,0.15);
+  border: 1px solid rgba(123,193,9,0.3);
+  color: var(--green);
+  font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 100px; margin-bottom: 28px;
+}
+.hero-eyebrow svg { flex-shrink: 0; }
+.yawa-hero h1 {
+  font-size: clamp(38px, 6vw, 64px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 22px;
+}
+.yawa-hero h1 span { color: var(--green); }
+.yawa-hero .hero-desc {
+  font-size: 18px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.65;
+  max-width: 600px;
+  margin-bottom: 36px;
+}
+.hero-meta {
+  display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
+}
+.hero-meta-item {
+  display: flex; align-items: center; gap: 8px;
+  color: rgba(255,255,255,0.55); font-size: 14px; font-weight: 600;
+}
+.hero-meta-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+}
+.hero-meta-divider { color: rgba(255,255,255,0.2); }
+
+/* ══ SPOKESPEOPLE ══ */
+.spokespeople-section {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 52px 0;
+}
+.sp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.sp-card {
+  display: flex; align-items: flex-start; gap: 20px;
+  padding: 28px 32px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.sp-card:hover { box-shadow: var(--shadow-md); border-color: #c8d0e0; }
+.sp-avatar {
+  width: 60px; height: 60px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 20px;
+}
+.sp-avatar.barry {
+  background: linear-gradient(135deg, #d97706, #f59e0b);
+  color: white;
+}
+.sp-avatar.ge {
+  background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+  color: var(--green);
+}
+.sp-info { flex: 1; }
+.sp-name {
+  font-family: 'Raleway', sans-serif; font-weight: 800;
+  font-size: 19px; color: var(--navy); margin-bottom: 3px;
+}
+.sp-title {
+  font-size: 13px; font-weight: 700; color: var(--slate);
+  letter-spacing: 0.05em; margin-bottom: 10px;
+}
+.sp-desc { font-size: 14px; color: var(--text-muted); line-height: 1.55; }
+.sp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.sp-tag {
+  font-size: 11px; font-weight: 700; padding: 3px 9px;
+  border-radius: 100px; letter-spacing: 0.05em;
+  background: var(--green-xlight); color: var(--green-dark);
+  border: 1px solid rgba(123,193,9,0.2);
+}
+
+/* ══ JUMP NAV ══ */
+.jump-nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 8px rgba(23,47,68,0.06);
+}
+.jump-nav-inner {
+  display: flex; align-items: center; gap: 4px;
+  overflow-x: auto; padding: 0 48px;
+  -ms-overflow-style: none; scrollbar-width: none;
+  max-width: 1200px; margin: 0 auto;
+}
+.jump-nav-inner::-webkit-scrollbar { display: none; }
+.jump-link {
+  flex-shrink: 0;
+  display: flex; align-items: center; gap: 7px;
+  padding: 14px 16px;
+  font-size: 13px; font-weight: 700;
+  color: var(--slate); text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.jump-link:hover { color: var(--navy); }
+.jump-link.active { color: var(--navy); border-bottom-color: var(--green); }
+.jump-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+}
+
+/* ══ QUESTIONS SECTIONS ══ */
+.questions-section { padding: 72px 0; }
+.questions-section:nth-child(even) { background: var(--white); }
+.questions-section:nth-child(odd) { background: #f5f6fa; }
+
+.section-header { margin-bottom: 40px; }
+.section-label-row {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+}
+.cat-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 100px;
+}
+.q-count-badge {
+  font-size: 12px; font-weight: 700; color: var(--slate);
+}
+.section-title {
+  font-size: 26px; font-weight: 800; color: var(--navy); margin-bottom: 8px;
+}
+.section-desc { font-size: 15px; color: var(--text-muted); max-width: 560px; }
+
+/* ══ QUESTION CARDS ══ */
+.q-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.q-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: box-shadow 0.25s, border-color 0.25s, transform 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+.q-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: #c8d0e0;
+  transform: translateY(-2px);
+}
+.q-card.featured {
+  border-color: rgba(123,193,9,0.35);
+  background: linear-gradient(to bottom, #fbfef5, var(--white));
+}
+.q-card.featured:hover { border-color: var(--green); }
+
+.q-card-accent {
+  height: 3px;
+  width: 100%;
+}
+.q-card-body {
+  padding: 22px 22px 18px;
+  flex: 1; display: flex; flex-direction: column;
+}
+.q-card-top {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px;
+}
+.q-number {
+  font-size: 11px; font-weight: 800; color: var(--slate);
+  letter-spacing: 0.1em;
+}
+.q-featured-badge {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--green-dark);
+  background: var(--green-xlight); border: 1px solid rgba(123,193,9,0.25);
+  padding: 3px 8px; border-radius: 100px;
+}
+.q-text {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700; font-size: 15px; color: var(--navy);
+  line-height: 1.45; margin-bottom: 20px; flex: 1;
+}
+.q-card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  gap: 10px;
+}
+.sp-chip {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 12px; font-weight: 700; color: var(--slate);
+}
+.sp-chip-avatar {
+  width: 24px; height: 24px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 800; flex-shrink: 0;
+}
+.sp-chip-avatar.barry { background: #fef3c7; color: #92400e; }
+.sp-chip-avatar.ge { background: #e0eaf5; color: var(--navy); }
+
+.q-cta-link {
+  font-size: 12px; font-weight: 800; color: var(--navy);
+  text-decoration: none; white-space: nowrap;
+  display: flex; align-items: center; gap: 4px;
+  transition: color 0.2s;
+}
+.q-card:hover .q-cta-link { color: var(--green-dark); }
+
+/* ══ CTA SECTION ══ */
+.cta-section {
+  background: var(--navy);
+  padding: 88px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(123,193,9,0.15) 0%, transparent 60%);
+}
+.cta-section .container { position: relative; z-index: 1; }
+.cta-section h2 {
+  font-size: clamp(28px, 4vw, 42px); font-weight: 800;
+  color: var(--white); margin-bottom: 16px;
+}
+.cta-section p {
+  font-size: 17px; color: rgba(255,255,255,0.65);
+  max-width: 500px; margin: 0 auto 36px;
+  line-height: 1.6;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Raleway', sans-serif; font-weight: 700;
+  font-size: 15px; padding: 14px 30px;
+  border-radius: 10px; text-decoration: none;
+  cursor: pointer; border: none; transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--green); color: var(--navy);
+}
+.btn-primary:hover { background: #8cd40a; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(123,193,9,0.35); }
+.btn-ghost {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.85);
+  border: 1.5px solid rgba(255,255,255,0.2);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.15); color: var(--white); }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-trust {
+  margin-top: 32px; display: flex; gap: 24px;
+  justify-content: center; flex-wrap: wrap;
+}
+.cta-trust-item {
+  display: flex; align-items: center; gap: 6px;
+  color: rgba(255,255,255,0.4); font-size: 13px; font-weight: 600;
+}
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 960px) {
+  .container { padding: 0 24px; }
+  .yawa-hero { padding: 60px 0 68px; }
+  .sp-grid { grid-template-columns: 1fr; }
+  .q-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .jump-nav-inner { padding: 0 24px; }
+}
+@media (max-width: 640px) {
+  .yawa-hero { padding: 48px 0 56px; }
+  .q-grid { grid-template-columns: 1fr; }
+  .hero-meta { flex-direction: column; gap: 10px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="yawa-hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        You Asked, We Answered
+      </div>
+      <h1>Real questions.<br><span>Real answers.</span><br>On camera.</h1>
+      <p class="hero-desc">We asked our co-founder and our top agent the questions prospects ask most — then filmed their answers. No scripts, no spin. Just the honest truth about how Ylopo works.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-dot"></div>
+          25 questions answered
+        </div>
+        <span class="hero-meta-divider">·</span>
+        <div class="hero-meta-item">
+          <div class="hero-meta-dot"></div>
+          2 spokespeople
+        </div>
+        <span class="hero-meta-divider">·</span>
+        <div class="hero-meta-item">
+          <div class="hero-meta-dot"></div>
+          ~60 seconds per answer
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SPOKESPEOPLE
+══════════════════════════════════════════ -->
+<section class="spokespeople-section">
+  <div class="container">
+    <div class="sp-grid">
+
+      <div class="sp-card">
+        <div class="sp-avatar barry">BJ</div>
+        <div class="sp-info">
+          <div class="sp-name">Barry Jenkins</div>
+          <div class="sp-title">Realtor-in-Residence</div>
+          <div class="sp-desc">A licensed agent running one of the most productive Ylopo-powered teams in the country. Barry answers from lived experience — not theory.</div>
+          <div class="sp-tags">
+            <span class="sp-tag">ROI &amp; Results</span>
+            <span class="sp-tag">Onboarding</span>
+            <span class="sp-tag">Team Fit</span>
+            <span class="sp-tag">Competitor Comparison</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sp-card">
+        <div class="sp-avatar ge">GE</div>
+        <div class="sp-info">
+          <div class="sp-name">Ge</div>
+          <div class="sp-title">Co-Founder, President &amp; CMO</div>
+          <div class="sp-desc">Ge built Ylopo and owns every product, pricing, and business decision. When the question is "how does it actually work" — this is who you ask.</div>
+          <div class="sp-tags">
+            <span class="sp-tag">Pricing</span>
+            <span class="sp-tag">AI &amp; Technology</span>
+            <span class="sp-tag">Contracts</span>
+            <span class="sp-tag">Data &amp; Privacy</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     JUMP NAV
+══════════════════════════════════════════ -->
+<nav class="jump-nav" id="jumpNav">
+  <div class="jump-nav-inner">
+    <a href="#pricing" class="jump-link" data-cat="pricing">
+      <span class="jump-dot" style="background:var(--cat-pricing)"></span>Pricing
+    </a>
+    <a href="#roi" class="jump-link" data-cat="roi">
+      <span class="jump-dot" style="background:var(--cat-roi)"></span>ROI &amp; Results
+    </a>
+    <a href="#product" class="jump-link" data-cat="product">
+      <span class="jump-dot" style="background:var(--cat-product)"></span>Product &amp; AI
+    </a>
+    <a href="#fit" class="jump-link" data-cat="fit">
+      <span class="jump-dot" style="background:var(--cat-fit)"></span>Who It's For
+    </a>
+    <a href="#onboarding" class="jump-link" data-cat="onboarding">
+      <span class="jump-dot" style="background:var(--cat-onboarding)"></span>Getting Started
+    </a>
+    <a href="#contracts" class="jump-link" data-cat="contracts">
+      <span class="jump-dot" style="background:var(--cat-contracts)"></span>Contracts &amp; Data
+    </a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     QUESTION CATEGORIES — rendered by JS
+══════════════════════════════════════════ -->
+<div id="questions-root"></div>
+
+<!-- ══════════════════════════════════════════
+     CTA
+══════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Still have questions?<br>Let's talk.</h2>
+    <p>A demo call is the best way to get answers specific to your market, team size, and goals — no pressure, no pitch deck.</p>
+    <div class="cta-btns">
+      <a href="https://demo.ylopo.com/free-demo-step-1" class="btn btn-primary">Book a Free Demo</a>
+      <a href="/real-estate-lead-generation" class="btn btn-ghost">See Our Products</a>
+    </div>
+    <div class="cta-trust">
+      <div class="cta-trust-item">✓ &nbsp;No long-term contracts</div>
+      <div class="cta-trust-item">✓ &nbsp;Your leads stay yours</div>
+      <div class="cta-trust-item">✓ &nbsp;Real answers on the call</div>
+    </div>
+  </div>
+</section>
+
+<script>
+// ── QUESTION DATA ──────────────────────────────────────────────────────────
+// To add a video: set videoId to the YouTube video ID (e.g. 'dQw4w9WgXcQ')
+// To link to a detail page: set detailUrl to the Squarespace page URL
+const CATEGORIES = [
+  {
+    id: 'pricing',
+    label: 'Pricing',
+    color: 'var(--cat-pricing)',
+    bg: '#e8f4fd',
+    title: 'Pricing',
+    desc: 'The questions every prospect asks before booking a demo — answered honestly by Ge, who makes every pricing decision.',
+    questions: [
+      { n: 1, q: 'How does Ylopo pricing work — and why do you need a demo to get a real number?', sp: 'ge', featured: true, videoId: '', detailUrl: '#' },
+      { n: 2, q: 'Does spending more on ads get me more leads — or does it just mean bigger audiences and more volume?', sp: 'ge', featured: true, videoId: '', detailUrl: '#' },
+      { n: 3, q: 'What\'s the difference in cost between Social leads, PPC leads, and Live Transfer leads — and why?', sp: 'ge', featured: true, videoId: '', detailUrl: '#' },
+      { n: 4, q: 'How does Ylopo\'s total cost compare to buying 12 separate tools on my own?', sp: 'ge', featured: true, videoId: '', detailUrl: '#' },
+      { n: 5, q: 'Why does Ylopo require a demo before quoting a price — what happens in that call, and what should I prepare?', sp: 'ge', featured: false, videoId: '', detailUrl: '#' },
+    ]
+  },
+  {
+    id: 'roi',
+    label: 'ROI & Results',
+    color: 'var(--cat-roi)',
+    bg: '#f0fad8',
+    title: 'ROI & Results',
+    desc: 'Barry runs one of the top Ylopo teams in the country. These answers come from his real numbers, real deals, and real experience.',
+    questions: [
+      { n: 6, q: 'What ROI can I realistically expect? What have real agents actually made?', sp: 'barry', featured: false, videoId: '', detailUrl: '#' },
+      { n: 7, q: 'How long does it typically take to close a deal from a Ylopo lead?', sp: 'barry', featured: false, videoId: '', detailUrl: '#' },
+      { n: 8, q: 'What\'s a typical cost-per-lead across the different channels — PPC, Social, Live Transfer?', sp: 'ge', featured: false, videoId: '', detailUrl: '#' },
+      { n: 9, q: 'Can you show me the actual math on "1–2 listings covers the cost"?', sp: 'barry', featured: false, videoId: '', detailUrl: '#' },
+      { n: 10, q: 'What results can a solo agent realistically expect vs. a large team of 10+ agents?', sp: 'barry', featured: false, videoId: '', detailUrl: '#' },
+    ]
+  },
+  {
+    id: 'product',
+    label: 'Product & AI',
+    color: 'var(--cat-product)',
+    bg: '#f5f0ff',
+    title: 'Product & AI',
+    desc: 'How the technology actually works — not marketing language. Ge explains the AI, the lead flow, and how it all fits together.',
+    questions: [
+      { n: 11, q: 'How does Ylopo\'s AI actually work — what does it say to my leads, and who controls the script?', sp: 'ge', featured: true, videoId: '', detailUrl: '#' },
+      { n: 12, q: 'Are my leads exclusive to me, or are they shared with other agents in my market?', sp: 'ge', featured: true, videoId: '', detailUrl: '#' },
+      { n: 13, q: 'How does Ylopo compare to BoomTown, CINC, kvCORE, and Zillow Flex — and why should I switch?', sp: 'barry', featured: false, videoId: '', detailUrl: '#' },
+      { n: 14, q: 'What CRMs integrate with Ylopo, and how deep is the sync — contacts, activities, or both?', sp: 'ge', featured: false, videoId: '', detailUrl: '#' },
+      { n: 15, q: 'What is "Managed Marketing" — who actually does the work, and how hands-off can I be?', sp: 'ge', featured: false, videoId: '', detailUrl: '#' },
+    ]
+  },
+  {
+    id: 'fit',
+    label: 'Who It\'s For',
+    color: 'var(--cat-fit)',
+    bg: '#fff7ed',
+    title: 'Who It\'s For',
+    desc: 'Barry is the same type of person as Ylopo\'s ideal client. When he says it\'s not right for someone, he means it.',
+    questions: [
+      { n: 16, q: 'Is Ylopo right for a solo agent, or do I need to be running a team to get value from it?', sp: 'barry', featured: false, videoId: '', detailUrl: '#' },
+      { n: 17, q: 'What team size gets the best value from Ylopo — at what point does it become a no-brainer?', sp: 'barry', featured: false, videoId: '', detailUrl: '#' },
+      { n: 18, q: 'Does Ylopo work in my specific market — rural areas, mid-size metros, Canada, slower markets?', sp: 'ge', featured: false, videoId: '', detailUrl: '#' },
+      { n: 19, q: 'What kind of agent is Ylopo NOT a good fit for? Be honest with me.', sp: 'barry', featured: false, videoId: '', detailUrl: '#' },
+    ]
+  },
+  {
+    id: 'onboarding',
+    label: 'Getting Started',
+    color: 'var(--cat-onboarding)',
+    bg: '#e0f7fa',
+    title: 'Getting Started',
+    desc: 'The timeline, the learning curve, the support. Barry walks through exactly what to expect in the first 90 days.',
+    questions: [
+      { n: 20, q: 'What does the first 30, 60, and 90 days look like after I sign up — what should I actually expect?', sp: 'barry', featured: false, videoId: '', detailUrl: '#' },
+      { n: 21, q: 'How long until I start seeing leads come in after I turn on Ylopo?', sp: 'barry', featured: false, videoId: '', detailUrl: '#' },
+      { n: 22, q: 'What technical skill level do I need — do I have to be a tech person to use this?', sp: 'barry', featured: false, videoId: '', detailUrl: '#' },
+      { n: 23, q: 'What support is available — can I call a real person when something goes wrong?', sp: 'ge', featured: false, videoId: '', detailUrl: '#' },
+    ]
+  },
+  {
+    id: 'contracts',
+    label: 'Contracts & Data',
+    color: 'var(--cat-contracts)',
+    bg: '#fef2f2',
+    title: 'Contracts & Data',
+    desc: 'The two questions people ask right before signing — and right before canceling. Ge answers both directly.',
+    questions: [
+      { n: 24, q: '"No long-term contracts" — what does that actually mean? Can I cancel month-to-month, and what\'s the process?', sp: 'ge', featured: true, videoId: '', detailUrl: '#' },
+      { n: 25, q: 'If I cancel Ylopo, do I keep all my leads and data — or does it disappear?', sp: 'ge', featured: true, videoId: '', detailUrl: '#' },
+    ]
+  }
+];
+
+function spData(sp) {
+  return sp === 'barry'
+    ? { initials: 'BJ', cls: 'barry', name: 'Barry Jenkins' }
+    : { initials: 'GE', cls: 'ge', name: 'Ge' };
+}
+
+function renderCard(q, catColor) {
+  const sp = spData(q.sp);
+  const hasVideo = q.videoId && q.videoId.length > 0;
+  const cardLink = q.detailUrl && q.detailUrl !== '#' ? q.detailUrl : (hasVideo ? `#q${q.n}` : '#');
+  return `
+    <a class="q-card${q.featured ? ' featured' : ''}" href="${cardLink}">
+      <div class="q-card-accent" style="background:${catColor}"></div>
+      <div class="q-card-body">
+        <div class="q-card-top">
+          <span class="q-number">Q${q.n < 10 ? '0' + q.n : q.n}</span>
+          ${q.featured ? '<span class="q-featured-badge">Key Question</span>' : ''}
+        </div>
+        <div class="q-text">${q.q}</div>
+        <div class="q-card-footer">
+          <div class="sp-chip">
+            <div class="sp-chip-avatar ${sp.cls}">${sp.initials}</div>
+            <span>${sp.name}</span>
+          </div>
+          <span class="q-cta-link">
+            ${hasVideo ? '▶ Watch' : 'View Answer'} →
+          </span>
+        </div>
+      </div>
+    </a>
+  `;
+}
+
+function renderSections() {
+  const root = document.getElementById('questions-root');
+  let html = '';
+  CATEGORIES.forEach(cat => {
+    const pillStyle = `background:${cat.bg}; color:${cat.color}; border:1px solid ${cat.color}22;`;
+    html += `
+      <section class="questions-section" id="${cat.id}">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-label-row">
+              <span class="cat-pill" style="${pillStyle}">${cat.label}</span>
+              <span class="q-count-badge">${cat.questions.length} question${cat.questions.length > 1 ? 's' : ''}</span>
+            </div>
+            <h2 class="section-title">${cat.title}</h2>
+            <p class="section-desc">${cat.desc}</p>
+          </div>
+          <div class="q-grid">
+            ${cat.questions.map(q => renderCard(q, cat.color)).join('')}
+          </div>
+        </div>
+      </section>
+    `;
+  });
+  root.innerHTML = html;
+}
+
+// ── ACTIVE JUMP LINK ──
+function initJumpNav() {
+  const sections = document.querySelectorAll('.questions-section[id]');
+  const links = document.querySelectorAll('.jump-link');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.jump-link[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => observer.observe(s));
+}
+
+renderSections();
+initJumpNav();
+</script>
+
+</body>
+</html>
