@@ -216,111 +216,60 @@ h1, h2, h3, h4 { font-family: 'Raleway', sans-serif; }
 .section-desc { font-size: 15px; color: var(--text-muted); max-width: 560px; }
 
 /* ══ QUESTION CARDS ══ */
-/* ── video cards: 2-col; text-only cards: 3-col ── */
-.q-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-.q-grid.has-videos {
-  grid-template-columns: repeat(2, 1fr);
-}
+/* ══ QUESTION LIST ══ */
+.q-list { display: flex; flex-direction: column; gap: 16px; }
 
-.q-card {
+/* ── Row: question left, video right ── */
+.q-row {
   background: var(--white);
   border: 1.5px solid var(--border);
   border-radius: var(--radius);
-  padding: 0;
   overflow: hidden;
-  display: flex; flex-direction: column;
-  transition: box-shadow 0.25s, border-color 0.25s, transform 0.2s;
-  text-decoration: none;
-  color: inherit;
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  transition: box-shadow 0.25s, border-color 0.25s;
+  text-decoration: none; color: inherit;
 }
-.q-card:hover {
-  box-shadow: var(--shadow-md);
-  border-color: #c8d0e0;
-  transform: translateY(-2px);
-}
-.q-card.featured {
-  border-color: rgba(123,193,9,0.35);
-  background: linear-gradient(to bottom, #fbfef5, var(--white));
-}
-.q-card.featured:hover { border-color: var(--green); }
+.q-row:hover { box-shadow: var(--shadow-md); border-color: #c8d0e0; }
+.q-row.featured { border-color: rgba(123,193,9,0.4); }
+.q-row.featured:hover { border-color: var(--green); }
+/* rows without a video: single column */
+.q-row.no-video { grid-template-columns: 1fr; }
 
-.q-card-accent {
-  height: 3px;
-  width: 100%;
-}
-.q-card-body {
-  padding: 20px 20px 16px;
-  display: flex; flex-direction: column;
+/* left accent bar */
+.q-row-accent {
+  width: 4px; background: var(--border);
+  position: absolute; left: 0; top: 0; bottom: 0; border-radius: var(--radius) 0 0 var(--radius);
 }
 
-/* ── video thumbnail area ── */
-.q-thumb-wrap {
+/* ── Left: question text area ── */
+.q-row-left {
+  padding: 24px 28px;
+  display: flex; flex-direction: column; justify-content: center;
+  gap: 12px;
+  border-right: 1px solid var(--border);
   position: relative;
-  width: 100%;
-  /* 16:9 crop of the portrait thumbnail — shows the face region */
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: #0a1929;
-  flex-shrink: 0;
 }
-.q-thumb-wrap img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  display: block;
-  transition: transform 0.35s ease;
-}
-.q-card:hover .q-thumb-wrap img { transform: scale(1.04); }
-.q-thumb-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(23,47,68,0.7) 0%, rgba(0,0,0,0.1) 50%);
-  display: flex; align-items: center; justify-content: center;
-}
-.q-play-btn {
-  width: 52px; height: 52px; border-radius: 50%;
-  background: rgba(255,255,255,0.92);
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
-  transition: transform 0.2s, background 0.2s;
-}
-.q-play-btn svg { margin-left: 4px; }
-.q-card:hover .q-play-btn { transform: scale(1.1); background: var(--green); }
-.q-card:hover .q-play-btn svg path { fill: var(--navy); }
-.q-thumb-label {
-  position: absolute; bottom: 10px; right: 10px;
-  font-size: 10px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase;
-  color: rgba(255,255,255,0.8);
-  background: rgba(0,0,0,0.5); border-radius: 4px; padding: 3px 7px;
-}
+.q-row.no-video .q-row-left { border-right: none; }
 
-.q-card-top {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 10px;
+.q-row-meta {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
 }
 .q-number {
-  font-size: 11px; font-weight: 800; color: var(--slate);
-  letter-spacing: 0.1em;
+  font-size: 11px; font-weight: 800; color: var(--slate); letter-spacing: 0.1em;
 }
 .q-featured-badge {
-  font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--green-dark);
-  background: var(--green-xlight); border: 1px solid rgba(123,193,9,0.25);
-  padding: 3px 8px; border-radius: 100px;
+  font-size: 10px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--green-dark); background: var(--green-xlight);
+  border: 1px solid rgba(123,193,9,0.25); padding: 3px 9px; border-radius: 100px;
 }
 .q-text {
   font-family: 'Raleway', sans-serif;
-  font-weight: 700; font-size: 15px; color: var(--navy);
-  line-height: 1.45; margin-bottom: 16px; flex: 1;
+  font-weight: 700; font-size: 16px; color: var(--navy); line-height: 1.45;
 }
-.q-card-footer {
-  display: flex; align-items: center; justify-content: space-between;
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
-  gap: 10px;
+.q-row-footer {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  margin-top: 4px;
 }
 .sp-chip {
   display: flex; align-items: center; gap: 7px;
@@ -333,14 +282,62 @@ h1, h2, h3, h4 { font-family: 'Raleway', sans-serif; }
 }
 .sp-chip-avatar.barry { background: #fef3c7; color: #92400e; }
 .sp-chip-avatar.ge { background: #e0eaf5; color: var(--navy); }
-
-.q-cta-link {
-  font-size: 12px; font-weight: 800; color: var(--navy);
-  text-decoration: none; white-space: nowrap;
+.q-detail-link {
+  font-size: 12px; font-weight: 800; color: var(--slate);
   display: flex; align-items: center; gap: 4px;
   transition: color 0.2s;
 }
-.q-card:hover .q-cta-link { color: var(--green-dark); }
+.q-row:hover .q-detail-link { color: var(--green-dark); }
+
+/* ── Right: video thumbnail ── */
+.q-row-right {
+  position: relative; flex-shrink: 0;
+  background: #0a1929;
+  overflow: hidden;
+  min-height: 160px;
+}
+.q-row-right img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 15%;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.q-row:hover .q-row-right img { transform: scale(1.04); }
+.q-thumb-overlay {
+  position: absolute; inset: 0;
+  background: rgba(10,25,41,0.35);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.q-row:hover .q-thumb-overlay { background: rgba(10,25,41,0.2); }
+.q-play-btn {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+  transition: transform 0.2s, background 0.2s;
+}
+.q-play-btn svg { margin-left: 3px; }
+.q-row:hover .q-play-btn { transform: scale(1.1); background: var(--green); }
+.q-row:hover .q-play-btn svg path { fill: var(--navy); }
+.q-video-label {
+  position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+  font-size: 10px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase;
+  color: rgba(255,255,255,0.9); white-space: nowrap;
+  background: rgba(0,0,0,0.55); border-radius: 4px; padding: 3px 8px;
+}
+
+/* ── Coming soon right panel ── */
+.q-row-right.empty {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--slate-light);
+}
+.q-coming-soon {
+  font-size: 11px; font-weight: 700; color: #b0b5c8;
+  text-align: center; padding: 16px;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.q-coming-soon-icon { font-size: 20px; opacity: 0.4; }
 
 /* ══ CTA SECTION ══ */
 .cta-section {
@@ -398,15 +395,17 @@ h1, h2, h3, h4 { font-family: 'Raleway', sans-serif; }
   .container { padding: 0 24px; }
   .yawa-hero { padding: 60px 0 68px; }
   .sp-grid { grid-template-columns: 1fr; }
-  .q-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
-  .q-grid.has-videos { grid-template-columns: 1fr; }
   .jump-nav-inner { padding: 0 24px; }
+  .q-row { grid-template-columns: 1fr 200px; }
 }
 @media (max-width: 640px) {
   .yawa-hero { padding: 48px 0 56px; }
-  .q-grid { grid-template-columns: 1fr; }
-  .q-grid.has-videos { grid-template-columns: 1fr; }
   .hero-meta { flex-direction: column; gap: 10px; }
+  /* Stack video below question on small screens */
+  .q-row { grid-template-columns: 1fr; }
+  .q-row-left { border-right: none; border-bottom: 1px solid var(--border); }
+  .q-row-right { min-height: 200px; }
+  .q-row.no-video .q-row-right { display: none; }
 }
 
 </style>
@@ -638,49 +637,53 @@ function renderCard(q, catColor) {
   const sp = spData(q.sp);
   const hasVideo = q.videoId && q.videoId.length > 0;
   const hasDetail = q.detailUrl && q.detailUrl !== '#';
-  const href = hasDetail ? q.detailUrl : (hasVideo ? `#q${q.n}` : null);
+  const href = hasDetail ? q.detailUrl : null;
 
-  const openTag = href
-    ? `<a class="q-card${q.featured ? ' featured' : ''}" href="${href}">`
-    : `<div class="q-card${q.featured ? ' featured' : ''}">`;
-  const closeTag = href ? '</a>' : '</div>';
+  const tag = href ? 'a' : 'div';
+  const hrefAttr = href ? ` href="${href}"` : '';
+  const classes = `q-row${q.featured ? ' featured' : ''}${!hasVideo ? ' no-video' : ''}`;
 
-  const thumbHtml = hasVideo ? `
-    <a class="q-thumb-wrap" href="${hasDetail ? q.detailUrl : '#q' + q.n}">
-      <img src="https://img.youtube.com/vi/${q.videoId}/hqdefault.jpg" alt="${q.q}" loading="lazy">
+  const rightPanel = hasVideo ? `
+    <div class="q-row-right">
+      <img src="https://img.youtube.com/vi/${q.videoId}/hqdefault.jpg" alt="Watch: ${q.q}" loading="lazy">
       <div class="q-thumb-overlay">
         <div class="q-play-btn">
           <svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M1 1l14 8L1 17V1z" fill="#172F44"/></svg>
         </div>
       </div>
-      <span class="q-thumb-label">Watch Answer</span>
-    </a>` : '';
+      <span class="q-video-label">Watch Answer</span>
+    </div>` : `
+    <div class="q-row-right empty">
+      <div class="q-coming-soon">
+        <span class="q-coming-soon-icon">🎬</span>
+        Video coming soon
+      </div>
+    </div>`;
 
-  const ctaText = hasDetail
-    ? 'Full Answer + Transcript →'
+  const footerRight = hasDetail
+    ? `<span class="q-detail-link">Full Transcript →</span>`
     : hasVideo
-      ? 'Watch Above'
-      : '<span style="color:var(--border)">Coming soon</span>';
+      ? `<span class="q-detail-link" style="color:var(--border)">Transcript coming soon</span>`
+      : '';
 
   return `
-    ${openTag}
-      <div class="q-card-accent" style="background:${catColor}"></div>
-      ${thumbHtml}
-      <div class="q-card-body">
-        <div class="q-card-top">
+    <${tag} class="${classes}"${hrefAttr}>
+      <div class="q-row-left" style="border-left: 4px solid ${catColor}">
+        <div class="q-row-meta">
           <span class="q-number">Q${q.n < 10 ? '0' + q.n : q.n}</span>
           ${q.featured ? '<span class="q-featured-badge">Key Question</span>' : ''}
         </div>
         <div class="q-text">${q.q}</div>
-        <div class="q-card-footer">
+        <div class="q-row-footer">
           <div class="sp-chip">
             <div class="sp-chip-avatar ${sp.cls}">${sp.initials}</div>
             <span>${sp.name}</span>
           </div>
-          <span class="q-cta-link">${ctaText}</span>
+          ${footerRight}
         </div>
       </div>
-    ${closeTag}
+      ${rightPanel}
+    </${tag}>
   `;
 }
 
@@ -689,7 +692,6 @@ function renderSections() {
   let html = '';
   CATEGORIES.forEach(cat => {
     const pillStyle = `background:${cat.bg}; color:${cat.color}; border:1px solid ${cat.color}22;`;
-    const catHasVideos = cat.questions.some(q => q.videoId && q.videoId.length > 0);
     html += `
       <section class="questions-section" id="${cat.id}">
         <div class="container">
@@ -701,7 +703,7 @@ function renderSections() {
             <h2 class="section-title">${cat.title}</h2>
             <p class="section-desc">${cat.desc}</p>
           </div>
-          <div class="q-grid${catHasVideos ? ' has-videos' : ''}">
+          <div class="q-list">
             ${cat.questions.map(q => renderCard(q, cat.color)).join('')}
           </div>
         </div>
